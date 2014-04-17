@@ -1052,7 +1052,7 @@ body * .ls-container .ls-webkit-hack,
 .ls-layer h5 { font-weight:bold; font-size:24px; color:#333334;  white-space:nowrap; }			
 .ls-layer .button-text2 a { font-weight:bold; text-transform:uppercase; color:#ffffff; text-decoration:none; padding-right:20px; padding-left:20px; font-size:20px; line-height:44px; color:#ffffff; white-space:nowrap; display:inline-block; }			
 .ls-layer .button-text a { font-weight:bold; text-transform:uppercase; text-decoration:none; padding-right: 20px; padding-left: 20px; font-size: 14px; line-height: 38px; color: #ffffff; white-space: nowrap; display:inline-block; }			
-.ls-layer .text1 { width:380; font-size:16px; line-height:24px; color:#333334; }			
+.ls-layer .text1 { width:380px; font-size:16px; line-height:24px; color:#333334; }			
 .ls-layer .text2 { width:390px; padding:20px; font-size:16px; line-height:24px; color:#333334; background:#ffffff;  }
 
 
@@ -1068,6 +1068,19 @@ body * .ls-container .ls-webkit-hack,
 
 
 /*End Of Slider ______________________________________________________________________________________________________*/
+
+/*Start Of Static-Content _____________________________________________________________________________________________*/
+.Static-Content{
+	background-color:#222;
+	height:auto;
+	padding-bottom:50px
+}
+
+.ls-nothumb {
+	text-align: center !important;
+}
+
+/*End Of Static-Content _____________________________________________________________________________________________*/
 
 /* Media Qeries_______________________________________________________________________________________________________ */
 

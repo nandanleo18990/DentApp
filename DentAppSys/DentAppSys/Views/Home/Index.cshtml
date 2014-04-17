@@ -8,7 +8,7 @@
     <script>
         jQuery(document).ready(function () {
             jQuery('#layerslider').layerSlider({
-                skinsPath: 'layerslider-skins/',
+                skinsPath: '/Content/layerslider-skins/',
                 skin: 'fullwidthdark',
                 thumbnailNavigation: 'hover',
                 hoverPrevNext: false,
@@ -20,11 +20,53 @@
             });
         });
     </script>
+
+    <script>
+        $(window).scroll(function () {
+            $('#center-content').each(function () {
+                var imagePos = $(this).offset().top;
+
+                var topOfWindow = $(window).scrollTop();
+                if (imagePos < topOfWindow + 500) {
+                    $(this).addClass("slideUp");
+                }
+            });
+
+            $('.left-division-bottom').each(function () {
+                var imagePos = $(this).offset().top;
+
+                var topOfWindow = $(window).scrollTop();
+                if (imagePos < topOfWindow + 500) {
+                    $(this).addClass("slideRight");
+                }
+            });
+
+            $('.right-division-bottom').each(function () {
+                var imagePos = $(this).offset().top;
+
+                var topOfWindow = $(window).scrollTop();
+                if (imagePos < topOfWindow + 500) {
+                    $(this).addClass("slideLeft");
+                }
+            });
+
+            $('.Before-vis').each(function () {
+                var imagePos = $(this).offset().top;
+
+                var topOfWindow = $(window).scrollTop();
+                if (imagePos < topOfWindow + 400) {
+                    $(this).addClass("Before-invis");
+                }
+            });
+
+
+
+        });
+    </script>
+
 }
 
-<h1>Hi this is a test !</h1>
-
-@*<section id="slider">
+<section id="slider">
 
         <div id="layerslider-container-fw">
             <div id="layerslider">
@@ -54,5 +96,21 @@
 
             </div>
         </div>
-    </section>*@
-<!-- **Slider Section - End** -->
+    </section>
+
+@* End Of Slider *@
+
+<div class="Static-Content">
+    <div class="ls-nothumb">
+        <img src="~/Content/images/Logo.jpg" alt="" width="200" height="80" style="border-style: none; border-color: inherit; border-width: 0" />
+    </div>
+    <div class="left-division-bottom" style="display:block; position: relative; border-bottom: 2px solid #eaeaea;width:25%;left:0px;visibility:visible">
+
+    </div>
+
+    <div class="right-division-bottom" style="display:block; position: relative; border-bottom: 2px solid #eaeaea;width:25%;float:right;visibility:visible"></div>
+    <div id="center-content" class="ls-nothumb" style="display:block; position: relative;width:50%;margin-left: 25%;color:#fff;visibility:visible; line-height:27px;">
+        <article> Dynamic and robust, we enjoys strategic relationships with a number of leading health, dental and life insurance companies, and is active in all major markets across the World. </article>
+    </div>
+</div>
+

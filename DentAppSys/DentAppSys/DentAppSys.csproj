@@ -142,6 +142,8 @@
     <Content Include="Content\images\layerslider-gallery\S3-01.jpg" />
     <Content Include="Content\images\Logo.jpg" />
     <Content Include="Content\images\nav-icon.png" />
+    <Content Include="Content\layerslider-skins\fullwidthdark\skin.css" />
+    <Content Include="Content\layerslider-skins\fullwidthdark\skin.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -203,6 +205,7 @@
     <Content Include="Content\images\layerslider-gallery\Descr.WD3" />
     <Content Include="Content\images\layerslider-gallery\Thumbs.db%282%29.doc" />
     <Content Include="Content\images\layerslider-gallery\Thumbs.db.doc" />
+    <Content Include="Content\layerslider-skins\fullwidthdark\Thumbs.db.doc" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
