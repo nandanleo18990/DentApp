@@ -2,4 +2,57 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+@section AddToHead {
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-easing-1.3.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/layerslider.kreaturamedia.jquery.js")"></script>
+    <script>
+        jQuery(document).ready(function () {
+            jQuery('#layerslider').layerSlider({
+                skinsPath: 'layerslider-skins/',
+                skin: 'fullwidthdark',
+                thumbnailNavigation: 'hover',
+                hoverPrevNext: false,
+                responsive: true,
+                responsiveUnder: 1400,
+                sublayerContainer: 1060,
+                width: '100%',
+                height: '500px'
+            });
+        });
+    </script>
+}
+
+<h1>Hi this is a test !</h1>
+
+@*<section id="slider">
+
+        <div id="layerslider-container-fw">
+            <div id="layerslider">
+
+                <div class="ls-layer" style="slidedirection:top; slidedelay:7000; durationin:1500; durationout:1500; easingin:easeInOutQuint; easingout:easeInOutQuint; delayin:0; delayout:500; transition3d:all;">
+
+                    <img alt="layer slider" src="~/Content/images/layerslider-gallery/S1-03.jpg" class="ls-bg">
+
+                </div>
+
+                <div class="ls-layer" style="slidedirection:right; slidedelay:6000; durationin:1500; durationout:1500; easingin:easeInOutQuint; easingout:easeInOutQuint; delayin:0; delayout:0; timeshift:0; transition3d:all;">
+
+                    <img alt="layer slider" src="~/Content/images/layerslider-gallery/S2-01.jpg" class="ls-bg">
+
+                </div>
+
+                <div class="ls-layer" style="slidedirection:bottom; slidedelay:7000; durationin:1500; durationout:1500; easingin:easeInOutQuint; easingout:easeInOutQuint; delayin:0; delayout:500; timeshift:0; transition2d:all; ">
+
+                    <img alt="layer slider" src="~/Content/images/layerslider-gallery/S3-01.jpg" class="ls-bg">
+
+
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+    </section>*@
+<!-- **Slider Section - End** -->
