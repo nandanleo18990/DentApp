@@ -6,11 +6,58 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/Scripts/jquery-min.js")
+
+    <script type="text/javascript">
+        $(function () {
+            var pull = $('#pull');
+            menu = $('#Menu');
+            menuHeight = menu.height();
+
+            $(pull).on('click', function (e) {
+                e.preventDefault();
+                menu.slideToggle();
+            });
+
+            $(window).resize(function () {
+                var w = $(window).width();
+                if (w > 320 && menu.is(':hidden')) {
+                    menu.removeAttr('style');
+                }
+            });
+        });
+    </script>
+
+    @if (IsSectionDefined("AddToHead"))
+    {
+        @RenderSection("AddToHead", required: false)
+    }
+
 </head>
 <body>
-    @RenderBody()
 
-    @Scripts.Render("~/bundles/jquery")
-    @RenderSection("scripts", required: false)
+    <header class="Header-Fix">
+
+        <nav class="Nav-menu">
+            <ul id="Menu" class="clearfix">
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">About Us </a></li>
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Home</a></li>
+            </ul>
+            <div id="pull" class="menu-b">&nbsp;</div>
+            <div id="pull" class="menu-c"> <a class="Home" href="#"><img src="~/Content/images/logo.jpg" alt="" width="200" height="80" style="border:0;" /></a></div>
+
+
+        </nav>
+    </header>
+    <div class="container">
+
+        @RenderBody()
+
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+
+    </div>
 </body>
 </html>
