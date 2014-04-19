@@ -28,11 +28,6 @@
         });
     </script>
 
-    @if (IsSectionDefined("AddToHead"))
-    {
-        @RenderSection("AddToHead", required: false)
-    }
-
 </head>
 <body>
 
@@ -40,10 +35,10 @@
 
         <nav class="Nav-menu">
             <ul id="Menu" class="clearfix">
-                <li><a href="home/Contact">Contact Us</a></li>
+                <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
                 <li><a href="#">About Us </a></li>
                 <li><a href="#">Login</a></li>
-                <li><a href="#">Home</a></li>
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
             </ul>
             <div id="pull" class="menu-b">&nbsp;</div>
             <div id="pull" class="menu-c"> <a class="Home" href="#"><img src="~/Content/images/logo.jpg" alt="" width="200" height="80" style="border:0;" /></a></div>
@@ -57,6 +52,12 @@
 
         @Scripts.Render("~/bundles/jquery")
         @RenderSection("scripts", required: false)
+
+        @if (IsSectionDefined("AddToEnd"))
+        {
+            @RenderSection("AddToEnd", required: false)
+        }
+
 
     </div>
 </body>

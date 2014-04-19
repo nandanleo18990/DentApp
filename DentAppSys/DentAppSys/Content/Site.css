@@ -1082,6 +1082,156 @@ body * .ls-container .ls-webkit-hack,
 
 /*End Of Static-Content _____________________________________________________________________________________________*/
 
+.grid p{
+	text-align:justify;
+}
+
+.TH-part{
+	padding-top:1px;
+	margin-bottom: 10px
+}
+
+.Team-heading{
+	text-align:center;
+	font-size:30px;
+	font-family:homa;
+}
+
+.division-bottom{
+	
+	display: block;
+	position: relative;
+    border-bottom: 2px solid #eaeaea;
+}
+
+.grid{
+	
+	position: relative;
+	width: 100%;
+	max-width: 1140px;
+	margin: 0 auto;
+	padding-left: 0;
+	padding-right: 0;
+	display: block;
+
+}
+
+.grid:before, .grid:after {
+	content: '';
+	display: table;
+}
+Pseudo ::after element
+.grid:after {
+	clear: both;
+}
+.grid:before, .grid:after {
+	content: '';
+	display: table;
+}
+
+.grid .item {
+	display: inline-block;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	vertical-align: top;
+	width: 33.333333333333336%;
+}
+
+
+
+@media screen and (max-width: 740px)
+{
+.grid .item {
+	display: inline-block;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	vertical-align: top;
+	width: 50%;
+}
+
+#Emerg {
+	display:none;
+}
+
+}
+
+@media screen and (max-width: 500px)
+{
+.grid .item {
+	display: inline-block;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	vertical-align: top;
+	width: 100%;
+}
+
+}
+
+
+.circle-grid .item .circular-image {
+	display: block;
+	margin-bottom: 32px;
+}
+.circular-image {
+	display: block;
+	position: relative;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 10px;
+	background: #fff;
+	border-radius: 50% 4px 50% 50%;
+}
+
+.circular-image .Hrimg {
+	display: block;
+	position: relative;
+	width: 100%;
+	height: auto;
+	z-index: 0;
+	border-radius: 50% 50% 50% 50%;
+}
+.Hrimg {
+	border: 0;
+}
+
+
+
+.circle-grid .item .heading-small {
+	margin-bottom: 8px;
+	color: #008ccc;
+}
+.circle-grid .item .heading {
+	text-transform: none;
+}
+.heading-small, .services-venn-not-supported .services-set .heading, .services-venn-wrapper--small .js-services-venn.services-venn-supported .services-set .heading {
+	font-size: 24px;
+	text-transform: uppercase;
+}
+.heading-collapse-line {
+	line-height: 1.2;
+}
+.heading {
+	font-size: 18px;
+	line-height:29px;
+}
+
+
+.node, .services-venn-not-supported {
+	padding-left: 24px;
+	padding-right: 24px;
+}
+
+
+/*Start Of MID-Content _____________________________________________________________________________________________*/
+
+
+
+/*Start Of MID-Content _____________________________________________________________________________________________*/
+
 /* Media Qeries_______________________________________________________________________________________________________ */
 
 @media only screen and (max-width : 730px) {
@@ -1178,6 +1328,8 @@ body * .ls-container .ls-webkit-hack,
         }
 }
 
+
+/* End Of Index/Home Page ___________________________________________________________________________*/
 
 /* Contact-Page _____________________________________________________________________________________*/
 #contact_form {

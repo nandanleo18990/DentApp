@@ -138,6 +138,9 @@
     <Content Include="Content\images\contact_1.jpg" />
     <Content Include="Content\images\contact_2.jpg" />
     <Content Include="Content\images\HR-BG.png" />
+    <Content Include="Content\images\Img-fir.jpg" />
+    <Content Include="Content\images\Img-sec.jpg" />
+    <Content Include="Content\images\Img-thi.jpg" />
     <Content Include="Content\images\layerslider-gallery\S1-03.jpg" />
     <Content Include="Content\images\layerslider-gallery\S2-01.jpg" />
     <Content Include="Content\images\layerslider-gallery\S3-01.jpg" />

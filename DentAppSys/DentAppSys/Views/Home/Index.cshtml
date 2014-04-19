@@ -2,7 +2,7 @@
     ViewBag.Title = "Index";
 }
 
-@section AddToHead {
+@section AddToEnd {
     <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-easing-1.3.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/layerslider.kreaturamedia.jquery.js")"></script>
     <script>
@@ -66,37 +66,39 @@
 
 }
 
+@* Start Of Slider *@
+
 <section id="slider">
 
-        <div id="layerslider-container-fw">
-            <div id="layerslider">
+    <div id="layerslider-container-fw">
+        <div id="layerslider">
 
-                <div class="ls-layer" style="slidedirection:top; slidedelay:7000; durationin:1500; durationout:1500; easingin:easeInOutQuint; easingout:easeInOutQuint; delayin:0; delayout:500; transition3d:all;">
+            <div class="ls-layer" style="slidedirection:top; slidedelay:7000; durationin:1500; durationout:1500; easingin:easeInOutQuint; easingout:easeInOutQuint; delayin:0; delayout:500; transition3d:all;">
 
-                    <img alt="layer slider" src="~/Content/images/layerslider-gallery/S1-03.jpg" class="ls-bg">
+                <img alt="layer slider" src="~/Content/images/layerslider-gallery/S1-03.jpg" class="ls-bg">
 
-                </div>
+            </div>
 
-                <div class="ls-layer" style="slidedirection:right; slidedelay:6000; durationin:1500; durationout:1500; easingin:easeInOutQuint; easingout:easeInOutQuint; delayin:0; delayout:0; timeshift:0; transition3d:all;">
+            <div class="ls-layer" style="slidedirection:right; slidedelay:6000; durationin:1500; durationout:1500; easingin:easeInOutQuint; easingout:easeInOutQuint; delayin:0; delayout:0; timeshift:0; transition3d:all;">
 
-                    <img alt="layer slider" src="~/Content/images/layerslider-gallery/S2-01.jpg" class="ls-bg">
+                <img alt="layer slider" src="~/Content/images/layerslider-gallery/S2-01.jpg" class="ls-bg">
 
-                </div>
+            </div>
 
-                <div class="ls-layer" style="slidedirection:bottom; slidedelay:7000; durationin:1500; durationout:1500; easingin:easeInOutQuint; easingout:easeInOutQuint; delayin:0; delayout:500; timeshift:0; transition2d:all; ">
+            <div class="ls-layer" style="slidedirection:bottom; slidedelay:7000; durationin:1500; durationout:1500; easingin:easeInOutQuint; easingout:easeInOutQuint; delayin:0; delayout:500; timeshift:0; transition2d:all; ">
 
-                    <img alt="layer slider" src="~/Content/images/layerslider-gallery/S3-01.jpg" class="ls-bg">
-
-
-                </div>
-
-
-
+                <img alt="layer slider" src="~/Content/images/layerslider-gallery/S3-01.jpg" class="ls-bg">
 
 
             </div>
+
+
+
+
+
         </div>
-    </section>
+    </div>
+</section>
 
 @* End Of Slider *@
 
@@ -112,5 +114,59 @@
     <div id="center-content" class="ls-nothumb" style="display:block; position: relative;width:50%;margin-left: 25%;color:#fff;visibility:visible; line-height:27px;">
         <article> Dynamic and robust, we enjoys strategic relationships with a number of leading health, dental and life insurance companies, and is active in all major markets across the World. </article>
     </div>
+</div>
+
+@* MID-Content*@
+
+<div class="grid">
+    <article class="item">
+        <div class="node">
+            <div class="circular-image">
+                <img class="Hrimg" src="~/Content/images/Img-fir.jpg" alt="">
+            </div>
+            <div>
+                <h1 class="heading heading-small heading-collapse-line">Knowledge</h1>
+                <h2 class="heading heading-extra-small heading-collapse-line">
+                    Medicine and Dentistry - Knowledge of the information and techniques needed to diagnose and treat human injuries, diseases, and deformities. This includes symptoms, treatment alternatives, drug properties and interactions, and preventive health-care measures.
+                </h2>
+            </div>
+            <!--					<p>متخصص در امور رسانه ای</p>
+            -->
+        </div>
+    </article><!----><article class="item">
+        <div class="node">
+            <div class="circular-image">
+                <img class="Hrimg" src="~/Content/images/Img-sec.jpg" alt="">
+            </div>
+            <div>
+                <h1 class="heading heading-small heading-collapse-line">Operating speed</h1>
+                <h2 class="heading heading-extra-small heading-collapse-line">
+                    The dental profession is committed to delivering the highest quality of care to each of its
+                    individual patients and applying advancements in technology and science to continually
+                    improve the oral health status of the U.S. population.
+                </h2>
+            </div>
+            <!--					<p>ترک متخصص</p>
+            -->
+        </div>
+    </article><!----><article class="item">
+        <div class="node">
+            <div class="circular-image">
+                <img class="Hrimg" src="~/Content/images/Img-thi.jpg" alt="">
+            </div>
+            <div>
+                <h1 class="heading heading-small heading-collapse-line">Accuracy</h1>
+                <h2 class="heading heading-extra-small heading-collapse-line">
+                    Dental impression materials are used to create an inverse replica of the dental hard and soft tissues, and are used in processes such as the fabrication of crowns and bridges. The accuracy and dimensional stability of impression materials are of paramount importance to the accuracy of fit of the resultant prosthesis.
+                </h2>
+            </div>
+            <!--					<p>روابط عمومی </p>
+            -->
+        </div>
+    </article>
+</div>
+
+<div class="TH-part" style="padding-top:1px;margin-bottom: 10px">
+    <div style="display: block;position: relative;border-bottom: 2px solid #eaeaea;"></div>
 </div>
 
