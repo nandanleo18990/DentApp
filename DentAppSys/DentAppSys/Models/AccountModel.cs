@@ -34,6 +34,10 @@ namespace DentAppSys.Models
         [Required]
         [Display(Name = "Last Name: ")]
         public string Lastname { get; set; }
+        
+        [DataType(DataType.Date)]
+        public DateTime Birthday { get; set; }
+
 
     }
 
