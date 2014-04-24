@@ -267,6 +267,7 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\RegAndLogin.cshtml" />
     <Content Include="Views\Patient\Index.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
