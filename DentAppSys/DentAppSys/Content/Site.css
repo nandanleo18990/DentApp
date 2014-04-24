@@ -1888,7 +1888,7 @@ body
 	margin-left: 70%;
 	height:420px;
 	text-align:right;
-	direction:rtl;
+	
 	line-height:25px;
 	padding-top:80px;
 }
@@ -1905,7 +1905,7 @@ body
 #contact_form_left p{
 	text-align:justify;
 	font-size:18px;
-	font-family:homa;
+	font-family:Tahoma;
 	line-height:27px;
 }
 	
