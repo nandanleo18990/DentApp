@@ -1167,6 +1167,19 @@ body * .ls-container .ls-webkit-hack,
 
 
 /* Contact-Page _____________________________________________________________________________________*/
+
+body
+{
+    font-family:Tahoma;
+    font-size: 16px;
+    line-height: 20px;    
+    background-color: #ffffff;
+    margin: 0;
+	padding: 0;
+	zoom: reset;
+	overflow-x: hidden;
+}
+
 #contact_form {
 	background-image:url('images/back.jpg');
 	background-repeat:no-repeat;
@@ -1174,7 +1187,7 @@ body * .ls-container .ls-webkit-hack,
 	background-size:cover;
 	height:auto;
 	width: 100%;
-	direction: rtl;
+	
 }
 #map {
 	height:auto;
@@ -1189,6 +1202,7 @@ body * .ls-container .ls-webkit-hack,
 	height:auto;
 }
 #contact_form_right {
+  
 	width: 55%;
 	margin-left: 35%;
 	padding-right: 5%;
@@ -1202,13 +1216,16 @@ body * .ls-container .ls-webkit-hack,
 }
 
 .textfield_contact {
+   
 	margin-top: 10px;
 	margin-bottom: 10px;
 	padding: 1.2%;
 	width: 40%;
 	border: 1px solid #FFF;
+
 }
 .textarea_contact {
+  
 	margin-top: 10px;
 	margin-bottom: 10px;
 	width: 60%;
@@ -1217,8 +1234,10 @@ body * .ls-container .ls-webkit-hack,
 	padding-bottom: 2%;
 	padding-left: 1.2%;
 	border: 1px solid #FFF;
+    
 }
 .submit {
+    
 	font-family: tahoma;
 	padding-top: 1%;
 	padding-right: 3%;
@@ -1241,7 +1260,7 @@ body * .ls-container .ls-webkit-hack,
 	margin-left: 70%;
 	height:420px;
 	text-align:right;
-	direction:rtl;
+	
 	line-height:25px;
 	padding-top:80px;
 }
@@ -1256,7 +1275,7 @@ body * .ls-container .ls-webkit-hack,
 #contact_form_left p{
 	text-align:justify;
 	font-size:18px;
-	font-family:homa;
+	font-family:Tahoma;
 	line-height:27px;
 }
 	
@@ -1277,7 +1296,6 @@ body * .ls-container .ls-webkit-hack,
 	width: 100%;
 	height:auto;
 	text-align:right;
-	direction:rtl;
 	line-height:30px;
 	margin-left:0px;
 	clear:both;
@@ -1301,4 +1319,152 @@ body * .ls-container .ls-webkit-hack,
 }
 	
 	}
+
+    @charset "UTF-8";
+
+/* SpryFormValidation.css - version 0.5 - Spry Pre-Release 1.6.1 */
+
+/* Copyright (c) 2006. Adobe Systems Incorporated. All rights reserved. */
+
+
+
+/* These are the classes applied on the error messages
+ * which prevent them from being displayed by default.
+ */ 
+.textareaRequiredMsg,
+.textareaMinCharsMsg,
+.textareaMaxCharsMsg,
+.textareaValidMsg {
+	display: inline;
+	color: #FFF;
+	font-family: tahoma;
+}
+
+/* These selectors change the way messages look when the widget is in one of the error states.
+ * These classes set a default red border and color for the error text.
+ * The state class (e.g. .textareaRequiredState) is applied on the top-level container for the widget,
+ * and this way only the specific error message can be shown by setting the display property to "inline".
+ */
+.textareaRequiredState .textareaRequiredMsg,
+.textareaMinCharsState .textareaMinCharsMsg,
+.textareaMaxCharsState .textareaMaxCharsMsg
+{
+	display: inline;
+}
+
+/* The next three group selectors control the way the core element (TEXTAREA) looks like when the widget is in one of the states: * focus, required / minChars / maxChars , valid 
+ * There are two selectors for each state, to cover the two main usecases for the widget:
+ * - the widget id is placed on the top level container for the TEXTAREA
+ * - the widget id is placed on the TEXTAREA element itself (there are no error messages)
+ */
+ 
+ /* When the widget is in the valid state the TEXTAREA has a green background applied on it. */
+.textareaValidState textarea, textarea.textareaValidState {
+}
+
+/* When the widget is in an invalid state the TEXTAREA has a red background applied on it. */
+textarea.textareaRequiredState, .textareaRequiredState textarea, 
+textarea.textareaMinCharsState, .textareaMinCharsState textarea, 
+textarea.textareaMaxCharsState, .textareaMaxCharsState textarea {
+}
+
+/* When the widget has received focus, the TEXTAREA has a yellow background applied on it. */
+.textareaFocusState textarea, textarea.textareaFocusState {
+	border: 1px solid #F00;
+	box-shadow: 1px 1px 5px  #fff;
+}
+
+/* This class applies only for a short period of time and changes the way the text in the textarea looks like.
+ * It applies only when the widget has enforce max chars enabled and the user tries to type some more.
+ */
+.textareaFlashState textarea, textarea.textareaFlashState{
+	color:red !important;
+}
+/* When the widget has the hint message on, the hint text can be styled differently than the user typed text. */
+textarea.textareaHintState, .textareaHintState textarea{
+		font-family: tahoma;
+	font-size: 12px;
+	color: #666;
+	/* color: red !important;*/
+}
+
+@charset "UTF-8";
+
+/* SpryValidationTextField.css - version 0.4 - Spry Pre-Release 1.6.1 */
+
+/* Copyright (c) 2006. Adobe Systems Incorporated. All rights reserved. */
+
+
+/* These are the classes applied on the error messages
+ * which prevent them from being displayed by default.
+ */ 
+.textfieldRequiredMsg, 
+.textfieldInvalidFormatMsg, 
+.textfieldMinValueMsg,
+.textfieldMaxValueMsg,
+.textfieldMinCharsMsg,
+.textfieldMaxCharsMsg,
+.textfieldValidMsg {
+	display: none;
+}
+
+/* These selectors change the way messages look when the widget is in one of the error states.
+ * These classes set a default red border and color for the error text.
+ * The state class (e.g. .textfieldRequiredState) is applied on the top-level container for the widget,
+ * and this way only the specific error message can be shown by setting the display property to "inline".
+ */
+.textfieldRequiredState .textfieldRequiredMsg, 
+.textfieldInvalidFormatState .textfieldInvalidFormatMsg, 
+.textfieldMinValueState .textfieldMinValueMsg,
+.textfieldMaxValueState .textfieldMaxValueMsg,
+.textfieldMinCharsState .textfieldMinCharsMsg,
+.textfieldMaxCharsState .textfieldMaxCharsMsg
+{
+	display: inline;
+	color: #FFF;
+	font-family: tahoma;
+}
+
+
+
+/* The next three group selectors control the way the core element (INPUT) looks like when the widget is in one of the states: * focus, required / invalid / minValue / maxValue / minChars / maxChars , valid 
+ * There are two selectors for each state, to cover the two main usecases for the widget:
+ * - the widget id is placed on the top level container for the INPUT
+ * - the widget id is placed on the INPUT element itself (there are no error messages)
+ */
+ 
+ /* When the widget is in the valid state the INPUT has a green background applied on it. */
+.textfieldValidState input, input.textfieldValidState {
+}
+
+/* When the widget is in an invalid state the INPUT has a red background applied on it. */
+input.textfieldRequiredState, .textfieldRequiredState input, 
+input.textfieldInvalidFormatState, .textfieldInvalidFormatState input, 
+input.textfieldMinValueState, .textfieldMinValueState input, 
+input.textfieldMaxValueState, .textfieldMaxValueState input, 
+input.textfieldMinCharsState, .textfieldMinCharsState input, 
+input.textfieldMaxCharsState, .textfieldMaxCharsState input {
+}
+
+/* When the widget has received focus, the INPUT has a yellow background applied on it. */
+.textfieldFocusState input, input.textfieldFocusState {
+	border: 1px solid #F00;
+	box-shadow: 1px 1px 5px  #fff;
+}
+
+/* This class applies only for a short period of time and changes the way the text in the textbox looks like.
+ * It applies only when the widget has character masking enabled and the user tries to type in an invalid character.
+ */
+.textfieldFlashText input, input.textfieldFlashText {
+	color: red !important;
+}
+
+/* When the widget has the hint message on, the hint text can be styled differently than the user typed text. */
+.textfieldHintState input, input.textfieldHintState {
+	font-family: tahoma;
+	font-size: 12px;
+	color: #666;	/*color: red !important;*/
+}
+
+
 /* Contact-Page _____________________________________________________________________________________*/
