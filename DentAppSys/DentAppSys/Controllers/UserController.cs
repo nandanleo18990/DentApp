@@ -31,8 +31,9 @@ namespace DentAppSys.Controllers
                     var Person = from u in db.Patients
                                  where u.Email == User.RegisterModel.Email
                                  select u;
+                    int Count = Person.Count();
 
-                    if (Person == null)
+                    if (Count == 0)
                     {
                         var Crypto = new SimpleCrypto.PBKDF2();
                         var CrypPass = Crypto.Compute(User.RegisterModel.Password);
@@ -46,7 +47,7 @@ namespace DentAppSys.Controllers
                         db.Patients.InsertOnSubmit(MyUser);
                         db.SubmitChanges();
 
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Patient", new {FirstName = User.RegisterModel.Firstname, LastName = User.RegisterModel.Lastname });
                     }
                     else
                     {
