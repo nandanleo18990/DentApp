@@ -40,9 +40,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="SimpleCrypto">
+      <HintPath>..\packages\SimpleCrypto.0.3.30.26\lib\SimpleCrypto.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -127,9 +131,17 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PatientController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="MaindbModel.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MaindbModel.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -138,11 +150,16 @@
     <Content Include="Content\images\contact_1.jpg" />
     <Content Include="Content\images\contact_2.jpg" />
     <Content Include="Content\images\HR-BG.png" />
+    <Content Include="Content\images\Img-fir.jpg" />
+    <Content Include="Content\images\Img-sec.jpg" />
+    <Content Include="Content\images\Img-thi.jpg" />
     <Content Include="Content\images\layerslider-gallery\S1-03.jpg" />
     <Content Include="Content\images\layerslider-gallery\S2-01.jpg" />
     <Content Include="Content\images\layerslider-gallery\S3-01.jpg" />
     <Content Include="Content\images\Logo.jpg" />
     <Content Include="Content\images\nav-icon.png" />
+    <Content Include="Content\layerslider-skins\fullwidthdark\skin.css" />
+    <Content Include="Content\layerslider-skins\fullwidthdark\skin.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -204,6 +221,12 @@
     <Content Include="Content\images\layerslider-gallery\Descr.WD3" />
     <Content Include="Content\images\layerslider-gallery\Thumbs.db%282%29.doc" />
     <Content Include="Content\images\layerslider-gallery\Thumbs.db.doc" />
+    <Content Include="Content\layerslider-skins\fullwidthdark\Thumbs.db.doc" />
+    <Content Include="MaindbModel.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>MaindbModel.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\GoogleMapsInYourSite.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
@@ -241,13 +264,23 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\RegAndLogin.cshtml" />
+    <Content Include="Views\Patient\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MaindbModel.dbml.layout">
+      <DependentUpon>MaindbModel.dbml</DependentUpon>
+    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,0 +1,40 @@
+﻿@model DentAppSys.Models.RegAndLog
+
+@{
+    ViewBag.Title = "RegAndLogin";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "Check your entry data and try again !!!");
+    <div>
+
+        <fieldset>
+            <legend>Registration Form</legend>
+            <div>@Html.LabelFor(u => u.RegisterModel.Firstname)</div>
+            <div>
+                @Html.TextBoxFor(u => u.RegisterModel.Firstname)
+                @Html.ValidationMessageFor(u => u.RegisterModel.Firstname)
+            </div>
+            <div>@Html.LabelFor(u => u.RegisterModel.Lastname)</div>
+            <div>
+                @Html.TextBoxFor(u => u.RegisterModel.Lastname)
+                @Html.ValidationMessageFor(u => u.RegisterModel.Lastname)
+            </div>
+            <div>@Html.LabelFor(u => u.RegisterModel.Email)</div>
+            <div>
+                @Html.TextBoxFor(u => u.RegisterModel.Email)
+                @Html.ValidationMessageFor(u => u.RegisterModel.Email)
+            </div>
+            <div>@Html.LabelFor(u => u.RegisterModel.Password)</div>
+            <div>
+                @Html.PasswordFor(u => u.RegisterModel.Password)
+                @Html.ValidationMessageFor(u => u.RegisterModel.Password)
+            </div>
+            <input type="submit" value="Register" class="footer_btn" />
+
+        </fieldset>
+
+    </div>
+}

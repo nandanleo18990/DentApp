@@ -7,6 +7,8 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/Scripts/jquery-min.js")
+    @Scripts.Render("~/bundles/jqueryval")
+
 
     <script type="text/javascript">
         $(function () {
@@ -28,11 +30,6 @@
         });
     </script>
 
-    @if (IsSectionDefined("AddToHead"))
-    {
-        @RenderSection("AddToHead", required: false)
-    }
-
 </head>
 <body>
 
@@ -40,10 +37,10 @@
 
         <nav class="Nav-menu">
             <ul id="Menu" class="clearfix">
-                <li><a href="#">Contact Us</a></li>
+                <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
                 <li><a href="#">About Us </a></li>
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Home</a></li>
+                <li>@Html.ActionLink("Login&Register", "RegAndLogin", "User")</li>
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
             </ul>
             <div id="pull" class="menu-b">&nbsp;</div>
             <div id="pull" class="menu-c"> <a class="Home" href="#"><img src="~/Content/images/logo.jpg" alt="" width="200" height="80" style="border:0;" /></a></div>
@@ -58,6 +55,46 @@
         @Scripts.Render("~/bundles/jquery")
         @RenderSection("scripts", required: false)
 
+        <div class="TH-part" style="padding-top:1px;margin-bottom: 10px">
+            <div style="display: block;position: relative;border-bottom: 2px solid #eaeaea;"></div>
+        </div>
+        <!-- Footer -->
+        <div id="footer_content">
+            <div id="footer_top">
+                <div id="footer_left">
+                    Email : Info@dentappsys.com
+                    <br>
+                    <br>
+                    Tell : (+00) 00 - 0000000
+                    <br>
+                    <br>
+                    Address :  Street - Country - City ( Zipcode )
+                </div>
+                <div id="footer_right">
+
+                    Get the last news from our site<br />
+                    <p>
+                        You can submit your E-Mail here !
+                    </p>
+                    <br />
+                    <input name="" type="text" class="footer_text_field"><input name="Submit" type="submit" value="submit" class="footer_btn">
+
+                </div>
+            </div>
+            <footer id="footer">
+                <p class="credits">&copy; 2014<a href="#"> DentAppSys</a></p>
+            </footer>
+        </div>
+
+
+
+
+
     </div>
+
+    @if (IsSectionDefined("AddToEnd"))
+    {
+        @RenderSection("AddToEnd", required: false)
+    }
 </body>
 </html>
