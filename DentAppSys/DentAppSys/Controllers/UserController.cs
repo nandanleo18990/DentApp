@@ -1,8 +1,11 @@
-﻿using System;
+﻿using SimpleCrypto;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Security.Cryptography;
 
 namespace DentAppSys.Controllers
 {
@@ -24,44 +27,81 @@ namespace DentAppSys.Controllers
         [HttpPost]
         public ActionResult RegAndLogin(Models.RegAndLog User)
         {
-            if (ModelState.IsValid)
+            if (User.RegisterModel != null)
             {
-                using(var db = new MaindbModelDataContext())
+                if (ModelState.IsValid)
                 {
-                    var Person = from u in db.Patients
-                                 where u.Email == User.RegisterModel.Email
-                                 select u;
-                    int Count = Person.Count();
-
-                    if (Count == 0)
+                    using (var db = new MaindbModelDataContext())
                     {
-                        var Crypto = new SimpleCrypto.PBKDF2();
-                        var CrypPass = Crypto.Compute(User.RegisterModel.Password);
-                        var MyUser = new Patient();
-                        MyUser.Name = User.RegisterModel.Firstname;
-                        MyUser.Surname = User.RegisterModel.Lastname;
-                        MyUser.Email = User.RegisterModel.Email;
-                        MyUser.Password = CrypPass;
-                        MyUser.PasswordSalt = Crypto.Salt;
-                        MyUser.PatientNo = Guid.NewGuid().GetHashCode();
-                        db.Patients.InsertOnSubmit(MyUser);
-                        db.SubmitChanges();
+                        var Person = db.Patients.FirstOrDefault(u => u.Email == User.RegisterModel.Email);
+                        if (Person == null)
+                        {
+                            var crypto = new SimpleCrypto.PBKDF2();
+                            var CrypPass = crypto.Compute(User.RegisterModel.Password);
+                            var MyUser = new Patient();
+                            MyUser.Name = User.RegisterModel.Firstname;
+                            MyUser.Surname = User.RegisterModel.Lastname;
+                            MyUser.BirthDate = User.RegisterModel.Birthday;
+                            MyUser.Email = User.RegisterModel.Email;
+                            MyUser.Password = CrypPass;
+                            MyUser.PasswordSalt = crypto.Salt;
+                            MyUser.PatientNo = Guid.NewGuid().GetHashCode();
+                            db.Patients.InsertOnSubmit(MyUser);
+                            db.SubmitChanges();
 
-                        return RedirectToAction("Index", "Patient", new {FirstName = User.RegisterModel.Firstname, LastName = User.RegisterModel.Lastname });
+                            return RedirectToAction("Index", "Patient", new { FirstName = User.RegisterModel.Firstname, LastName = User.RegisterModel.Lastname });
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("", "There is a user with this Email. Please enter another Email !!!");
+                            return View();
+                        }
+
                     }
-                    else
-                    {
-                        ModelState.AddModelError("", "There is a user with this Email. Please enter another Email !!!");
-                        return View();
-                    }
-                    
                 }
+                else
+                {
+                    ModelState.AddModelError("", "Data is incorrect !!!");
+                }
+
             }
             else
             {
-                ModelState.AddModelError("", "Data is incorrect !!!");
+                if (ModelState.IsValid && IsValid(User.LoginModel.Email, User.LoginModel.Password))
+                {
+                    using (var db = new MaindbModelDataContext())
+                    {
+                        var Person = db.Patients.FirstOrDefault(u => u.Email == User.LoginModel.Email);
+
+                        return RedirectToAction("Index", "Patient", new { FirstName = Person.Name, LastName = Person.Surname });   
+
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Check your E-mail or Password then try again !!!");
+                }
             }
             return View();
+        }
+
+        private bool IsValid(string email, string password)
+        {
+            bool isvalid = false;
+            var crypto = new SimpleCrypto.PBKDF2();
+            using (var db = new MaindbModelDataContext())
+            {
+                var Person = db.Patients.First(u => u.Email == email);
+                if (Person != null)
+                {
+                    var temp = crypto.Compute(password, Person.PasswordSalt);
+                    if (Person.Password == password)
+                    {
+                        isvalid = true;
+                    }
+                }
+            }
+            return isvalid;
         }
 
         public ActionResult LogOut()

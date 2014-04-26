@@ -9,7 +9,9 @@ namespace DentAppSys.Models
     public class LoginModel
     {
         [Required]
-        public string Username { get; set; }
+        [EmailAddress]
+        [Display(Name = "Email Address: ")]
+        public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]

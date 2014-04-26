@@ -4,10 +4,37 @@
     ViewBag.Title = "RegAndLogin";
 }
 
+<link type="text/css" rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
 @using (Html.BeginForm())
 {
-    @Html.ValidationSummary(true, "Check your entry data and try again !!!");
+    @Html.ValidationSummary(true, "");
+    <div>
+
+        <fieldset>
+            <legend>Login Form</legend>
+            <div>@Html.LabelFor(u => u.LoginModel.Email)</div>
+            <div>
+                @Html.TextBoxFor(u => u.LoginModel.Email)
+                @Html.ValidationMessageFor(u => u.LoginModel.Email)
+            </div>
+            <div>@Html.LabelFor(u => u.LoginModel.Password)</div>
+            <div>
+                @Html.PasswordFor(u => u.LoginModel.Password)
+                @Html.ValidationMessageFor(u => u.LoginModel.Password)
+            </div>
+            <input type="submit" value="Log In" class="footer_btn" />
+
+        </fieldset>
+
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "");
     <div>
 
         <fieldset>
@@ -21,6 +48,11 @@
             <div>
                 @Html.TextBoxFor(u => u.RegisterModel.Lastname)
                 @Html.ValidationMessageFor(u => u.RegisterModel.Lastname)
+            </div>
+            <div>@Html.LabelFor(u => u.RegisterModel.Birthday)</div>
+            <div>
+                @Html.TextBoxFor(u => u.RegisterModel.Birthday, htmlAttributes: new { id = "DatePicker" })
+                @Html.ValidationMessageFor(u => u.RegisterModel.Birthday)
             </div>
             <div>@Html.LabelFor(u => u.RegisterModel.Email)</div>
             <div>
@@ -38,3 +70,10 @@
 
     </div>
 }
+
+<script type="text/javascript">
+    $(function () {
+        $("#DatePicker").datepicker();
+    });
+
+</script>
