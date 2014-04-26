@@ -25,6 +25,7 @@ namespace DentAppSys.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult RegAndLogin(Models.RegAndLog User)
         {
             if (User.RegisterModel != null)
@@ -49,6 +50,7 @@ namespace DentAppSys.Controllers
                             db.Patients.InsertOnSubmit(MyUser);
                             db.SubmitChanges();
 
+                            Session["UserEmail"] = User.RegisterModel.Email;
                             return RedirectToAction("Index", "Patient", new { FirstName = User.RegisterModel.Firstname, LastName = User.RegisterModel.Lastname });
                         }
                         else
@@ -71,6 +73,7 @@ namespace DentAppSys.Controllers
                 {
                     using (var db = new MaindbModelDataContext())
                     {
+                        Session["UserEmail"] = User.LoginModel.Email;
                         var Person = db.Patients.FirstOrDefault(u => u.Email == User.LoginModel.Email);
 
                         return RedirectToAction("Index", "Patient", new { FirstName = Person.Name, LastName = Person.Surname });   

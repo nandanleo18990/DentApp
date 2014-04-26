@@ -12,9 +12,16 @@ namespace DentAppSys.Controllers
         // GET: /Patient/
         public ActionResult Index(string FirstName, string LastName)
         {
-            ViewBag.FirstName = FirstName;
-            ViewBag.LastName = LastName;
-            return View();
+            if (Session["UserEmail"] != null)
+            {
+                ViewBag.FirstName = FirstName;
+                ViewBag.LastName = LastName;
+                return View();
+            }
+            else
+            {
+               return RedirectToAction("RegAndLogin", "User");
+            }
         }
 
     }
