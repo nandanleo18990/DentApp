@@ -3,7 +3,20 @@
 @{
     ViewBag.Title = "Index";
 }
+<html>
 
-<h2>Welcome</h2> 
+<body><h2>Welcome</h2>
 @ViewBag.FirstName
 @ViewBag.LastName
+<div align="right" style="width:auto;background:#728ea7;">
+     @if (Request.IsAuthenticated) { 
+     <strong>@Html.Encode(User.Identity.Name)</strong>
+         @Html.ActionLink("Logout","Logout","User")
+     }
+     else { 
+     @Html.ActionLink("Login&Register", "RegAndLogin", "User")
+         
+     }
+     </div>
+    </body>
+</html>
