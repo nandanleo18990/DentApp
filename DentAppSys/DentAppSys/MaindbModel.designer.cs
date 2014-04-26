@@ -30,15 +30,15 @@ namespace DentAppSys
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertPatient(Patient instance);
-    partial void UpdatePatient(Patient instance);
-    partial void DeletePatient(Patient instance);
     partial void InsertAppointment(Appointment instance);
     partial void UpdateAppointment(Appointment instance);
     partial void DeleteAppointment(Appointment instance);
     partial void InsertPatientFile(PatientFile instance);
     partial void UpdatePatientFile(PatientFile instance);
     partial void DeletePatientFile(PatientFile instance);
+    partial void InsertPatient(Patient instance);
+    partial void UpdatePatient(Patient instance);
+    partial void DeletePatient(Patient instance);
     #endregion
 		
 		public MaindbModelDataContext() : 
@@ -69,14 +69,6 @@ namespace DentAppSys
 				base(connection, mappingSource)
 		{
 			OnCreated();
-		}
-		
-		public System.Data.Linq.Table<Patient> Patients
-		{
-			get
-			{
-				return this.GetTable<Patient>();
-			}
 		}
 		
 		public System.Data.Linq.Table<Appointment> Appointments
@@ -110,483 +102,13 @@ namespace DentAppSys
 				return this.GetTable<PatientFile>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Patient")]
-	public partial class Patient : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _PatientNo;
-		
-		private string _Name;
-		
-		private string _Surname;
-		
-		private System.Nullable<System.DateTime> _BirthDate;
-		
-		private string _Gender;
-		
-		private string _Address;
-		
-		private string _PhoneNo;
-		
-		private string _Email;
-		
-		private string _Password;
-		
-		private System.Nullable<bool> _Active;
-		
-		private string _IDNo;
-		
-		private string _BloodType;
-		
-		private System.Nullable<bool> _HaveAdditionalInfo;
-		
-		private string _AdditionalInfo;
-		
-		private string _MarialStatus;
-		
-		private string _PasswordSalt;
-		
-		private EntitySet<Appointment> _Appointments;
-		
-		private EntitySet<PatientFile> _PatientFiles;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnPatientNoChanging(int value);
-    partial void OnPatientNoChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnSurnameChanging(string value);
-    partial void OnSurnameChanged();
-    partial void OnBirthDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnBirthDateChanged();
-    partial void OnGenderChanging(string value);
-    partial void OnGenderChanged();
-    partial void OnAddressChanging(string value);
-    partial void OnAddressChanged();
-    partial void OnPhoneNoChanging(string value);
-    partial void OnPhoneNoChanged();
-    partial void OnEmailChanging(string value);
-    partial void OnEmailChanged();
-    partial void OnPasswordChanging(string value);
-    partial void OnPasswordChanged();
-    partial void OnActiveChanging(System.Nullable<bool> value);
-    partial void OnActiveChanged();
-    partial void OnIDNoChanging(string value);
-    partial void OnIDNoChanged();
-    partial void OnBloodTypeChanging(string value);
-    partial void OnBloodTypeChanged();
-    partial void OnHaveAdditionalInfoChanging(System.Nullable<bool> value);
-    partial void OnHaveAdditionalInfoChanged();
-    partial void OnAdditionalInfoChanging(string value);
-    partial void OnAdditionalInfoChanged();
-    partial void OnMarialStatusChanging(string value);
-    partial void OnMarialStatusChanged();
-    partial void OnPasswordSaltChanging(string value);
-    partial void OnPasswordSaltChanged();
-    #endregion
-		
-		public Patient()
-		{
-			this._Appointments = new EntitySet<Appointment>(new Action<Appointment>(this.attach_Appointments), new Action<Appointment>(this.detach_Appointments));
-			this._PatientFiles = new EntitySet<PatientFile>(new Action<PatientFile>(this.attach_PatientFiles), new Action<PatientFile>(this.detach_PatientFiles));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PatientNo", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int PatientNo
+		public System.Data.Linq.Table<Patient> Patients
 		{
 			get
 			{
-				return this._PatientNo;
+				return this.GetTable<Patient>();
 			}
-			set
-			{
-				if ((this._PatientNo != value))
-				{
-					this.OnPatientNoChanging(value);
-					this.SendPropertyChanging();
-					this._PatientNo = value;
-					this.SendPropertyChanged("PatientNo");
-					this.OnPatientNoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Surname", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string Surname
-		{
-			get
-			{
-				return this._Surname;
-			}
-			set
-			{
-				if ((this._Surname != value))
-				{
-					this.OnSurnameChanging(value);
-					this.SendPropertyChanging();
-					this._Surname = value;
-					this.SendPropertyChanged("Surname");
-					this.OnSurnameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BirthDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> BirthDate
-		{
-			get
-			{
-				return this._BirthDate;
-			}
-			set
-			{
-				if ((this._BirthDate != value))
-				{
-					this.OnBirthDateChanging(value);
-					this.SendPropertyChanging();
-					this._BirthDate = value;
-					this.SendPropertyChanged("BirthDate");
-					this.OnBirthDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Gender", DbType="NVarChar(50)")]
-		public string Gender
-		{
-			get
-			{
-				return this._Gender;
-			}
-			set
-			{
-				if ((this._Gender != value))
-				{
-					this.OnGenderChanging(value);
-					this.SendPropertyChanging();
-					this._Gender = value;
-					this.SendPropertyChanged("Gender");
-					this.OnGenderChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(50)")]
-		public string Address
-		{
-			get
-			{
-				return this._Address;
-			}
-			set
-			{
-				if ((this._Address != value))
-				{
-					this.OnAddressChanging(value);
-					this.SendPropertyChanging();
-					this._Address = value;
-					this.SendPropertyChanged("Address");
-					this.OnAddressChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhoneNo", DbType="NVarChar(50)")]
-		public string PhoneNo
-		{
-			get
-			{
-				return this._PhoneNo;
-			}
-			set
-			{
-				if ((this._PhoneNo != value))
-				{
-					this.OnPhoneNoChanging(value);
-					this.SendPropertyChanging();
-					this._PhoneNo = value;
-					this.SendPropertyChanged("PhoneNo");
-					this.OnPhoneNoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(50)")]
-		public string Email
-		{
-			get
-			{
-				return this._Email;
-			}
-			set
-			{
-				if ((this._Email != value))
-				{
-					this.OnEmailChanging(value);
-					this.SendPropertyChanging();
-					this._Email = value;
-					this.SendPropertyChanged("Email");
-					this.OnEmailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="NVarChar(200)")]
-		public string Password
-		{
-			get
-			{
-				return this._Password;
-			}
-			set
-			{
-				if ((this._Password != value))
-				{
-					this.OnPasswordChanging(value);
-					this.SendPropertyChanging();
-					this._Password = value;
-					this.SendPropertyChanged("Password");
-					this.OnPasswordChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Active", DbType="Bit")]
-		public System.Nullable<bool> Active
-		{
-			get
-			{
-				return this._Active;
-			}
-			set
-			{
-				if ((this._Active != value))
-				{
-					this.OnActiveChanging(value);
-					this.SendPropertyChanging();
-					this._Active = value;
-					this.SendPropertyChanged("Active");
-					this.OnActiveChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDNo", DbType="NVarChar(50)")]
-		public string IDNo
-		{
-			get
-			{
-				return this._IDNo;
-			}
-			set
-			{
-				if ((this._IDNo != value))
-				{
-					this.OnIDNoChanging(value);
-					this.SendPropertyChanging();
-					this._IDNo = value;
-					this.SendPropertyChanged("IDNo");
-					this.OnIDNoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BloodType", DbType="NVarChar(50)")]
-		public string BloodType
-		{
-			get
-			{
-				return this._BloodType;
-			}
-			set
-			{
-				if ((this._BloodType != value))
-				{
-					this.OnBloodTypeChanging(value);
-					this.SendPropertyChanging();
-					this._BloodType = value;
-					this.SendPropertyChanged("BloodType");
-					this.OnBloodTypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HaveAdditionalInfo", DbType="Bit")]
-		public System.Nullable<bool> HaveAdditionalInfo
-		{
-			get
-			{
-				return this._HaveAdditionalInfo;
-			}
-			set
-			{
-				if ((this._HaveAdditionalInfo != value))
-				{
-					this.OnHaveAdditionalInfoChanging(value);
-					this.SendPropertyChanging();
-					this._HaveAdditionalInfo = value;
-					this.SendPropertyChanged("HaveAdditionalInfo");
-					this.OnHaveAdditionalInfoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdditionalInfo", DbType="NVarChar(50)")]
-		public string AdditionalInfo
-		{
-			get
-			{
-				return this._AdditionalInfo;
-			}
-			set
-			{
-				if ((this._AdditionalInfo != value))
-				{
-					this.OnAdditionalInfoChanging(value);
-					this.SendPropertyChanging();
-					this._AdditionalInfo = value;
-					this.SendPropertyChanged("AdditionalInfo");
-					this.OnAdditionalInfoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MarialStatus", DbType="NVarChar(50)")]
-		public string MarialStatus
-		{
-			get
-			{
-				return this._MarialStatus;
-			}
-			set
-			{
-				if ((this._MarialStatus != value))
-				{
-					this.OnMarialStatusChanging(value);
-					this.SendPropertyChanging();
-					this._MarialStatus = value;
-					this.SendPropertyChanged("MarialStatus");
-					this.OnMarialStatusChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PasswordSalt", DbType="NChar(200)")]
-		public string PasswordSalt
-		{
-			get
-			{
-				return this._PasswordSalt;
-			}
-			set
-			{
-				if ((this._PasswordSalt != value))
-				{
-					this.OnPasswordSaltChanging(value);
-					this.SendPropertyChanging();
-					this._PasswordSalt = value;
-					this.SendPropertyChanged("PasswordSalt");
-					this.OnPasswordSaltChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Patient_Appointment", Storage="_Appointments", ThisKey="PatientNo", OtherKey="PatientNo")]
-		public EntitySet<Appointment> Appointments
-		{
-			get
-			{
-				return this._Appointments;
-			}
-			set
-			{
-				this._Appointments.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Patient_PatientFile", Storage="_PatientFiles", ThisKey="PatientNo", OtherKey="PatientNo")]
-		public EntitySet<PatientFile> PatientFiles
-		{
-			get
-			{
-				return this._PatientFiles;
-			}
-			set
-			{
-				this._PatientFiles.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Appointments(Appointment entity)
-		{
-			this.SendPropertyChanging();
-			entity.Patient = this;
-		}
-		
-		private void detach_Appointments(Appointment entity)
-		{
-			this.SendPropertyChanging();
-			entity.Patient = null;
-		}
-		
-		private void attach_PatientFiles(PatientFile entity)
-		{
-			this.SendPropertyChanging();
-			entity.Patient = this;
-		}
-		
-		private void detach_PatientFiles(PatientFile entity)
-		{
-			this.SendPropertyChanging();
-			entity.Patient = null;
 		}
 	}
 	
@@ -1336,6 +858,484 @@ namespace DentAppSys
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Patient")]
+	public partial class Patient : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _PatientNo;
+		
+		private string _Name;
+		
+		private string _Surname;
+		
+		private string _Gender;
+		
+		private string _Address;
+		
+		private string _PhoneNo;
+		
+		private string _Email;
+		
+		private string _Password;
+		
+		private System.Nullable<bool> _Active;
+		
+		private string _IDNo;
+		
+		private string _BloodType;
+		
+		private System.Nullable<bool> _HaveAdditionalInfo;
+		
+		private string _AdditionalInfo;
+		
+		private string _MarialStatus;
+		
+		private string _PasswordSalt;
+		
+		private System.Nullable<System.DateTime> _Birthday;
+		
+		private EntitySet<Appointment> _Appointments;
+		
+		private EntitySet<PatientFile> _PatientFiles;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPatientNoChanging(int value);
+    partial void OnPatientNoChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnSurnameChanging(string value);
+    partial void OnSurnameChanged();
+    partial void OnGenderChanging(string value);
+    partial void OnGenderChanged();
+    partial void OnAddressChanging(string value);
+    partial void OnAddressChanged();
+    partial void OnPhoneNoChanging(string value);
+    partial void OnPhoneNoChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
+    partial void OnPasswordChanging(string value);
+    partial void OnPasswordChanged();
+    partial void OnActiveChanging(System.Nullable<bool> value);
+    partial void OnActiveChanged();
+    partial void OnIDNoChanging(string value);
+    partial void OnIDNoChanged();
+    partial void OnBloodTypeChanging(string value);
+    partial void OnBloodTypeChanged();
+    partial void OnHaveAdditionalInfoChanging(System.Nullable<bool> value);
+    partial void OnHaveAdditionalInfoChanged();
+    partial void OnAdditionalInfoChanging(string value);
+    partial void OnAdditionalInfoChanged();
+    partial void OnMarialStatusChanging(string value);
+    partial void OnMarialStatusChanged();
+    partial void OnPasswordSaltChanging(string value);
+    partial void OnPasswordSaltChanged();
+    partial void OnBirthdayChanging(System.Nullable<System.DateTime> value);
+    partial void OnBirthdayChanged();
+    #endregion
+		
+		public Patient()
+		{
+			this._Appointments = new EntitySet<Appointment>(new Action<Appointment>(this.attach_Appointments), new Action<Appointment>(this.detach_Appointments));
+			this._PatientFiles = new EntitySet<PatientFile>(new Action<PatientFile>(this.attach_PatientFiles), new Action<PatientFile>(this.detach_PatientFiles));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PatientNo", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int PatientNo
+		{
+			get
+			{
+				return this._PatientNo;
+			}
+			set
+			{
+				if ((this._PatientNo != value))
+				{
+					this.OnPatientNoChanging(value);
+					this.SendPropertyChanging();
+					this._PatientNo = value;
+					this.SendPropertyChanged("PatientNo");
+					this.OnPatientNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Surname", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Surname
+		{
+			get
+			{
+				return this._Surname;
+			}
+			set
+			{
+				if ((this._Surname != value))
+				{
+					this.OnSurnameChanging(value);
+					this.SendPropertyChanging();
+					this._Surname = value;
+					this.SendPropertyChanged("Surname");
+					this.OnSurnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Gender", DbType="NVarChar(50)")]
+		public string Gender
+		{
+			get
+			{
+				return this._Gender;
+			}
+			set
+			{
+				if ((this._Gender != value))
+				{
+					this.OnGenderChanging(value);
+					this.SendPropertyChanging();
+					this._Gender = value;
+					this.SendPropertyChanged("Gender");
+					this.OnGenderChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(50)")]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this.OnAddressChanging(value);
+					this.SendPropertyChanging();
+					this._Address = value;
+					this.SendPropertyChanged("Address");
+					this.OnAddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhoneNo", DbType="NVarChar(50)")]
+		public string PhoneNo
+		{
+			get
+			{
+				return this._PhoneNo;
+			}
+			set
+			{
+				if ((this._PhoneNo != value))
+				{
+					this.OnPhoneNoChanging(value);
+					this.SendPropertyChanging();
+					this._PhoneNo = value;
+					this.SendPropertyChanged("PhoneNo");
+					this.OnPhoneNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(50)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="NVarChar(200)")]
+		public string Password
+		{
+			get
+			{
+				return this._Password;
+			}
+			set
+			{
+				if ((this._Password != value))
+				{
+					this.OnPasswordChanging(value);
+					this.SendPropertyChanging();
+					this._Password = value;
+					this.SendPropertyChanged("Password");
+					this.OnPasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Active", DbType="Bit")]
+		public System.Nullable<bool> Active
+		{
+			get
+			{
+				return this._Active;
+			}
+			set
+			{
+				if ((this._Active != value))
+				{
+					this.OnActiveChanging(value);
+					this.SendPropertyChanging();
+					this._Active = value;
+					this.SendPropertyChanged("Active");
+					this.OnActiveChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDNo", DbType="NVarChar(50)")]
+		public string IDNo
+		{
+			get
+			{
+				return this._IDNo;
+			}
+			set
+			{
+				if ((this._IDNo != value))
+				{
+					this.OnIDNoChanging(value);
+					this.SendPropertyChanging();
+					this._IDNo = value;
+					this.SendPropertyChanged("IDNo");
+					this.OnIDNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BloodType", DbType="NVarChar(50)")]
+		public string BloodType
+		{
+			get
+			{
+				return this._BloodType;
+			}
+			set
+			{
+				if ((this._BloodType != value))
+				{
+					this.OnBloodTypeChanging(value);
+					this.SendPropertyChanging();
+					this._BloodType = value;
+					this.SendPropertyChanged("BloodType");
+					this.OnBloodTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HaveAdditionalInfo", DbType="Bit")]
+		public System.Nullable<bool> HaveAdditionalInfo
+		{
+			get
+			{
+				return this._HaveAdditionalInfo;
+			}
+			set
+			{
+				if ((this._HaveAdditionalInfo != value))
+				{
+					this.OnHaveAdditionalInfoChanging(value);
+					this.SendPropertyChanging();
+					this._HaveAdditionalInfo = value;
+					this.SendPropertyChanged("HaveAdditionalInfo");
+					this.OnHaveAdditionalInfoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdditionalInfo", DbType="NVarChar(50)")]
+		public string AdditionalInfo
+		{
+			get
+			{
+				return this._AdditionalInfo;
+			}
+			set
+			{
+				if ((this._AdditionalInfo != value))
+				{
+					this.OnAdditionalInfoChanging(value);
+					this.SendPropertyChanging();
+					this._AdditionalInfo = value;
+					this.SendPropertyChanged("AdditionalInfo");
+					this.OnAdditionalInfoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MarialStatus", DbType="NVarChar(50)")]
+		public string MarialStatus
+		{
+			get
+			{
+				return this._MarialStatus;
+			}
+			set
+			{
+				if ((this._MarialStatus != value))
+				{
+					this.OnMarialStatusChanging(value);
+					this.SendPropertyChanging();
+					this._MarialStatus = value;
+					this.SendPropertyChanged("MarialStatus");
+					this.OnMarialStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PasswordSalt", DbType="NChar(200)")]
+		public string PasswordSalt
+		{
+			get
+			{
+				return this._PasswordSalt;
+			}
+			set
+			{
+				if ((this._PasswordSalt != value))
+				{
+					this.OnPasswordSaltChanging(value);
+					this.SendPropertyChanging();
+					this._PasswordSalt = value;
+					this.SendPropertyChanged("PasswordSalt");
+					this.OnPasswordSaltChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Birthday", DbType="Date")]
+		public System.Nullable<System.DateTime> Birthday
+		{
+			get
+			{
+				return this._Birthday;
+			}
+			set
+			{
+				if ((this._Birthday != value))
+				{
+					this.OnBirthdayChanging(value);
+					this.SendPropertyChanging();
+					this._Birthday = value;
+					this.SendPropertyChanged("Birthday");
+					this.OnBirthdayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Patient_Appointment", Storage="_Appointments", ThisKey="PatientNo", OtherKey="PatientNo")]
+		public EntitySet<Appointment> Appointments
+		{
+			get
+			{
+				return this._Appointments;
+			}
+			set
+			{
+				this._Appointments.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Patient_PatientFile", Storage="_PatientFiles", ThisKey="PatientNo", OtherKey="PatientNo")]
+		public EntitySet<PatientFile> PatientFiles
+		{
+			get
+			{
+				return this._PatientFiles;
+			}
+			set
+			{
+				this._PatientFiles.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Appointments(Appointment entity)
+		{
+			this.SendPropertyChanging();
+			entity.Patient = this;
+		}
+		
+		private void detach_Appointments(Appointment entity)
+		{
+			this.SendPropertyChanging();
+			entity.Patient = null;
+		}
+		
+		private void attach_PatientFiles(PatientFile entity)
+		{
+			this.SendPropertyChanging();
+			entity.Patient = this;
+		}
+		
+		private void detach_PatientFiles(PatientFile entity)
+		{
+			this.SendPropertyChanging();
+			entity.Patient = null;
 		}
 	}
 }

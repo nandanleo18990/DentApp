@@ -42,7 +42,7 @@ namespace DentAppSys.Controllers
                             var MyUser = new Patient();
                             MyUser.Name = User.RegisterModel.Firstname;
                             MyUser.Surname = User.RegisterModel.Lastname;
-                            MyUser.BirthDate = User.RegisterModel.Birthday;
+                            MyUser.Birthday = User.RegisterModel.Birthday;
                             MyUser.Email = User.RegisterModel.Email;
                             MyUser.Password = CrypPass;
                             MyUser.PasswordSalt = crypto.Salt;
@@ -51,7 +51,7 @@ namespace DentAppSys.Controllers
                             db.SubmitChanges();
 
                             Session["UserEmail"] = User.RegisterModel.Email;
-                            return RedirectToAction("Index", "Patient", new { FirstName = User.RegisterModel.Firstname, LastName = User.RegisterModel.Lastname });
+                            return RedirectToAction("Index", "Patient", User.RegisterModel);
                         }
                         else
                         {
@@ -71,14 +71,21 @@ namespace DentAppSys.Controllers
             {
                 if (ModelState.IsValid && IsValid(User.LoginModel.Email, User.LoginModel.Password))
                 {
+
+                    Session["UserEmail"] = User.LoginModel.Email;
                     using (var db = new MaindbModelDataContext())
                     {
-                        Session["UserEmail"] = User.LoginModel.Email;
-                        var Person = db.Patients.FirstOrDefault(u => u.Email == User.LoginModel.Email);
+                        var person = db.Patients.FirstOrDefault(u => u.Email == User.LoginModel.Email);
+                        User.RegisterModel.Firstname = person.Name;
+                        User.RegisterModel.Lastname = person.Surname;
+                        //User.RegisterModel.Birthday = (DateTime)person.BirthDate;
+                        User.RegisterModel.Email = person.Email;
 
-                        return RedirectToAction("Index", "Patient", new { FirstName = Person.Name, LastName = Person.Surname });   
 
                     }
+                    return RedirectToAction("Index", "Patient", User.RegisterModel);
+
+
                 }
                 else
                 {
@@ -108,9 +115,9 @@ namespace DentAppSys.Controllers
         }
 
         public ActionResult LogOut()
-        {   
+        {
             return View();
-            
+
         }
 
     }

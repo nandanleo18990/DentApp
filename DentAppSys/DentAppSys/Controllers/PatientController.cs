@@ -10,17 +10,18 @@ namespace DentAppSys.Controllers
     {
         //
         // GET: /Patient/
-        public ActionResult Index(string FirstName, string LastName)
+        public ActionResult Index(Models.RegisterModel User)
         {
+            Session["UserEmail"] = "AllowToOpenPage";
             if (Session["UserEmail"] != null)
             {
-                ViewBag.FirstName = FirstName;
-                ViewBag.LastName = LastName;
-                return View();
+                string Email = (string)Session["UserEmail"];
+
+                return View(User);
             }
             else
             {
-               return RedirectToAction("RegAndLogin", "User");
+                return RedirectToAction("RegAndLogin", "User");
             }
         }
 

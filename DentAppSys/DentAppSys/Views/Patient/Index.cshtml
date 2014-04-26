@@ -1,14 +1,10 @@
-﻿@model DentAppSys.Models.RegAndLog
+﻿@model DentAppSys.Models.RegisterModel
 
 @{
     ViewBag.Title = "Index";
 }
 
-<div>
-    <h2>Welcome</h2>
-    @ViewBag.FirstName
-    @ViewBag.LastName
-</div>
+
 
 <div align="right" style="width:auto;background:#728ea7;">
     @if (Request.IsAuthenticated)
@@ -22,7 +18,54 @@
 
     }
 </div>
-<section class="">
+<section class="Patient-Info">
+
+        <div class="Info-title">
+            Personal Informations
+        </div>
+        <div class="Info-Content">
+            <div>
+                <span>
+                    Firstname :
+                </span>
+                @Model.Firstname
+            </div>
+            <div>
+                <span>
+                    Lastname :
+                </span>
+                @Model.Lastname
+            </div>
+            <div>
+                <span>
+                    Birthday :
+                </span>
+                @Model.Birthday.ToString("MMMM dd,yyyy")
+            </div>
+            <div>
+                <span>
+                    Email :
+                </span>
+                @Model.Email
+            </div>
+        </div>
+</section>
+
+<section class="Patient-Menu">
+
+    <nav class="p-menu">
+        <ul id="Menu" class="clearfix">
+            <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
+            <li><a href="#">About Us </a></li>
+            <li>@Html.ActionLink("Login&Register", "RegAndLogin", "User")</li>
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        </ul>
+
+    </nav>
+
+</section>
+
+<section class="Patient-Dashboard">
 
 
 

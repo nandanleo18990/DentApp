@@ -1478,7 +1478,7 @@ footer {
 #footer_right {
     width: 45%;
     margin-left: 50%;
-    height: autopx;
+    height: auto;
     padding-left: 5%;
     line-height: 30px;
     padding-top: 20px;
@@ -1788,16 +1788,15 @@ footer {
 
 /* Contact-Page _____________________________________________________________________________________*/
 
-body
-{
-    font-family:Tahoma;
+body {
+    font-family: Tahoma;
     font-size: 16px;
-    line-height: 20px;    
+    line-height: 20px;
     background-color: #ffffff;
     margin: 0;
-	padding: 0;
-	zoom: reset;
-	overflow-x: hidden;
+    padding: 0;
+    zoom: reset;
+    overflow-x: hidden;
 }
 
 #contact_form {
@@ -1824,7 +1823,6 @@ body
 }
 
 #contact_form_right {
-  
     width: 55%;
     margin-left: 35%;
     padding-right: 5%;
@@ -1839,17 +1837,14 @@ body
 }
 
 .textfield_contact {
-   
     margin-top: 10px;
     margin-bottom: 10px;
     padding: 1.2%;
     width: 40%;
     border: 1px solid #FFF;
-
 }
 
 .textarea_contact {
-  
     margin-top: 10px;
     margin-bottom: 10px;
     width: 60%;
@@ -1858,11 +1853,9 @@ body
     padding-bottom: 2%;
     padding-left: 1.2%;
     border: 1px solid #FFF;
-    
 }
 
 .submit {
-    
     font-family: tahoma;
     padding-top: 1%;
     padding-right: 3%;
@@ -1900,11 +1893,12 @@ body
         text-align: right;
         font-size: 23px;
     }
-#contact_form_left p{
-	text-align:justify;
-	font-size:18px;
-	font-family:Tahoma;
-	line-height:27px;
+
+#contact_form_left p {
+    text-align: justify;
+    font-size: 18px;
+    font-family: Tahoma;
+    line-height: 27px;
 }
 
 @media only screen and (max-width : 767px) {
@@ -1946,8 +1940,7 @@ body
         margin-left: 0px;
         clear: both;
     }
-	
-	}
+}
 
 
 
@@ -1956,44 +1949,132 @@ body
  * - the widget id is placed on the top level container for the INPUT
  * - the widget id is placed on the INPUT element itself (there are no error messages)
  */
- 
- /* When the widget is in the valid state the INPUT has a green background applied on it. */
+
+/* When the widget is in the valid state the INPUT has a green background applied on it. */
 .textfieldValidState input, input.textfieldValidState {
 }
 
 /* When the widget is in an invalid state the INPUT has a red background applied on it. */
-input.textfieldRequiredState, .textfieldRequiredState input, 
-input.textfieldInvalidFormatState, .textfieldInvalidFormatState input, 
-input.textfieldMinValueState, .textfieldMinValueState input, 
-input.textfieldMaxValueState, .textfieldMaxValueState input, 
-input.textfieldMinCharsState, .textfieldMinCharsState input, 
+input.textfieldRequiredState, .textfieldRequiredState input,
+input.textfieldInvalidFormatState, .textfieldInvalidFormatState input,
+input.textfieldMinValueState, .textfieldMinValueState input,
+input.textfieldMaxValueState, .textfieldMaxValueState input,
+input.textfieldMinCharsState, .textfieldMinCharsState input,
 input.textfieldMaxCharsState, .textfieldMaxCharsState input {
 }
 
 /* When the widget has received focus, the INPUT has a yellow background applied on it. */
 .textfieldFocusState input, input.textfieldFocusState {
-	border: 1px solid #F00;
-	box-shadow: 1px 1px 5px  #fff;
+    border: 1px solid #F00;
+    box-shadow: 1px 1px 5px #fff;
 }
 
 /* This class applies only for a short period of time and changes the way the text in the textbox looks like.
  * It applies only when the widget has character masking enabled and the user tries to type in an invalid character.
  */
 .textfieldFlashText input, input.textfieldFlashText {
-	color: red !important;
+    color: red !important;
 }
 
 /* When the widget has the hint message on, the hint text can be styled differently than the user typed text. */
 .textfieldHintState input, input.textfieldHintState {
-	font-family: tahoma;
-	font-size: 12px;
-	color: #666;	/*color: red !important;*/
+    font-family: tahoma;
+    font-size: 12px;
+    color: #666; /*color: red !important;*/
 }
 
 
 /* Contact-Page _____________________________________________________________________________________*/
 
 /* Start Patient-Page _____________________________________________________________________________________*/
+
+.Patient-Info {
+    padding-bottom: 20px;
+    padding-top: 20px;
+    width: 100%;
+    background-color: gray;
+    color: #fff;
+}
+
+.Info-title {
+    text-align: center;
+    font-weight: bold;
+}
+
+.Info-Content {
+    margin-left: 10%;
+    padding-top: 30px;
+}
+
+    .Info-Content div {
+        padding-bottom: 10px;
+    }
+
+.Patient-Menu {
+    display:inline-block;
+    width: 100%;
+    background-color: #000;
+}
+
+.p-menu {
+    width: 100%;
+    background: #000;
+    font-size: 14px;
+    font-family: homa;
+    -moz-box-shadow: 0px 3px 5px #000;
+    -webkit-box-shadow: 0px 3px 5px #000;
+    box-shadow: 0px 3px 5px #000;
+}
+
+    .p-menu ul {
+        float: left;
+        margin: 0 auto;
+        padding: 0;
+        height: 80px;
+
+    }
+
+    .p-menu li {
+        display: block;
+        height: 80px;
+        float: left;
+        border: 1px solid #222;
+
+    }
+
+    .p-menu ul a {
+        font-size: 18px;
+        color: #fff;
+        font-family: homa;
+        display: inline-block;
+        width: 120px;
+        text-align: center;
+        text-decoration: none;
+        line-height: 80px;
+        -moz-transition: color 450ms ease-in-out 0s, background-color 450ms ease-in-out 0s;
+        -ms-transition: color 450ms ease-in-out 0s, background-color 450ms ease-in-out 0s;
+        -o-transition: color 450ms ease-in-out 0s, background-color 450ms ease-in-out 0s;
+        -webkit-transition: color 450ms ease-in-out 0s, background-color 450ms ease-in-out 0s;
+        transition: color 450ms ease-in-out 0s, background-color 450ms ease-in-out 0s;
+    }
+
+    .p-menu ul a:hover, .p-menu ul a:active {
+        background-color: #0F81FF;
+    }
+
+@media only screen and (max-width : 490px) {
+
+    .Patient-Menu {
+        height: 160px;
+    }
+}
+
+.Patient-Dashboard{
+    height:300px;
+    width:100%;
+    background-color:#1e1e1e;
+}
+
 
 /* End Patient-Page _____________________________________________________________________________________*/
 
