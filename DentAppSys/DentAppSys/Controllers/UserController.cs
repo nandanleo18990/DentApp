@@ -65,8 +65,9 @@ namespace DentAppSys.Controllers
         }
 
         public ActionResult LogOut()
-        {
+        {   
             return View();
+            
         }
 
     }
