@@ -7,14 +7,14 @@
 
 
 <div align="right" style="width:auto;background:#728ea7;">
-    @if (Request.IsAuthenticated)
-    {
-        <strong>@Html.Encode(User.Identity.Name)</strong>
-        @Html.ActionLink("Logout", "Logout", "User")
+    @if (Session["UserEmail"] != null)
+    {@Html.ActionLink("Login&Register", "RegAndLogin", "User")
+        
     }
     else
-    {
-        @Html.ActionLink("Login&Register", "RegAndLogin", "User")
+    {<strong>@Html.Encode(User.Identity.Name)</strong>
+        @Html.ActionLink("Logout", "Logout", "User")
+        
 
     }
 </div>
