@@ -132,6 +132,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\DocumentsController.cs" />
+    <Compile Include="Controllers\AppointmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -144,6 +145,7 @@
       <DependentUpon>MaindbModel.dbml</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModel.cs" />
+    <Compile Include="Models\AppModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -273,7 +275,6 @@
     <Content Include="Views\User\RegAndLogin.cshtml" />
     <Content Include="Views\Patient\Index.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Documents\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
