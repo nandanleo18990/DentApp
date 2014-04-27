@@ -2062,7 +2062,7 @@ input.textfieldMaxCharsState, .textfieldMaxCharsState input {
         background-color: #0F81FF;
     }
 
-@media only screen and (max-width : 490px) {
+@media only screen and (max-width : 383px) {
 
     .Patient-Menu {
         height: 160px;

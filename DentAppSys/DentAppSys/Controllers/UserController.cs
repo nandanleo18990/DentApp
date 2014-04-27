@@ -1,12 +1,11 @@
-﻿using SimpleCrypto;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Security;
 using System.Web.Mvc;
-using System.Security.Cryptography;
+using BCrypt.Net;
 
 namespace DentAppSys.Controllers
 {
@@ -38,15 +37,13 @@ namespace DentAppSys.Controllers
                         var Person = db.Patients.FirstOrDefault(u => u.Email == User.RegisterModel.Email);
                         if (Person == null)
                         {
-                            var crypto = new SimpleCrypto.PBKDF2();
-                            var CrypPass = crypto.Compute(User.RegisterModel.Password);
+                            string Hash = BCrypt.Net.BCrypt.HashPassword(User.RegisterModel.Password);
                             var MyUser = new Patient();
                             MyUser.Name = User.RegisterModel.Firstname;
                             MyUser.Surname = User.RegisterModel.Lastname;
                             MyUser.Birthday = User.RegisterModel.Birthday;
                             MyUser.Email = User.RegisterModel.Email;
-                            MyUser.Password = CrypPass;
-                            MyUser.PasswordSalt = crypto.Salt;
+                            MyUser.Password = Hash;
                             MyUser.PatientNo = Guid.NewGuid().GetHashCode();
                             db.Patients.InsertOnSubmit(MyUser);
                             db.SubmitChanges();
@@ -72,19 +69,19 @@ namespace DentAppSys.Controllers
             {
                 if (ModelState.IsValid && IsValid(User.LoginModel.Email, User.LoginModel.Password))
                 {
-
+                    var TempUser = new Models.RegisterModel();
                     Session["UserEmail"] = User.LoginModel.Email;
                     using (var db = new MaindbModelDataContext())
                     {
                         var person = db.Patients.FirstOrDefault(u => u.Email == User.LoginModel.Email);
-                        User.RegisterModel.Firstname = person.Name;
-                        User.RegisterModel.Lastname = person.Surname;
-                        //User.RegisterModel.Birthday = (DateTime)person.BirthDate;
-                        User.RegisterModel.Email = person.Email;
+                        TempUser.Firstname = person.Name;
+                        TempUser.Lastname = person.Surname;
+                        //TempUser.RegisterModel.Birthday = (DateTime)person.BirthDate;
+                        TempUser.Email = person.Email;
 
 
                     }
-                    return RedirectToAction("Index", "Patient", User.RegisterModel);
+                    return RedirectToAction("Index", "Patient", TempUser);
 
 
                 }
@@ -99,14 +96,12 @@ namespace DentAppSys.Controllers
         private bool IsValid(string email, string password)
         {
             bool isvalid = false;
-            var crypto = new SimpleCrypto.PBKDF2();
             using (var db = new MaindbModelDataContext())
             {
                 var Person = db.Patients.First(u => u.Email == email);
                 if (Person != null)
                 {
-                    var temp = crypto.Compute(password, Person.PasswordSalt);
-                    if (Person.Password == password)
+                    if (BCrypt.Net.BCrypt.Verify(password, Person.Password))
                     {
                         isvalid = true;
                     }
