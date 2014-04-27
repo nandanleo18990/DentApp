@@ -1,0 +1,42 @@
+﻿@model DentAppSys.Models.AppModel
+@{
+    ViewBag.Title = "Appointment";
+}
+<link type="text/css" rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken();
+    @Html.ValidationSummary(true, "");
+    <div>
+
+        <fieldset>
+            <legend>Get an Appointment</legend>
+
+
+            <div>@Html.LabelFor(u => u.Date)</div>
+            <div>
+                @Html.TextBoxFor(u => u.Date, htmlAttributes: new { id = "DatePicker" })
+                @Html.ValidationMessageFor(u => u.Date)
+            </div>
+
+            <div>@Html.LabelFor(u => u.Description)</div>
+            <div>
+                @Html.TextBoxFor(u => u.Description)
+                @Html.ValidationMessageFor(u => u.Description)
+            </div>
+
+            <input type="submit" value="Submit" class="footer_btn" />
+
+        </fieldset>
+
+    </div>
+}
+<script type="text/javascript">
+    $(function () {
+        $("#DatePicker").datepicker();
+    });
+
+</script>
