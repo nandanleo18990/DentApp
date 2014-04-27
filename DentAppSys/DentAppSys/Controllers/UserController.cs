@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
+using System.Web.Security;
 using System.Web.Mvc;
 using System.Security.Cryptography;
 
@@ -114,10 +115,11 @@ namespace DentAppSys.Controllers
             return isvalid;
         }
 
-        public ActionResult LogOut()
+        public ActionResult Logout()
         {
-            return View();
-
+            Session.Abandon();
+            
+            return RedirectToAction("Index", "Home");
         }
 
     }
