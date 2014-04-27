@@ -39,10 +39,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="SimpleCrypto">
-      <HintPath>..\packages\SimpleCrypto.0.3.30.26\lib\SimpleCrypto.dll</HintPath>
+    <Reference Include="BCrypt.Net">
+      <HintPath>..\packages\BCrypt-Official.0.1.109\lib\BCrypt.Net.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -223,6 +223,7 @@
     <Content Include="Content\images\layerslider-gallery\Thumbs.db%282%29.doc" />
     <Content Include="Content\images\layerslider-gallery\Thumbs.db.doc" />
     <Content Include="Content\layerslider-skins\fullwidthdark\Thumbs.db.doc" />
+    <Content Include="LICENSE.txt" />
     <Content Include="MaindbModel.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>MaindbModel.designer.cs</LastGenOutput>
