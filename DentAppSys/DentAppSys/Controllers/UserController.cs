@@ -112,9 +112,12 @@ namespace DentAppSys.Controllers
 
         public ActionResult Logout()
         {
+            Session.Clear();
             Session.Abandon();
-
-            return View("RegAndLogin");
+            Response.Cache.SetExpires(DateTime.UtcNow.AddMinutes(-1));
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.Cache.SetNoStore();  
+            return RedirectToAction("Index", "Home");
         }
 
     }
