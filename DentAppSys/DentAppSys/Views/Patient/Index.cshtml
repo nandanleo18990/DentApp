@@ -6,18 +6,20 @@
 
 
 
-<div align="right" style="width:auto;background:#728ea7;">
-    @if (Session["UserEmail"] != null)
-    {<strong>@Html.Encode(User.Identity.Name)</strong>
-        @Html.ActionLink("Logout", "Logout", "User")
-        
-    }
-    else
-    {
-        @Html.ActionLink("Login&Register", "RegAndLogin", "User")
 
-    }
-</div>
+    @if (Session["UserEmail"] != null)
+{
+    <div align="right" style="width:auto;background:#728ea7;">
+        <strong>@Model.Email</strong>
+        @Html.ActionLink("Logout", "Logout", "User")
+    </div>
+}
+else
+{
+    // @Html.ActionLink("Login&Register", "RegAndLogin", "User")
+
+}
+
 <section class="Patient-Info">
 
         <div class="Info-title">
