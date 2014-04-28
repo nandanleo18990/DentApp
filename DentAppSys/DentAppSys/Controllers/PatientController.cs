@@ -12,7 +12,6 @@ namespace DentAppSys.Controllers
         // GET: /Patient/
         public ActionResult Index(Models.RegisterModel User)
         {
-            Session["UserEmail"] = "AllowToOpenPage";
             if (Session["UserEmail"] != null)
             {
                 string Email = (string)Session["UserEmail"];
