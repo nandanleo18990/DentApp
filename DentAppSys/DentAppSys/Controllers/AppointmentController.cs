@@ -12,7 +12,7 @@ namespace DentAppSys.Controllers
         // GET: /Appointment/
 
 
-        public ActionResult Appointment()
+        public ActionResult Make()
         {
             return View();
         }
@@ -21,26 +21,29 @@ namespace DentAppSys.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Make(Models.AppModel User)
         {
-
-            using (var db = new MaindbModelDataContext())
+            if (Session["UserEmail"] != null)
             {
-                var patient = db.Patients.FirstOrDefault(u => u.Email == Session["UserEmail"]);
+                using (var db = new MaindbModelDataContext())
+                {
+                  
 
-                var app = new Appointment();
-                app.Date = User.Date;
-                app.Description = User.Description;
-                app.Status = true;
-                app.PatientNo = patient.PatientNo;
+                   var patient = db.Patients.FirstOrDefault(u => u.Email ==(String)Session["UserEmail"]);
+                    var app = new Appointment();
+                    app.Date = User.Date;
+                    app.Description = User.Description;
+                    app.Status = true;
+                    app.PatientNo = patient.PatientNo;
+                    db.Appointments.InsertOnSubmit(app);
+                    db.SubmitChanges();
+                    return RedirectToAction("Make", "Appointment");
+                }
 
-                db.Appointments.InsertOnSubmit(app);
-                db.SubmitChanges();
-
-
-                return RedirectToAction("Make", "Appointment");
             }
-            return View();
+            else
+            {
+                return RedirectToAction("Index", "User");
+            }
         }
-
 
     }
 }

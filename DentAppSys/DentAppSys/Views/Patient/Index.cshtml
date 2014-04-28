@@ -8,13 +8,13 @@
 
 <div align="right" style="width:auto;background:#728ea7;">
     @if (Session["UserEmail"] != null)
-    {@Html.ActionLink("Login&Register", "RegAndLogin", "User")
-        
-    }
-    else
     {<strong>@Html.Encode(User.Identity.Name)</strong>
         @Html.ActionLink("Logout", "Logout", "User")
         
+    }
+    else
+    {
+        @Html.ActionLink("Login&Register", "RegAndLogin", "User")
 
     }
 </div>
@@ -55,7 +55,7 @@
 
     <nav class="p-menu">
         <ul id="Menu" class="clearfix">
-            <li>@Html.ActionLink("Appointment", "", "")</li>
+            <li>@Html.ActionLink("Appointment", "Make", "Appointment")</li>
             <li>@Html.ActionLink("History", "", "")</li>
             <li>@Html.ActionLink("Documents", "", "")</li>
         </ul>
