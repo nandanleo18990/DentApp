@@ -2071,12 +2071,12 @@ input.textfieldMaxCharsState, .textfieldMaxCharsState input {
     height:300px;
     width:100%;
     background-color:#1e1e1e;
-    color: #ffffff;
+    
 }
 #dashboard_left {
     float: left;
     width: 25%;
-  
+    color: #ffffff;
     padding-right: 5%;
     padding-left: 5%;
     height: auto;
@@ -2084,8 +2084,9 @@ input.textfieldMaxCharsState, .textfieldMaxCharsState input {
 
 #dashboard_right {
     width: 55%;
-    margin-left: 35%;
+    margin-left: 55%;
     padding-right: 5%;
+    color: #ffffff;
     padding-left: 5%;
 }
 
