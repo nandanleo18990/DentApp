@@ -1,5 +1,62 @@
-﻿@{
+﻿@model DentAppSys.Models.GetDoc
+@{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<section class="Doc-Info"></section>
+<section class="Patient-Menu">
+
+    <nav class="p-menu">
+        <ul id="Menu" class="clearfix">
+            <li>@Html.ActionLink("Appointment", "Make", "Appointment")</li>
+            <li>@Html.ActionLink("History", "", "")</li>
+            <li>@Html.ActionLink("Documents", "Index", "Documents")</li>
+        </ul>
+
+    </nav>
+
+</section>
+
+<section class="Doc-Op">
+    <article>
+        <h1>Search Your Appointment Files Here !</h1>
+    </article>
+    <span>
+        You can see all the files here =>
+    </span>
+    @Html.ActionLink("Show All", "Resultlist", null, new { @class = "Act-btn" })
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken();
+        @Html.ValidationSummary(true, "");
+
+        <div>
+
+            <fieldset>
+
+                <legend>Search By Date or Appointment ID</legend>
+                <div>
+                    @Html.LabelFor(u => u.AppID)
+                    @Html.TextBoxFor(u => u.AppID)
+                    @Html.ValidationMessageFor(u => u.AppID)
+                </div>
+                <div>
+                    @Html.LabelFor(u => u.StartDate)
+                    @Html.PasswordFor(u => u.StartDate)
+                    @Html.ValidationMessageFor(u => u.StartDate)
+                </div>
+                <div>
+                    @Html.LabelFor(u => u.EndDate)
+                    @Html.PasswordFor(u => u.EndDate)
+                    @Html.ValidationMessageFor(u => u.EndDate)
+                </div>
+                <input type="submit" value="Search" class="footer_btn" />
+            </fieldset>
+
+        </div>
+    }
+</section>
+<script type="text/javascript">
+    $("form").removeData("validator");
+</script>

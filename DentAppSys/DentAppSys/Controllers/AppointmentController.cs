@@ -31,7 +31,7 @@ namespace DentAppSys.Controllers
                     var app = new Appointment();
                     app.Date = User.Date;
                     app.Description = User.Description;
-                    app.Status = true;
+                    app.Status = "true";
                     app.PatientNo = patient.PatientNo;
                     db.Appointments.InsertOnSubmit(app);
                     db.SubmitChanges();

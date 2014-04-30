@@ -13,8 +13,28 @@ namespace DentAppSys.Controllers
 
         public ActionResult Index()
         {
+            if (Session["UserEmail"] == null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("RegAndLogin", "User");
+            }
+        }
+        [HttpGet]
+        public ActionResult Index(Models.GetDoc doc)
+        {
             return View();
         }
-
+        public ActionResult Resultlist()
+        {
+            return View();
+        }
+        public ActionResult Resultlist(Models.ResultDoc doc)
+        {
+            return View();
+        }
+        
     }
 }

@@ -2011,7 +2011,7 @@ input.textfieldMaxCharsState, .textfieldMaxCharsState input {
     }
 
 .Patient-Menu {
-    display:inline-block;
+    display: inline-block;
     width: 100%;
     background-color: #000;
 }
@@ -2031,7 +2031,6 @@ input.textfieldMaxCharsState, .textfieldMaxCharsState input {
         margin: 0 auto;
         padding: 0;
         height: 80px;
-
     }
 
     .p-menu li {
@@ -2039,7 +2038,6 @@ input.textfieldMaxCharsState, .textfieldMaxCharsState input {
         height: 80px;
         float: left;
         border: 1px solid #222;
-
     }
 
     .p-menu ul a {
@@ -2093,6 +2091,52 @@ input.textfieldMaxCharsState, .textfieldMaxCharsState input {
 
 
 /* End Patient-Page _____________________________________________________________________________________*/
+
+/* Start Document-Page _____________________________________________________________________________________*/
+
+.Doc-Info {
+    height: 300px;
+    background-color: #CCC;
+}
+
+.Doc-Op {
+    padding: 30px;
+    height: 300px;
+    background-color: #ccc;
+}
+
+.Act-btn {
+    font-family: tahoma;
+    font-size: 13px;
+    border: #ddd 1px solid;
+    margin-right: 10px;
+    background-color: #D8D8D8;
+    width: 70px;
+    padding: 7px;
+    margin-top: 10px;
+    margin-left: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+}
+
+.Doc-Op Span{
+        border: #ddd 1px solid;
+        padding:10px;
+}
+
+.Doc-Op Article {
+    padding-bottom: 30px;
+    color: #1d1d1d;
+}
+.Doc-Op form{
+    margin:30px
+}
+.Doc-Op form fieldset{
+    padding-top:10px;
+}
+/* Start Document-Page _____________________________________________________________________________________*/
+
 
 /* Start About-Page _____________________________________________________________________________________*/
 
