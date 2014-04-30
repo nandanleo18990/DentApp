@@ -7,7 +7,7 @@
 
 
 
-    @if (Session["UserEmail"] != null)
+@if (Session["UserEmail"] != null)
 {
     <div align="right" style="width:auto;background:#728ea7;">
         <strong>@Model.Email</strong>
@@ -22,35 +22,37 @@ else
 
 <section class="Patient-Info">
 
-        <div class="Info-title">
-            Personal Informations
+    <div class="Info-title">
+        Personal Informations
+    </div>
+    <div class="Info-Content">
+        <div>
+            <span>
+                Firstname :
+            </span>
+            @Model.Firstname
         </div>
-        <div class="Info-Content">
-            <div>
-                <span>
-                    Firstname :
-                </span>
-                @Model.Firstname
-            </div>
-            <div>
-                <span>
-                    Lastname :
-                </span>
-                @Model.Lastname
-            </div>
-            <div>
-                <span>
-                    Birthday :
-                </span>
-                @Model.Birthday.ToString("MMMM dd,yyyy")
-            </div>
-            <div>
-                <span>
-                    Email :
-                </span>
-                @Model.Email
-            </div>
+        <div>
+            <span>
+                Lastname :
+            </span>
+            @Model.Lastname
         </div>
+        <div>
+            <span>
+                Birthday :
+            </span>
+            @Model.Birthday.ToString("MMMM dd,yyyy")
+        </div>
+        <div>
+            <span>
+                Email :
+            </span>
+            @Model.Email
+        </div>
+        <input type="submit" value="Edit Your Profile" class="" />
+    </div>
+
 </section>
 
 <section class="Patient-Menu">
@@ -59,15 +61,11 @@ else
         <ul id="Menu" class="clearfix">
             <li>@Html.ActionLink("Appointment", "Make", "Appointment")</li>
             <li>@Html.ActionLink("History", "", "")</li>
-            <li>@Html.ActionLink("Documents", "", "")</li>
+            <li>@Html.ActionLink("Documents", "Index", "Documents")</li>
         </ul>
 
     </nav>
 
 </section>
 
-<section class="Patient-Dashboard">
-
-
-
-</section>
+<section class="Patient-Dashboard"></section>

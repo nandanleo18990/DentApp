@@ -146,6 +146,7 @@
     </Compile>
     <Compile Include="Models\AccountModel.cs" />
     <Compile Include="Models\AppModel.cs" />
+    <Compile Include="Models\DocModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -282,6 +283,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Appointment\Make.cshtml" />
     <Content Include="Views\Documents\Index.cshtml" />
+    <Content Include="Views\Documents\Resultlist.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
