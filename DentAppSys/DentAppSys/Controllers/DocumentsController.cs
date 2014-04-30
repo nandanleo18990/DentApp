@@ -22,19 +22,56 @@ namespace DentAppSys.Controllers
                 return RedirectToAction("RegAndLogin", "User");
             }
         }
-        [HttpGet]
+        [HttpPost]
         public ActionResult Index(Models.GetDoc doc)
         {
-            return View();
+            if (doc == null)
+            {
+                using (MaindbModelDataContext db = new MaindbModelDataContext())
+                {
+                    var patient = db.Patients.FirstOrDefault(u => u.Email == (string)Session["UserEmail"]);
+                    var listresult = (from r in db.PatientFiles
+                                      where r.PatientNo == patient.PatientNo
+                                      select r).ToList();
+                    Models.ResultDocs Docs = new Models.ResultDocs(); ;
+                    Docs.Resultdocs = listresult;
+                    Docs.Resultdoc = listresult.FirstOrDefault();
+                    return RedirectToAction("Resultlist", null, Docs);
+                }
+            }
+            else
+            {
+                if (doc.AppID != null)
+                {
+                    try
+                    {
+                       int AppNo = Convert.ToInt32(doc.AppID);
+                    }
+                    catch
+                    {
+                        ModelState.AddModelError("", "Please Input Correct Appointment Number !!!");
+                        return View();
+                    }
+                    using (MaindbModelDataContext db = new MaindbModelDataContext())
+                    {
+                        var listresult = db.PatientFiles.FirstOrDefault(u => u.AppNo == Convert.ToInt32(doc.AppID));
+                        Models.ResultDocs Docs = new Models.ResultDocs();
+                        Docs.Resultdoc = listresult;
+                        return RedirectToAction("Resultlist", null, Docs);
+                    }
+                }
+                else
+                {
+                    Models.ResultDocs Docs = new Models.ResultDocs();
+                    return RedirectToAction("Resultlist", null, Docs);
+                }
+            }
+            
         }
-        public ActionResult Resultlist()
+        public ActionResult Resultlist(Models.ResultDocs ReSDoCs)
         {
             return View();
         }
-        public ActionResult Resultlist(Models.ResultDoc doc)
-        {
-            return View();
-        }
-        
+
     }
 }

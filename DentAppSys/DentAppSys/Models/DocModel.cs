@@ -9,7 +9,7 @@ namespace DentAppSys.Models
     public class GetDoc
     {
         [Display(Name = "Appointment ID = ")]
-        public int AppID { get; set; }
+        public string AppID { get; set; }
         public int PatientID { get; set; }
         [Display(Name = "Date From = ")]
         [DataType(DataType.Date)]
@@ -19,7 +19,7 @@ namespace DentAppSys.Models
         public DateTime EndDate { get; set; }
     }
 
-    public class ResultDoc
+    public class Resultdoc
     {
         [Display(Name = "Appointment ID = ")]
         public int AppID { get; set; }
@@ -36,5 +36,11 @@ namespace DentAppSys.Models
         public string Status { get; set; }
         [Display(Name = "Related Image = ")]
         public byte[] Image { get; set; }
+    }
+
+    public class ResultDocs
+    {
+        public PatientFile Resultdoc { get; set; }
+        public List<PatientFile> Resultdocs { get; set; }
     }
 }
