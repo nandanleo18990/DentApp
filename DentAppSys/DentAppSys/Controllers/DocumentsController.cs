@@ -25,18 +25,30 @@ namespace DentAppSys.Controllers
         [HttpPost]
         public ActionResult Index(Models.GetDoc doc)
         {
-            if (doc == null)
+            return RedirectToAction("Resultlist", doc);  
+        }
+        public ActionResult Resultlist(Models.GetDoc doc)
+        {
+            Session["UserEmail"] = "holehole@mail.com"; //for Test
+            if (doc.StartDate == DateTime.MinValue && doc.EndDate == DateTime.MinValue && doc.AppID == null)
             {
                 using (MaindbModelDataContext db = new MaindbModelDataContext())
                 {
                     var patient = db.Patients.FirstOrDefault(u => u.Email == (string)Session["UserEmail"]);
-                    var listresult = (from r in db.PatientFiles
+                    var listresult = from r in db.PatientFiles
                                       where r.PatientNo == patient.PatientNo
-                                      select r).ToList();
-                    Models.ResultDocs Docs = new Models.ResultDocs(); ;
-                    Docs.Resultdocs = listresult;
-                    Docs.Resultdoc = listresult.FirstOrDefault();
-                    return RedirectToAction("Resultlist", null, Docs);
+                                      select r;
+
+                    var TempDoCs = new List<Models.Resultdoc>();
+                    foreach (var item in listresult)
+                    {
+                        var Tempdoc = new Models.Resultdoc();
+                        Tempdoc.AppID = item.AppNo;
+                        Tempdoc.PatientID = item.PatientNo;
+                        TempDoCs.Add(Tempdoc);
+
+                    }
+                    return View(TempDoCs);
                 }
             }
             else
@@ -45,7 +57,7 @@ namespace DentAppSys.Controllers
                 {
                     try
                     {
-                       int AppNo = Convert.ToInt32(doc.AppID);
+                        int AppNo = Convert.ToInt32(doc.AppID);
                     }
                     catch
                     {
@@ -55,22 +67,29 @@ namespace DentAppSys.Controllers
                     using (MaindbModelDataContext db = new MaindbModelDataContext())
                     {
                         var listresult = db.PatientFiles.FirstOrDefault(u => u.AppNo == Convert.ToInt32(doc.AppID));
-                        Models.ResultDocs Docs = new Models.ResultDocs();
-                        Docs.Resultdoc = listresult;
-                        return RedirectToAction("Resultlist", null, Docs);
+                        var TempDoCs = new List<Models.Resultdoc>();
+                        var Tempdoc = new Models.Resultdoc();
+                        Tempdoc.AppID = listresult.AppNo;
+                        Tempdoc.PatientID = listresult.PatientNo;
+                        TempDoCs.Add(Tempdoc);
+                        //foreach (var item in listresult)
+                        //{
+
+                        //    var Tempdoc = new Models.Resultdoc();
+                        //    Tempdoc.AppID = item.AppNo;
+                        //    Tempdoc.PatientID = item.PatientNo;
+                        //    TempDoCs.Add(Tempdoc);
+
+                        //}
+                        return View(TempDoCs);
                     }
                 }
                 else
                 {
-                    Models.ResultDocs Docs = new Models.ResultDocs();
-                    return RedirectToAction("Resultlist", null, Docs);
+                    var Docs = new Models.Resultdoc();
+                    return RedirectToAction("Resultlist", Docs);
                 }
             }
-            
-        }
-        public ActionResult Resultlist(Models.ResultDocs ReSDoCs)
-        {
-            return View();
         }
 
     }

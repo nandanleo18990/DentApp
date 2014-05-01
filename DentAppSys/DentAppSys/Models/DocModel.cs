@@ -38,9 +38,4 @@ namespace DentAppSys.Models
         public byte[] Image { get; set; }
     }
 
-    public class ResultDocs
-    {
-        public PatientFile Resultdoc { get; set; }
-        public List<PatientFile> Resultdocs { get; set; }
-    }
 }

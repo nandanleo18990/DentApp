@@ -12,7 +12,7 @@ namespace DentAppSys.Controllers
         // GET: /Patient/
         public ActionResult Index(Models.RegisterModel User)
         {
-            if (Session["UserEmail"] != null)
+            if (Session["UserEmail"] != null) //for Test
             {
                 string Email = (string)Session["UserEmail"];
 

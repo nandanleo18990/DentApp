@@ -1,8 +1,12 @@
-﻿@model DentAppSys.Models.ResultDocs
+﻿@model IEnumerable<DentAppSys.Models.Resultdoc>
+
 @{
     ViewBag.Title = "Resultlist";
 }
 
 <h2>Resultlist</h2>
-
-@Model.Resultdoc.AppNo
+@Session["UserEmail"].ToString()
+@foreach (var item in Model )
+{
+    @item.AppID;
+}

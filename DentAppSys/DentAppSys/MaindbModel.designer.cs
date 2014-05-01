@@ -33,12 +33,12 @@ namespace DentAppSys
     partial void InsertPatient(Patient instance);
     partial void UpdatePatient(Patient instance);
     partial void DeletePatient(Patient instance);
-    partial void InsertPatientFile(PatientFile instance);
-    partial void UpdatePatientFile(PatientFile instance);
-    partial void DeletePatientFile(PatientFile instance);
     partial void InsertAppointment(Appointment instance);
     partial void UpdateAppointment(Appointment instance);
     partial void DeleteAppointment(Appointment instance);
+    partial void InsertPatientFile(PatientFile instance);
+    partial void UpdatePatientFile(PatientFile instance);
+    partial void DeletePatientFile(PatientFile instance);
     #endregion
 		
 		public MaindbModelDataContext() : 
@@ -95,19 +95,19 @@ namespace DentAppSys
 			}
 		}
 		
-		public System.Data.Linq.Table<PatientFile> PatientFiles
-		{
-			get
-			{
-				return this.GetTable<PatientFile>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Appointment> Appointments
 		{
 			get
 			{
 				return this.GetTable<Appointment>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PatientFile> PatientFiles
+		{
+			get
+			{
+				return this.GetTable<PatientFile>();
 			}
 		}
 	}
@@ -384,9 +384,9 @@ namespace DentAppSys
 		
 		private System.Nullable<System.DateTime> _Birthday;
 		
-		private EntitySet<PatientFile> _PatientFiles;
-		
 		private EntitySet<Appointment> _Appointments;
+		
+		private EntitySet<PatientFile> _PatientFiles;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -428,8 +428,8 @@ namespace DentAppSys
 		
 		public Patient()
 		{
-			this._PatientFiles = new EntitySet<PatientFile>(new Action<PatientFile>(this.attach_PatientFiles), new Action<PatientFile>(this.detach_PatientFiles));
 			this._Appointments = new EntitySet<Appointment>(new Action<Appointment>(this.attach_Appointments), new Action<Appointment>(this.detach_Appointments));
+			this._PatientFiles = new EntitySet<PatientFile>(new Action<PatientFile>(this.attach_PatientFiles), new Action<PatientFile>(this.detach_PatientFiles));
 			OnCreated();
 		}
 		
@@ -753,19 +753,6 @@ namespace DentAppSys
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Patient_PatientFile", Storage="_PatientFiles", ThisKey="PatientNo", OtherKey="PatientNo")]
-		public EntitySet<PatientFile> PatientFiles
-		{
-			get
-			{
-				return this._PatientFiles;
-			}
-			set
-			{
-				this._PatientFiles.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Patient_Appointment", Storage="_Appointments", ThisKey="PatientNo", OtherKey="PatientNo")]
 		public EntitySet<Appointment> Appointments
 		{
@@ -779,6 +766,19 @@ namespace DentAppSys
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Patient_PatientFile", Storage="_PatientFiles", ThisKey="PatientNo", OtherKey="PatientNo")]
+		public EntitySet<PatientFile> PatientFiles
+		{
+			get
+			{
+				return this._PatientFiles;
+			}
+			set
+			{
+				this._PatientFiles.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -797,18 +797,6 @@ namespace DentAppSys
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_PatientFiles(PatientFile entity)
-		{
-			this.SendPropertyChanging();
-			entity.Patient = this;
-		}
-		
-		private void detach_PatientFiles(PatientFile entity)
-		{
-			this.SendPropertyChanging();
-			entity.Patient = null;
 		}
 		
 		private void attach_Appointments(Appointment entity)
@@ -822,293 +810,17 @@ namespace DentAppSys
 			this.SendPropertyChanging();
 			entity.Patient = null;
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PatientFile")]
-	public partial class PatientFile : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _AppNo;
-		
-		private int _PatientNo;
-		
-		private string _Prescription;
-		
-		private string _TreatmentDetails;
-		
-		private System.Nullable<decimal> _Bill;
-		
-		private string _Status;
-		
-		private System.Data.Linq.Binary _Image;
-		
-		private EntityRef<Patient> _Patient;
-		
-		private EntityRef<Appointment> _Appointment;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnAppNoChanging(int value);
-    partial void OnAppNoChanged();
-    partial void OnPatientNoChanging(int value);
-    partial void OnPatientNoChanged();
-    partial void OnPrescriptionChanging(string value);
-    partial void OnPrescriptionChanged();
-    partial void OnTreatmentDetailsChanging(string value);
-    partial void OnTreatmentDetailsChanged();
-    partial void OnBillChanging(System.Nullable<decimal> value);
-    partial void OnBillChanged();
-    partial void OnStatusChanging(string value);
-    partial void OnStatusChanged();
-    partial void OnImageChanging(System.Data.Linq.Binary value);
-    partial void OnImageChanged();
-    #endregion
-		
-		public PatientFile()
+		private void attach_PatientFiles(PatientFile entity)
 		{
-			this._Patient = default(EntityRef<Patient>);
-			this._Appointment = default(EntityRef<Appointment>);
-			OnCreated();
+			this.SendPropertyChanging();
+			entity.Patient = this;
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AppNo", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int AppNo
+		private void detach_PatientFiles(PatientFile entity)
 		{
-			get
-			{
-				return this._AppNo;
-			}
-			set
-			{
-				if ((this._AppNo != value))
-				{
-					if (this._Appointment.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnAppNoChanging(value);
-					this.SendPropertyChanging();
-					this._AppNo = value;
-					this.SendPropertyChanged("AppNo");
-					this.OnAppNoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PatientNo", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int PatientNo
-		{
-			get
-			{
-				return this._PatientNo;
-			}
-			set
-			{
-				if ((this._PatientNo != value))
-				{
-					if (this._Patient.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnPatientNoChanging(value);
-					this.SendPropertyChanging();
-					this._PatientNo = value;
-					this.SendPropertyChanged("PatientNo");
-					this.OnPatientNoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Prescription", DbType="Text", UpdateCheck=UpdateCheck.Never)]
-		public string Prescription
-		{
-			get
-			{
-				return this._Prescription;
-			}
-			set
-			{
-				if ((this._Prescription != value))
-				{
-					this.OnPrescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._Prescription = value;
-					this.SendPropertyChanged("Prescription");
-					this.OnPrescriptionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TreatmentDetails", DbType="Text", UpdateCheck=UpdateCheck.Never)]
-		public string TreatmentDetails
-		{
-			get
-			{
-				return this._TreatmentDetails;
-			}
-			set
-			{
-				if ((this._TreatmentDetails != value))
-				{
-					this.OnTreatmentDetailsChanging(value);
-					this.SendPropertyChanging();
-					this._TreatmentDetails = value;
-					this.SendPropertyChanged("TreatmentDetails");
-					this.OnTreatmentDetailsChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Bill", DbType="Money")]
-		public System.Nullable<decimal> Bill
-		{
-			get
-			{
-				return this._Bill;
-			}
-			set
-			{
-				if ((this._Bill != value))
-				{
-					this.OnBillChanging(value);
-					this.SendPropertyChanging();
-					this._Bill = value;
-					this.SendPropertyChanged("Bill");
-					this.OnBillChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="NVarChar(50)")]
-		public string Status
-		{
-			get
-			{
-				return this._Status;
-			}
-			set
-			{
-				if ((this._Status != value))
-				{
-					this.OnStatusChanging(value);
-					this.SendPropertyChanging();
-					this._Status = value;
-					this.SendPropertyChanged("Status");
-					this.OnStatusChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="Image", UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary Image
-		{
-			get
-			{
-				return this._Image;
-			}
-			set
-			{
-				if ((this._Image != value))
-				{
-					this.OnImageChanging(value);
-					this.SendPropertyChanging();
-					this._Image = value;
-					this.SendPropertyChanged("Image");
-					this.OnImageChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Patient_PatientFile", Storage="_Patient", ThisKey="PatientNo", OtherKey="PatientNo", IsForeignKey=true)]
-		public Patient Patient
-		{
-			get
-			{
-				return this._Patient.Entity;
-			}
-			set
-			{
-				Patient previousValue = this._Patient.Entity;
-				if (((previousValue != value) 
-							|| (this._Patient.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Patient.Entity = null;
-						previousValue.PatientFiles.Remove(this);
-					}
-					this._Patient.Entity = value;
-					if ((value != null))
-					{
-						value.PatientFiles.Add(this);
-						this._PatientNo = value.PatientNo;
-					}
-					else
-					{
-						this._PatientNo = default(int);
-					}
-					this.SendPropertyChanged("Patient");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Appointment_PatientFile", Storage="_Appointment", ThisKey="AppNo", OtherKey="AppNo", IsForeignKey=true)]
-		public Appointment Appointment
-		{
-			get
-			{
-				return this._Appointment.Entity;
-			}
-			set
-			{
-				Appointment previousValue = this._Appointment.Entity;
-				if (((previousValue != value) 
-							|| (this._Appointment.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Appointment.Entity = null;
-						previousValue.PatientFiles.Remove(this);
-					}
-					this._Appointment.Entity = value;
-					if ((value != null))
-					{
-						value.PatientFiles.Add(this);
-						this._AppNo = value.AppNo;
-					}
-					else
-					{
-						this._AppNo = default(int);
-					}
-					this.SendPropertyChanged("Appointment");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
+			this.SendPropertyChanging();
+			entity.Patient = null;
 		}
 	}
 	
@@ -1384,6 +1096,270 @@ namespace DentAppSys
 		{
 			this.SendPropertyChanging();
 			entity.Appointment = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PatientFile")]
+	public partial class PatientFile : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _AppNo;
+		
+		private int _PatientNo;
+		
+		private string _Prescription;
+		
+		private string _TreatmentDetails;
+		
+		private string _Status;
+		
+		private System.Data.Linq.Binary _Image;
+		
+		private EntityRef<Appointment> _Appointment;
+		
+		private EntityRef<Patient> _Patient;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnAppNoChanging(int value);
+    partial void OnAppNoChanged();
+    partial void OnPatientNoChanging(int value);
+    partial void OnPatientNoChanged();
+    partial void OnPrescriptionChanging(string value);
+    partial void OnPrescriptionChanged();
+    partial void OnTreatmentDetailsChanging(string value);
+    partial void OnTreatmentDetailsChanged();
+    partial void OnStatusChanging(string value);
+    partial void OnStatusChanged();
+    partial void OnImageChanging(System.Data.Linq.Binary value);
+    partial void OnImageChanged();
+    #endregion
+		
+		public PatientFile()
+		{
+			this._Appointment = default(EntityRef<Appointment>);
+			this._Patient = default(EntityRef<Patient>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AppNo", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int AppNo
+		{
+			get
+			{
+				return this._AppNo;
+			}
+			set
+			{
+				if ((this._AppNo != value))
+				{
+					if (this._Appointment.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnAppNoChanging(value);
+					this.SendPropertyChanging();
+					this._AppNo = value;
+					this.SendPropertyChanged("AppNo");
+					this.OnAppNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PatientNo", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int PatientNo
+		{
+			get
+			{
+				return this._PatientNo;
+			}
+			set
+			{
+				if ((this._PatientNo != value))
+				{
+					if (this._Patient.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPatientNoChanging(value);
+					this.SendPropertyChanging();
+					this._PatientNo = value;
+					this.SendPropertyChanged("PatientNo");
+					this.OnPatientNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Prescription", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string Prescription
+		{
+			get
+			{
+				return this._Prescription;
+			}
+			set
+			{
+				if ((this._Prescription != value))
+				{
+					this.OnPrescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Prescription = value;
+					this.SendPropertyChanged("Prescription");
+					this.OnPrescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TreatmentDetails", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string TreatmentDetails
+		{
+			get
+			{
+				return this._TreatmentDetails;
+			}
+			set
+			{
+				if ((this._TreatmentDetails != value))
+				{
+					this.OnTreatmentDetailsChanging(value);
+					this.SendPropertyChanging();
+					this._TreatmentDetails = value;
+					this.SendPropertyChanged("TreatmentDetails");
+					this.OnTreatmentDetailsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="NVarChar(50)")]
+		public string Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this.OnStatusChanging(value);
+					this.SendPropertyChanging();
+					this._Status = value;
+					this.SendPropertyChanged("Status");
+					this.OnStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Image
+		{
+			get
+			{
+				return this._Image;
+			}
+			set
+			{
+				if ((this._Image != value))
+				{
+					this.OnImageChanging(value);
+					this.SendPropertyChanging();
+					this._Image = value;
+					this.SendPropertyChanged("Image");
+					this.OnImageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Appointment_PatientFile", Storage="_Appointment", ThisKey="AppNo", OtherKey="AppNo", IsForeignKey=true)]
+		public Appointment Appointment
+		{
+			get
+			{
+				return this._Appointment.Entity;
+			}
+			set
+			{
+				Appointment previousValue = this._Appointment.Entity;
+				if (((previousValue != value) 
+							|| (this._Appointment.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Appointment.Entity = null;
+						previousValue.PatientFiles.Remove(this);
+					}
+					this._Appointment.Entity = value;
+					if ((value != null))
+					{
+						value.PatientFiles.Add(this);
+						this._AppNo = value.AppNo;
+					}
+					else
+					{
+						this._AppNo = default(int);
+					}
+					this.SendPropertyChanged("Appointment");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Patient_PatientFile", Storage="_Patient", ThisKey="PatientNo", OtherKey="PatientNo", IsForeignKey=true)]
+		public Patient Patient
+		{
+			get
+			{
+				return this._Patient.Entity;
+			}
+			set
+			{
+				Patient previousValue = this._Patient.Entity;
+				if (((previousValue != value) 
+							|| (this._Patient.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Patient.Entity = null;
+						previousValue.PatientFiles.Remove(this);
+					}
+					this._Patient.Entity = value;
+					if ((value != null))
+					{
+						value.PatientFiles.Add(this);
+						this._PatientNo = value.PatientNo;
+					}
+					else
+					{
+						this._PatientNo = default(int);
+					}
+					this.SendPropertyChanged("Patient");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }
