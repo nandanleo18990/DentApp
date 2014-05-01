@@ -1,6 +1,5 @@
 ﻿@model DentAppSys.Models.RegisterModel
 
-
 @{
     ViewBag.Title = "Index";
 }
@@ -16,45 +15,42 @@ else
     // @Html.ActionLink("Login&Register", "RegAndLogin", "User")
 
 }
+  
 
+   <section class="Patient-Info">
 
-
-   
-
-<section class="Patient-Info">
-
-        <div class="Info-title">
-            Personal Informations
-        </div>
-        <div class="Info-Content">
-            <div>
-                <span>
-                    Firstname :
-                </span>
-                @Model.Firstname
+            <div class="Info-title">
+                Personal Informations
             </div>
-            <div>
-                <span>
-                    Lastname :
-                </span>
-                @Model.Lastname
+            <div class="Info-Content">
+                <div>
+                    <span>
+                        Firstname :
+                    </span>
+                    @Model.Firstname
+                </div>
+                <div>
+                    <span>
+                        Lastname :
+                    </span>
+                    @Model.Lastname
+                </div>
+                <div>
+                    <span>
+                        Birthday :
+                    </span>
+                    @Model.Birthday.ToString("MMMM dd,yyyy")
+                </div>
+                <div>
+                    <span>
+                        Email :
+                    </span>
+                    @Model.Email
+                </div>
+            <input type="submit" value="Edit Your Profile" class="" />
             </div>
-            <div>
-                <span>
-                    Birthday :
-                </span>
-                @Model.Birthday.ToString("MMMM dd,yyyy")
-            </div>
-            <div>
-                <span>
-                    Email :
-                </span>
-                @Model.Email
-            </div>
-        <input type="submit" value="Edit Your Profile" class="" />
-        </div>
 
-</section>
+    </section>
 
 <section class="Patient-Menu">
 
@@ -71,16 +67,22 @@ else
 
 <section class="Patient-Dashboard">
 
-    <div id="dashboard_left">
+   @* <div id="dashboard_left">
         <h1> Incoming Appointments</h1>
         </div>
     <div id="dashboard_right">
         <br/>
         <h1> Recent Appointments</h1>
        
-            <div>
-                <span>
-                    1:
-         @*       @Model.PatientNo @Model.Description @Model.Date.ToString("MMMM dd,yyyy") *@ 
-                </span> </div></div>
+        
+            @foreach (var item in Model) {
+              
+                   <div>
+
+                       @item.Description
+                   </div>
+                       
+
+                     }
+           </div>*@
     </section>

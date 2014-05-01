@@ -50,6 +50,7 @@ namespace DentAppSys.Models
 
         public LoginModel LoginModel { get; set; }
 
+      //  public AppModel AppModel { get; set; }
         
     }
 }
