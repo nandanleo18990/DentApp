@@ -25,10 +25,10 @@ namespace DentAppSys.Models
         public int AppID { get; set; }
         [Display(Name = " Patient ID = ")]
         public int PatientID { get; set; }
-        [Display(Name = "Date = ")]
-        [DataType(DataType.Date)]
-        public DateTime StartDate { get; set; }
-        [Display(Name = "Prescription = ")]
+        //[Display(Name = "Date = ")]
+        //[DataType(DataType.Date)]
+        //public DateTime StartDate { get; set; }
+        //[Display(Name = "Prescription = ")]
         public string Prescription { get; set; }
         [Display(Name = "Treatments Details = ")]
         public string TreatmentDis { get; set; }

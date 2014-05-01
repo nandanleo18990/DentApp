@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Helpers;
 
 namespace DentAppSys.Controllers
 {
@@ -86,8 +87,9 @@ namespace DentAppSys.Controllers
                 }
                 else
                 {
-                    var Docs = new Models.Resultdoc();
-                    return RedirectToAction("Resultlist", Docs);
+                    //var Docs = new Models.Resultdoc();
+                    //return RedirectToAction("Resultlist", Docs);
+                    return View();
                 }
             }
         }

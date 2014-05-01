@@ -1,12 +1,32 @@
 ﻿@model IEnumerable<DentAppSys.Models.Resultdoc>
+@using System.Web.Helpers
 
 @{
     ViewBag.Title = "Resultlist";
 }
 
 <h2>Resultlist</h2>
-@Session["UserEmail"].ToString()
-@foreach (var item in Model )
-{
-    @item.AppID;
+
+@{
+    var Mygrid = new WebGrid(Model, selectionFieldName: "SelectedRow");
 }
+
+@Mygrid.GetHtml(
+    displayHeader: true,
+    alternatingRowStyle: "alt",
+    selectedRowStyle: "select",
+    mode: WebGridPagerModes.All,
+
+columns: Mygrid.Columns
+(
+    Mygrid.Column("Select", format: @<text>@Html.RadioButton("rbFile", "", false) </text>),
+    Mygrid.Column("Appointment ID", "Appointment ID",format: @<text>@item.AppID</text>),
+    Mygrid.Column("Status", "Status", format: @<text>@item.Status</text>)
+)
+
+
+)
+
+
+
+
