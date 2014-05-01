@@ -148,15 +148,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\images\1.jpg" />
-    <Content Include="Content\images\2.bmp" />
     <Content Include="Content\images\4.jpg" />
     <Content Include="Content\images\5.jpg" />
     <Content Include="Content\images\6.jpg" />
+    <Content Include="Content\images\8.jpg" />
     <Content Include="Content\images\back.jpg" />
     <Content Include="Content\images\contact-bg.jpg" />
     <Content Include="Content\images\contact_1.jpg" />
     <Content Include="Content\images\contact_2.jpg" />
+    <Content Include="Content\images\dental-services1.jpg" />
+    <Content Include="Content\images\dentalhygiene3.jpg" />
     <Content Include="Content\images\HR-BG.png" />
     <Content Include="Content\images\Img-fir.jpg" />
     <Content Include="Content\images\Img-sec.jpg" />
@@ -166,6 +167,7 @@
     <Content Include="Content\images\layerslider-gallery\S3-01.jpg" />
     <Content Include="Content\images\Logo.jpg" />
     <Content Include="Content\images\nav-icon.png" />
+    <Content Include="Content\images\newspaper.jpg" />
     <Content Include="Content\layerslider-skins\fullwidthdark\skin.css" />
     <Content Include="Content\layerslider-skins\fullwidthdark\skin.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
