@@ -63,7 +63,6 @@ namespace DentAppSys.Controllers
                 {
                     ModelState.AddModelError("", "Data is incorrect !!!");
                 }
-
             }
             else
             {
@@ -82,9 +81,7 @@ namespace DentAppSys.Controllers
 
                     }
                     return RedirectToAction("Index", "Patient", TempUser);
-
-
-                }
+                 }
                 else
                 {
                     ModelState.AddModelError("", "Check your E-mail or Password then try again !!!");

@@ -12,9 +12,25 @@ namespace DentAppSys.Models
         [DataType(DataType.Date)]
         [Display(Name = "Date: ")]
         public DateTime Date { get; set; }
+        [Required]
+        [Display(Name = "Appointment No: ")]
+        public int AppNo { get; set; }
+        [Required]
+        [Display(Name = "Patient No: ")]
+        public int PatientNo { get; set; }
+
+        [Required]
+        [Display(Name = "Status: ")]
+        public string Status { get; set; }
+
+        [Required]
+        [Display(Name = "Doctor Description: ")]
+        public string DrDescription { get; set; }
 
         [Required]
         [Display(Name = "Description: ")]
         public string Description { get; set; }
     }
+
+   
 }
