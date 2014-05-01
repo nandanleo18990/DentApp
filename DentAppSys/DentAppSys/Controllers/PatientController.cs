@@ -15,7 +15,6 @@ namespace DentAppSys.Controllers
             if (Session["UserEmail"] != null) //for Test
             {
                 string Email = (string)Session["UserEmail"];
-
                 return View(User);
             }
             else
