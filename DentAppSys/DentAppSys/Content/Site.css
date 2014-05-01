@@ -157,7 +157,7 @@ textarea {
         height: 50px;
     }
 
-.container {
+.Main-container {
     margin-top: 85px;
 }
 
@@ -1309,7 +1309,7 @@ Pseudo ::after element .grid:after {
 
 footer {
     position: relative;
-    width: 100%;
+    width: 100% !important;
     height: auto;
     background: #000;
     text-align: center;
@@ -2056,9 +2056,9 @@ input.textfieldMaxCharsState, .textfieldMaxCharsState input {
         transition: color 450ms ease-in-out 0s, background-color 450ms ease-in-out 0s;
     }
 
-    .p-menu ul a:hover, .p-menu ul a:active {
-        background-color: #0F81FF;
-    }
+        .p-menu ul a:hover, .p-menu ul a:active {
+            background-color: #0F81FF;
+        }
 
 @media only screen and (max-width : 383px) {
 
@@ -2067,12 +2067,12 @@ input.textfieldMaxCharsState, .textfieldMaxCharsState input {
     }
 }
 
-.Patient-Dashboard{
-    height:300px;
-    width:100%;
-    background-color:#1e1e1e;
-    
+.Patient-Dashboard {
+    height: 300px;
+    width: 100%;
+    background-color: #1e1e1e;
 }
+
 #dashboard_left {
     float: left;
     width: 50%;
@@ -2121,21 +2121,23 @@ input.textfieldMaxCharsState, .textfieldMaxCharsState input {
     color: #000;
 }
 
-.Doc-Op Span{
-        border: #ddd 1px solid;
-        padding:10px;
+.Doc-Op Span {
+    border: #ddd 1px solid;
+    padding: 10px;
 }
 
 .Doc-Op Article {
     padding-bottom: 30px;
     color: #1d1d1d;
 }
-.Doc-Op form{
-    margin:30px
+
+.Doc-Op form {
+    margin: 30px;
 }
-.Doc-Op form fieldset{
-    padding-top:10px;
-}
+
+    .Doc-Op form fieldset {
+        padding-top: 10px;
+    }
 /* Start Document-Page _____________________________________________________________________________________*/
 
 

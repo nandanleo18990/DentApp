@@ -46,6 +46,7 @@ namespace DentAppSys.Controllers
                         var Tempdoc = new Models.Resultdoc();
                         Tempdoc.AppID = item.AppNo;
                         Tempdoc.PatientID = item.PatientNo;
+                        Tempdoc.Status = item.Status;
                         TempDoCs.Add(Tempdoc);
 
                     }
@@ -72,6 +73,7 @@ namespace DentAppSys.Controllers
                         var Tempdoc = new Models.Resultdoc();
                         Tempdoc.AppID = listresult.AppNo;
                         Tempdoc.PatientID = listresult.PatientNo;
+                        Tempdoc.Status = listresult.Status;
                         TempDoCs.Add(Tempdoc);
                         //foreach (var item in listresult)
                         //{
