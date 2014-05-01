@@ -31,7 +31,7 @@ namespace DentAppSys.Controllers
                     var app = new Appointment();
                    // if (app.Date > DateTime.Now.Date)
                     //{
-                        app.Date = User.Date;
+                        app.Date = (DateTime)User.Date;
                         app.Description = User.Description;
                         app.Status = "isPending";
                         app.PatientNo = patient.PatientNo;

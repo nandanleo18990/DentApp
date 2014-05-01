@@ -2075,7 +2075,7 @@ input.textfieldMaxCharsState, .textfieldMaxCharsState input {
 }
 #dashboard_left {
     float: left;
-    width: 25%;
+    width: 50%;
     color: #ffffff;
     padding-right: 5%;
     padding-left: 5%;

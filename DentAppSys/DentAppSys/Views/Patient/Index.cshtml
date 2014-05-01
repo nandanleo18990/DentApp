@@ -7,7 +7,7 @@
 @if (Session["UserEmail"] != null)
 {
     <div align="right" style="width:auto;background:#728ea7;">
-       
+        @ViewBag.Email
         @Html.ActionLink("Logout", "Logout", "User")
     </div>
 }
@@ -85,7 +85,8 @@ columns: Mygrid.Columns
     Mygrid.Column("Appointment No", "Appointment No",format: @<text>@item.AppNo</text>),
     Mygrid.Column("Patient No", "Patient No", format: @<text>@item.PatientNo</text>) ,
     Mygrid.Column("Description", "Description", format: @<text>@item.Description</text>),
-    Mygrid.Column("Date", "Date", format: @<text>@item.Date</text>) 
+    Mygrid.Column("Date", "Date", format: @<text>@item.Date</text>),
+    Mygrid.Column("Status", "Status", format: @<text>@item.Status</text>)
      
 ))
 </div>
