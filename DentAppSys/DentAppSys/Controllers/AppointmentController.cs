@@ -13,7 +13,7 @@ namespace DentAppSys.Controllers
 
 
 
-        [HttpGet]
+        /*[HttpGet]
         [ValidateAntiForgeryToken]
         public ActionResult Recent(Models.AppModel User)
         {
@@ -44,11 +44,11 @@ namespace DentAppSys.Controllers
         }
 
                     
-           //  Where (m => m.Date < Current.Date).OrderByDescending(m => m.Date).Take(20).ToList();
+          Where (m => m.Date < Current.Date).OrderByDescending(m => m.Date).Take(20).ToList();
                  
-                     //var list = db.Appointments.ToList();
+                    var list = db.Appointments.ToList();
 
-                      /*var patient = db.Patients.FirstOrDefault(u => u.Email ==(String)Session["UserEmail"]);
+                    var patient = db.Patients.FirstOrDefault(u => u.Email ==(String)Session["UserEmail"]);
                       var list = (from m in db.Appointments
                                   where m.PatientNo == patient.PatientNo
                                   select m).ToList();
@@ -72,8 +72,8 @@ namespace DentAppSys.Controllers
                 {
                     var patient = db.Patients.FirstOrDefault(u => u.Email == (String)Session["UserEmail"]);
                     var app = new Appointment();
-                    if (app.Date > DateTime.Now.Date)
-                    {
+                   // if (app.Date > DateTime.Now.Date)
+                    //{
                         app.Date = User.Date;
                         app.Description = User.Description;
                         app.Status = "isPending";
@@ -81,11 +81,11 @@ namespace DentAppSys.Controllers
                         app.AppNo = Guid.NewGuid().GetHashCode();
                         db.Appointments.InsertOnSubmit(app);
                         db.SubmitChanges();
-                     }
+                    /* }
                     else
                     {
                         ModelState.AddModelError("", "Please choose valid date!!!");
-                    }
+                    }*/
                 }
             }
             else

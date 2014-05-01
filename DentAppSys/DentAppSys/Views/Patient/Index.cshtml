@@ -6,7 +6,7 @@
     @if (Session["UserEmail"] != null)
 {
     <div align="right" style="width:auto;background:#728ea7;">
-        @*<strong>@Model.RegisterModel.Email</strong>*@
+        <strong>@Model.Email</strong>
         @Html.ActionLink("Logout", "Logout", "User")
     </div>
 }
