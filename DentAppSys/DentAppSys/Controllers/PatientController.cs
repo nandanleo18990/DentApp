@@ -10,12 +10,44 @@ namespace DentAppSys.Controllers
     {
         //
         // GET: /Patient/
-        public ActionResult Index(Models.RegisterModel User)
+        public ActionResult Index()
         {
             if (Session["UserEmail"] != null) //for Test
             {
                 string Email = (string)Session["UserEmail"];
-                return View(User);
+                using (var db = new MaindbModelDataContext())
+                {
+                    var patient = db.Patients.FirstOrDefault(u => u.Email == (String)Session["UserEmail"]);
+                    ViewBag.FirstName = patient.Name;
+                    ViewBag.LastName = patient.Surname;
+                    ViewBag.BirthDate = patient.Birthday;
+                    ViewBag.Email = patient.Email;
+                
+                
+                }
+                using (var db = new MaindbModelDataContext())
+                {
+
+                    var patient = db.Patients.FirstOrDefault(u => u.Email == (String)Session["UserEmail"]);
+                    var listrecent = from y in db.Appointments
+                                     where y.PatientNo == patient.PatientNo
+                                     select y;
+                    var TempRecent = new List<Models.AppModel>();
+                    foreach (var item in listrecent)
+                    {
+                        var Temp = new Models.AppModel();
+                        Temp.AppNo = item.AppNo;
+                        Temp.PatientNo = (Int32)item.PatientNo;
+                        Temp.Date = (DateTime)item.Date;
+                        Temp.Description = item.Description;
+
+
+
+                        TempRecent.Add(Temp);
+
+                    }
+                    return View(TempRecent);
+                }
             }
             else
             {
