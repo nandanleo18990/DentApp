@@ -13,50 +13,7 @@ namespace DentAppSys.Controllers
 
 
 
-        /*[HttpGet]
-        [ValidateAntiForgeryToken]
-        public ActionResult Recent(Models.AppModel User)
-        {
-            if (Session["UserEmail"] != null)
-            {
-                using (var db = new MaindbModelDataContext())
-                {
 
-                    var patient = db.Patients.FirstOrDefault(u => u.Email == (string)Session["UserEmail"]);
-                    var listrecent = from r in db.Patients
-                                     where r.PatientNo == patient.PatientNo
-                                     select r;
-
-                    var TempRecent = new List<Models.AppModel>();
-                    foreach (var item in listrecent)
-                    {
-                        var Temp = new Models.AppModel();
-                        Temp.AppID = item.AppNo;
-
-                        Temp.AppID = item.AppNo;
-                        Temp.PatientID = item.PatientNo;
-                        TempRecent.Add(Temp);
-
-                    }
-                    return View(TempRecent);
-                }
-            }
-        }
-
-                    
-          Where (m => m.Date < Current.Date).OrderByDescending(m => m.Date).Take(20).ToList();
-                 
-                    var list = db.Appointments.ToList();
-
-                    var patient = db.Patients.FirstOrDefault(u => u.Email ==(String)Session["UserEmail"]);
-                      var list = (from m in db.Appointments
-                                  where m.PatientNo == patient.PatientNo
-                                  select m).ToList();
-                                 }}
-                      return View(list.ToList());
-                 }
-           
-       */
         public ActionResult Make()
         {
             return View();
