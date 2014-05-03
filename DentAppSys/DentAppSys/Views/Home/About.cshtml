@@ -4,42 +4,113 @@
 
 <!DOCTYPE html>
 <html>
+<head>
+<link rel="stylesheet" href="Site.css">
+</head>
 <body>
-   
 
+<div class="erb-image-wrapper">
 
-    <h1> OUR MOTTO AND MISSION </h1>
-    <marquee behavior="alternate">
-    <img src="~/Content/images/4.jpg" />
-    </marquee>
-    <u><b>MOTTO -</b></u>
-     Our main Motto is your bright and relaxed smile
-    <br />
-    <u><b>MISSION -</b></u>
-    Our mission is to provide members the expertise and resources to enhance the evaluation and diagnosis of oral conditions, assessment of risk for future disease, and delivery of specialty periodontal non-surgical, surgical and medical care for our patients.
-    <br />
-    <br />
-    <br />
+    <img src="/Content/images/about-newspaper.jpg" width="1000" height="200">
+</div>
 
+    
+    
+     <div id="object2" class="slideExpandUp">
+            <font color="#F5F5F5">
+                <div style="padding-top: 20px;">
 
+                      <h1 style="text-align:center">
+                        <b>SERVICES</b>
+                    </h1>
+                    <div class="erb-image-wrapper">
 
-
-
-
-
-
-<h1>ORAL HYGIENE </h1>
-<marquee behavior="scroll" direction="left" scrollamount="50">
-<img src="~/Content/images/2.bmp" />
-</marquee>
- <br />
-     Oral hygiene is the practice of keeping the mouth and teeth clean in order to prevent cavities (dental caries), gum disease, and other dental disorders. The specialty oral and maxillofacial pathology is concerned with diagnosis and study of the causes and effects of diseases affecting the oral and maxillofacial region. It is sometimes considered to be a specialty of dentistry and pathology. Sometimes the term head and neck pathology is used instead, but this might imply that the pathologist deals with otorhinolaryngologic disorders (i.e. ear, nose and throat) in addition to maxillofacial disorders. In this role there is some overlap between the expertise of head and neck pathologists and that of endocrine pathologists.
-  <br />
-
-                
+                        <img src="~/Content/images/about-dental-services1.jpg" width="1000" height="600" />
+                    </div>
+                    <br />
+                     <br />
 
 
 
+                        <article>
+                        <p><b>Dental care is the maintenance of healthy teeth.</b></p>
+                        <ul>
+                            <li><b>Oral hygiene</b> the practice of keeping the mouth and teeth clean in order to prevent cavities (dental caries), gum disease, and other dental disorders</li>
+                            <li><b> Dentistry</b>, the professional care of teeth, including professional oral hygiene and dental surgery</li>
+                        </ul>
+                    </article>
+                    <br />
+                    <br />
+
+                    <img src="~/Content/images/about-dentalhygiene5.jpg" style="width: 500px;height:400px;   filter: alpha(opacity=40)"
+                         onmouseover="this.style.opacity=1; this.filters.alpha.opacity=100"
+                         onmouseout="this.style.opacity=0.4; this.filters.alpha.opacity=40" />
+
+
+                    <img src="~/Content/images/about-dentalhygiene3.jpg" style="width: 500px; height:400px; filter: alpha(opacity=40)"
+                         onmouseover="this.style.opacity=1; this.filters.alpha.opacity=100"
+                         onmouseout="this.style.opacity=0.4; this.filters.alpha.opacity=40" />
+
+
+
+                    <br />
+                    <br />
+                    <br />
+</font>
+
+
+        </div>
+
+
+         <div
+        <div id="object4" class="fadeIn" style="padding: 20px;">
+            
+            <article>
+            <h1> OUR VISION AND MISSION </h1>
+            <p>
+                <ul>
+                    <li>
+                       <b> VISION </b><br />
+                        Periodontists will be recognized as an indispensable part of healthcare for optimal health and quality of life.
+                    </li>
+
+                    <li>
+                       <b> MISSION</b>
+                        <br />
+                        Our mission is to provide members the expertise and resources to enhance the evaluation and diagnosis of oral conditions, assessment of risk for future disease, and delivery of specialty periodontal non-surgical, surgical and medical care for our patients.
+                    </li>
+                </ul>
+            </p>
+
+
+                </article>
+            <div class="erb-image-wrapper">
+
+                <img src="/Content/images/4.jpg" width="1000" />
+
+            </div>
+        </div>
+
+
+
+
+        <script>
+            $(window).scroll(function () {
+                $('#object4').each(function () {
+                    var imagePos = $(this).offset().top;
+
+                    var topOfWindow = $(window).scrollTop();
+                    if (imagePos < topOfWindow + 100) {
+                        $(this).addClass("fadeIn");
+                    }
+                });
+            });
+        </script>
+        <script>
+            $('#object4').click(function () {
+                $(this).addClass("fadeIn");
+            });
+        </script>
 
 
 
@@ -47,37 +118,30 @@
 
 
 
+        <script>
+            $(window).scroll(function () {
+                $('#object2').each(function () {
+                    var imagePos = $(this).offset().top;
 
-    <h1>SPECIALITIES</h1>
-    <marquee behavior="scroll" direction="right" scrollamount="50">
-        <img src="~/Content/images/5.jpg" />
-    </marquee>
-    <br />
-    <br />
-    <u><b>DENTAL EPIDEMIOLOGY -</b> </u>The study of epidemiology and social health policies relevant to oral health.Dental public health is involved in the assessment of dental health needs and improving the dental health of populations rather than individuals.
-    One of the controversial subjects relating to dental public health is fluoridation of drinking water. Commercial mouthwashes have also been a cause for concern, with some studies linking them to an increased risk of oral cancer.<br />
-    <b><u>ORAL AND MAXXILOFACIAL PATHOLOGY -</u></b> Study, diagnosis, and sometimes the treatment of oral and maxillofacial related diseases.The specialty oral and maxillofacial pathology is concerned with diagnosis and study of the causes and effects of diseases affecting the oral and maxillofacial region. It is sometimes considered to be a specialty of dentistry and pathology. Sometimes the term head and neck pathology is used instead, but this might imply that the pathologist deals with otorhinolaryngologic disorders (i.e. ear, nose and throat) in addition to maxillofacial disorders. In this role there is some overlap between the expertise of head and neck pathologists and that of endocrine pathologists.
-    <br />
-               
-
-
-
-
-
-
-
-    <h1> DENTAL AND ORAL DISEASES </h1>
-    <marquee behavior="scroll" direction="up" scrollamount="1">
-        <img src="~/Content/images/6.jpg" />
-    </marquee>
-    <br />
-    <br />
-    <u><b>   GINGIVITIS -</b></u> Is the mildest form of periodontal disease. It causes the gums to become red, swollen, and bleed easily. There is usually little or no discomfort at this stage. Gingivitis is often caused by inadequate oral hygiene. Gingivitis is reversible with professional treatment and good oral home care.
-    Untreated gingivitis can advance to periodontitis. With time, plaque can spread and grow below the gum line. Toxins produced by the bacteria in plaque irritate the gums. The toxins stimulate a chronic inflammatory response in which the body in essence turns on itself, and the tissues and bone that support the teeth are broken down and destroyed. Gums separate from the teeth, forming pockets (spaces between the teeth and gums) that become infected. As the disease progresses, the pockets deepen and more gum tissue and bone are destroyed. Often, this destructive process has very mild symptoms. Eventually, teeth can become loose and may have to be removed.
-    <br />
-
-
+                    var topOfWindow = $(window).scrollTop();
+                    if (imagePos < topOfWindow + 100) {
+                        $(this).addClass("slideExpandUp");
+                    }
+                });
+            });
+        </script>
+        <script>
+            $('#object2').click(function () {
+                $(this).addClass("slideExpandUp");
+            });
+        </script>
 
 
 </body>
-</html>
+ </html>
+
+
+
+
+
+

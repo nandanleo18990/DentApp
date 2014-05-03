@@ -31,9 +31,12 @@ namespace DentAppSys.Controllers
                 using (var db = new MaindbModelDataContext())
                 {
                     var patient = db.Patients.FirstOrDefault(u => u.Email == (String)Session["UserEmail"]);
-                    var listrecent = from y in db.Appointments
-                                     where y.PatientNo == patient.PatientNo
-                                     select y;
+                    var listrecent = (from y in db.Appointments
+                                      where y.PatientNo == patient.PatientNo
+                                      where y.Date < DateTime.Today
+                                      orderby y.Date descending
+                                      select y).Take(5); 
+                  
                     var TempRecent = new List<Models.AppModel>();
                     foreach (var item in listrecent)
                     {

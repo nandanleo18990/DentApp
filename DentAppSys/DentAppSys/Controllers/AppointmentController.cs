@@ -28,21 +28,17 @@ namespace DentAppSys.Controllers
                 using (var db = new MaindbModelDataContext())
                 {
                     var patient = db.Patients.FirstOrDefault(u => u.Email == (String)Session["UserEmail"]);
+                    
                     var app = new Appointment();
-                   // if (app.Date > DateTime.Now.Date)
-                    //{
-                        app.Date = (DateTime)User.Date;
+                  
+                        app.Date = User.Date;
                         app.Description = User.Description;
                         app.Status = "isPending";
                         app.PatientNo = patient.PatientNo;
                         app.AppNo = Guid.NewGuid().GetHashCode();
                         db.Appointments.InsertOnSubmit(app);
                         db.SubmitChanges();
-                    /* }
-                    else
-                    {
-                        ModelState.AddModelError("", "Please choose valid date!!!");
-                    }*/
+                     
                 }
             }
             else
@@ -50,7 +46,7 @@ namespace DentAppSys.Controllers
                 return RedirectToAction("Index", "User");
             }
       return RedirectToAction("Make", "Appointment");  }
-
+        //("Index", "Patient")
     }
 }
 
