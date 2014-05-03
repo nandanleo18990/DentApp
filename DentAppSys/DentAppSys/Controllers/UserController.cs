@@ -63,7 +63,6 @@ namespace DentAppSys.Controllers
                 {
                     ModelState.AddModelError("", "Data is incorrect !!!");
                 }
-
             }
             else
             {
@@ -82,9 +81,7 @@ namespace DentAppSys.Controllers
 
                     }
                     return RedirectToAction("Index", "Patient", TempUser);
-
-
-                }
+                 }
                 else
                 {
                     ModelState.AddModelError("", "Check your E-mail or Password then try again !!!");
@@ -112,9 +109,12 @@ namespace DentAppSys.Controllers
 
         public ActionResult Logout()
         {
+            Session.Clear();
             Session.Abandon();
-
-            return View("RegAndLogin");
+            Response.Cache.SetExpires(DateTime.UtcNow.AddMinutes(-1));
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.Cache.SetNoStore();  
+            return RedirectToAction("Index", "Home");
         }
 
     }

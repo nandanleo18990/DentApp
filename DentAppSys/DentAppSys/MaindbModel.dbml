@@ -1,17 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="dental" Class="MaindbModelDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=localhost;Initial Catalog=dental;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="dentalConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Appointment" Member="Appointments">
-    <Type Name="Appointment">
-      <Column Name="AppNo" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="PatientNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DrNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="Appointment_PatientFile" Member="PatientFiles" ThisKey="AppNo" OtherKey="AppNo" Type="PatientFile" />
-      <Association Name="Patient_Appointment" Member="Patient" ThisKey="PatientNo" OtherKey="PatientNo" Type="Patient" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Doctor" Member="Doctors">
     <Type Name="Doctor">
       <Column Name="DrNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
@@ -30,18 +18,6 @@
       <Column Name="Address" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="WorkingHours" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Holidays" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.PatientFile" Member="PatientFiles">
-    <Type Name="PatientFile">
-      <Column Name="AppNo" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="PatientNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Prescription" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="TreatmentDetails" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Bill" Type="System.Decimal" DbType="Money" CanBeNull="true" />
-      <Column Name="Status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="Appointment_PatientFile" Member="Appointment" ThisKey="AppNo" OtherKey="AppNo" Type="Appointment" IsForeignKey="true" />
-      <Association Name="Patient_PatientFile" Member="Patient" ThisKey="PatientNo" OtherKey="PatientNo" Type="Patient" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Patient" Member="Patients">
@@ -64,6 +40,31 @@
       <Column Name="Birthday" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Association Name="Patient_Appointment" Member="Appointments" ThisKey="PatientNo" OtherKey="PatientNo" Type="Appointment" />
       <Association Name="Patient_PatientFile" Member="PatientFiles" ThisKey="PatientNo" OtherKey="PatientNo" Type="PatientFile" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Appointment" Member="Appointments">
+    <Type Name="Appointment">
+      <Column Name="AppNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PatientNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DrNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DrDescription" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Appointment_PatientFile" Member="PatientFiles" ThisKey="AppNo" OtherKey="AppNo" Type="PatientFile" />
+      <Association Name="Patient_Appointment" Member="Patient" ThisKey="PatientNo" OtherKey="PatientNo" Type="Patient" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PatientFile" Member="PatientFiles">
+    <Type Name="PatientFile">
+      <Column Name="AppNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PatientNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Prescription" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TreatmentDetails" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Image" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Appointment_PatientFile" Member="Appointment" ThisKey="AppNo" OtherKey="AppNo" Type="Appointment" IsForeignKey="true" />
+      <Association Name="Patient_PatientFile" Member="Patient" ThisKey="PatientNo" OtherKey="PatientNo" Type="Patient" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

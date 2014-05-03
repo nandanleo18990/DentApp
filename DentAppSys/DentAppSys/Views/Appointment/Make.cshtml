@@ -20,12 +20,13 @@
             <div>
                 @Html.TextBoxFor(u => u.Date, htmlAttributes: new { id = "DatePicker" })
                 @Html.ValidationMessageFor(u => u.Date)
+               
             </div>
 
             <div>@Html.LabelFor(u => u.Description)</div>
             <div>
                 @Html.TextBoxFor(u => u.Description)
-                @Html.ValidationMessageFor(u => u.Description)
+                
             </div>
 
             <input type="submit" value="Submit" class="footer_btn" />

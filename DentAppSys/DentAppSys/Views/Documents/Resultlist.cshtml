@@ -1,0 +1,39 @@
+﻿@model IEnumerable<DentAppSys.Models.Resultdoc>
+@using System.Web.Helpers
+
+
+<script src="~/Content/bootstrap-3.1.1-dist/bootstrap.min.js"></script>
+<link href="~/Content/bootstrap-3.1.1-dist/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-3.1.1-dist/bootstrap-theme.min.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "Resultlist";
+}
+
+<h2>Resultlist</h2>
+
+@{
+    var Mygrid = new WebGrid(Model, selectionFieldName: "SelectedRow");
+}
+
+<div>
+
+    @Mygrid.GetHtml(
+    displayHeader: true,
+    alternatingRowStyle: "alt",
+    selectedRowStyle: "select",
+    mode: WebGridPagerModes.All,
+    tableStyle: "table table-striped table-hover",
+
+    columns: Mygrid.Columns
+    (
+    Mygrid.Column("Select", format: @<text>@Html.RadioButton("rbFile", "", false) </text>),
+    Mygrid.Column("Appointment ID", "Appointment ID",format: @<text>@item.AppID</text>),
+    Mygrid.Column("Status", "Status", format: @<text>@item.Status</text>)
+        )
+
+        )
+</div>
+
+
+

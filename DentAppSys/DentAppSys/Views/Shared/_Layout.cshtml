@@ -38,19 +38,23 @@
         <nav class="Nav-menu">
             <ul id="Menu" class="clearfix">
                 <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
-                <li><a href="#">About Us </a></li>
+                <li>@Html.ActionLink("About Us", "About", "Home")</li>
                 <li>@Html.ActionLink("Login&Register", "RegAndLogin", "User")</li>
                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
             </ul>
             <div id="pull" class="menu-b">&nbsp;</div>
             <div id="pull" class="menu-c"> <a class="Home" href="#"><img src="~/Content/images/logo.jpg" alt="" width="200" height="80" style="border:0;" /></a></div>
+            
 
 
         </nav>
     </header>
-    <div class="container">
 
-        
+   
+
+    <div class="Main-container">
+
+
 
         @Scripts.Render("~/bundles/jquery")
         @RenderSection("scripts", required: false)
