@@ -14,7 +14,7 @@ namespace DentAppSys.Controllers
 
         public ActionResult Index()
         {
-            if (Session["UserEmail"] == null)
+            if (Session["UserEmail"] != null)
             {
                 return View();
             }
@@ -30,7 +30,7 @@ namespace DentAppSys.Controllers
         }
         public ActionResult Resultlist(Models.GetDoc doc)
         {
-            Session["UserEmail"] = "holehole@mail.com"; //for Test
+            
             if (doc.StartDate == DateTime.MinValue && doc.EndDate == DateTime.MinValue && doc.AppID == null)
             {
                 using (MaindbModelDataContext db = new MaindbModelDataContext())
@@ -47,9 +47,12 @@ namespace DentAppSys.Controllers
                         Tempdoc.AppID = item.AppNo;
                         Tempdoc.PatientID = item.PatientNo;
                         Tempdoc.Status = item.Status;
+                        //var base64 = Convert.ToBase64String(item.Image.ToArray());
+                        Tempdoc.Image = item.Image.ToArray();
                         TempDoCs.Add(Tempdoc);
 
                     }
+                    
                     return View(TempDoCs);
                 }
             }
