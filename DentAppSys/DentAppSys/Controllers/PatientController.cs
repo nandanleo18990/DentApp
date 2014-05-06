@@ -55,7 +55,7 @@ namespace DentAppSys.Controllers
                     var p = db.Patients.FirstOrDefault(u => u.Email == (String)Session["UserEmail"]);
                     var listrecent = (from y in db.Appointments
                                       where y.PatientNo == p.PatientNo
-                                      where y.Date < DateTime.Today
+                                      where y.Status == "isConfirmed"
                                       orderby y.Date descending
                                       select y).Take(5);
 
