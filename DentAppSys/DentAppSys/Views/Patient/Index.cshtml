@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DentAppSys.Models.AppModel>
+﻿@model DentAppSys.Models.RecentIncoming
 @using System.Web.Helpers
 
 @{
@@ -56,6 +56,7 @@ else
 
         <nav class="p-menu">
             <ul id="Menu" class="clearfix">
+            <li>@Html.ActionLink("Dashboard", "Index", "Patient")</li>
                 <li>@Html.ActionLink("Appointment", "Make", "Appointment")</li>
                 <li>@Html.ActionLink("History", "", "")</li>
                 <li>@Html.ActionLink("Documents", "Index", "Documents")</li>
@@ -70,29 +71,48 @@ else
         <div id="dashboard_left">
             <h1> Recent Appointments</h1>
    @{
-    var Mygrid = new WebGrid(Model, selectionFieldName: "SelectedRow");
+            var MyRecentGrid = new WebGrid(Model.RecentAppts, selectionFieldName: "SelectedRow");
 }
 
-@Mygrid.GetHtml(
+        @MyRecentGrid.GetHtml(
     displayHeader: true,
     
     mode: WebGridPagerModes.FirstLast,
 
-columns: Mygrid.Columns
+columns: MyRecentGrid.Columns
 (
 
-    Mygrid.Column("Appointment No", "Appointment No",format: @<text>@item.AppNo</text>),
-    Mygrid.Column("Patient No", "Patient No", format: @<text>@item.PatientNo</text>) ,
-    Mygrid.Column("Description", "Description", format: @<text>@item.Description</text>),
-    Mygrid.Column("Date", "Date", format: @<text>@item.Date.ToString("yyyy/MM/dd")</text>),
-    Mygrid.Column("Status", "Status", format: @<text>@item.Status</text>)
+    MyRecentGrid.Column("Appointment No", "Appointment No", format: @<text>@item.AppNo</text>),
+    MyRecentGrid.Column("Patient No", "Patient No", format: @<text>@item.PatientNo</text>) ,
+    MyRecentGrid.Column("Description", "Description", format: @<text>@item.Description</text>),
+    MyRecentGrid.Column("Date", "Date", format: @<text>@item.Date.ToString("yyyy/MM/dd")</text>),
+    MyRecentGrid.Column("Status", "Status", format: @<text>@item.Status</text>)
      
 ))
 </div>
 
 <div id="dashboard_right">
-<br/>
+        <br />
 <h1>Incoming Appointments</h1>
+        @{
+            var MyIncomingGrid = new WebGrid(Model.IncomingAppts, selectionFieldName: "SelectedRow");
+        }
+
+        @MyIncomingGrid.GetHtml(
+    displayHeader: true,
+
+    mode: WebGridPagerModes.FirstLast,
+
+columns: MyIncomingGrid.Columns
+(
+
+              MyIncomingGrid.Column("Appointment No", "Appointment No", format: @<text>@item.AppNo</text>),
+              MyIncomingGrid.Column("Patient No", "Patient No", format: @<text>@item.PatientNo</text>) ,
+              MyIncomingGrid.Column("Description", "Description", format: @<text>@item.Description</text>),
+              MyIncomingGrid.Column("Date", "Date", format: @<text>@item.Date.ToString("yyyy/MM/dd")</text>),
+              MyIncomingGrid.Column("Status", "Status", format: @<text>@item.Status</text>)
+
+                                                    ))
 
    
 </div>

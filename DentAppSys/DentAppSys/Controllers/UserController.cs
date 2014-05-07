@@ -60,26 +60,39 @@ namespace DentAppSys.Controllers
             {
                 if (ModelState.IsValid && IsValid(User.LoginModel.Email, User.LoginModel.Password))
                 {
-                    var TempUser = new Models.RegisterModel();
-                    Session["UserEmail"] = User.LoginModel.Email;
-                    using (var db = new MaindbModelDataContext())
+
+                    if (User.LoginModel.Email.Contains("@dentappsys.com"))
                     {
-                        var person = db.Patients.FirstOrDefault(u => u.Email == User.LoginModel.Email);
-                        TempUser.Firstname = person.Name;
-                        TempUser.Lastname = person.Surname;
-                        //TempUser.RegisterModel.Birthday = (DateTime)person.BirthDate;
-                        TempUser.Email = person.Email;
+                        var TempUser = new Models.RegisterModel();
+                        Session["UserEmail"] = User.LoginModel.Email;
+                        using (var db = new MaindbModelDataContext())
+                        {
+                            var person = db.Doctors.FirstOrDefault(u => u.Email == User.LoginModel.Email);
+                            TempUser.Firstname = person.Name;
+                            TempUser.Lastname = person.Surname;
+                            //TempUser.RegisterModel.Birthday = (DateTime)person.BirthDate;
+                            TempUser.Email = person.Email;
 
 
-                    }
-                    if (TempUser.Email != "admin@dentappsys.com")
-                    {
-                        return RedirectToAction("Index", "Patient", TempUser);
+                        }
+                        return RedirectToAction("Index", "Doctor", TempUser);
 
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Doctor", TempUser);
+                        var TempUser = new Models.RegisterModel();
+                        Session["UserEmail"] = User.LoginModel.Email;
+                        using (var db = new MaindbModelDataContext())
+                        {
+                            var person = db.Patients.FirstOrDefault(u => u.Email == User.LoginModel.Email);
+                            TempUser.Firstname = person.Name;
+                            TempUser.Lastname = person.Surname;
+                            //TempUser.RegisterModel.Birthday = (DateTime)person.BirthDate;
+                            TempUser.Email = person.Email;
+
+
+                        }
+                        return RedirectToAction("Index", "Patient", TempUser);
                     }
                 }
                 else
@@ -95,6 +108,22 @@ namespace DentAppSys.Controllers
             bool isvalid = false;
             using (var db = new MaindbModelDataContext())
             {
+                if (email.Contains("@dentappsys.com"))
+                {
+                    var Doctor = db.Doctors.FirstOrDefault(u => u.Email == email);
+                    if (Doctor != null)
+                    {
+                        if (BCrypt.Net.BCrypt.Verify(password, Doctor.Password))
+                        {
+                            isvalid = true;
+                            return isvalid;
+                        }
+                    }
+                    else
+                    {
+                        return isvalid;
+                    }
+                }
                 var Person = db.Patients.FirstOrDefault(u => u.Email == email);
                 if (Person != null)
                 {

@@ -6,39 +6,62 @@
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken();
-    @Html.ValidationSummary(true, "");
-    <div>
+<section class="Patient-Menu">
 
-        <fieldset>
-            <legend>Get an Appointment</legend>
+    <nav class="p-menu">
+        <ul id="Menu" class="clearfix">
+            <li>@Html.ActionLink("Dashboard", "Index", "Patient")</li>
+            <li>@Html.ActionLink("Appointment", "Make", "Appointment")</li>
+            <li>@Html.ActionLink("History", "", "")</li>
+            <li>@Html.ActionLink("Documents", "Index", "Documents")</li>
+        </ul>
+
+    </nav>
+
+</section>
+<section>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken();
+        @Html.ValidationSummary(true, "");
+        <div>
+
+            <fieldset>
+                <legend>Get an Appointment</legend>
 
 
-            <div>@Html.LabelFor(u => u.Date)</div>
-            <div>
-                @Html.TextBoxFor(u => u.Date, htmlAttributes: new { id = "DatePicker" })
-                @Html.ValidationMessageFor(u => u.Date)
-               
-            </div>
+                <div>@Html.LabelFor(u => u.Date)</div>
+                <div>
+                    @Html.TextBoxFor(u => u.Date, htmlAttributes: new { id = "DatePicker", @readonly = "true" })
+                    @Html.ValidationMessageFor(u => u.Date)
 
-            <div>@Html.LabelFor(u => u.Description)</div>
-            <div>
-                @Html.TextBoxFor(u => u.Description)
-                
-            </div>
+                </div>
 
-            <input type="submit" value="Submit" class="footer_btn" />
+                <div>@Html.LabelFor(u => u.Description)</div>
+                <div>
+                    @Html.TextBoxFor(u => u.Description)
 
-        </fieldset>
+                </div>
 
-    </div>
-}
+                <input type="submit" value="Submit" class="footer_btn" />
 
+            </fieldset>
+
+        </div>
+    }
+</section>
 
 <script type="text/javascript">
     $(function () {
-        $("#DatePicker").datepicker({ minDate: 0, dateFormat: 'yy-mm-dd' });
+        $('#DatePicker').datepicker({
+            beforeShowDay: function (dt) {
+                var bDisable = arrayDisabledDates[dt];
+                if (bDisable)
+                    return [false, '', ''];
+                else
+                    return [true, '', ''];
+            }
+        });
     });
     </script>
+
