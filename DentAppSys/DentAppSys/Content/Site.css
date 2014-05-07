@@ -1524,7 +1524,7 @@ footer {
     }
 
     .footer_btn {
-        width: 70px;
+        /*width: 70px;*/
         padding: 7px;
         margin-top: 10px;
         margin-left: 10px;
@@ -1992,7 +1992,7 @@ input.textfieldMaxCharsState, .textfieldMaxCharsState input {
     padding-bottom: 20px;
     padding-top: 20px;
     width: 100%;
-    background-color: gray;
+    background-color: #555;
     color: #fff;
 }
 
@@ -2010,7 +2010,7 @@ input.textfieldMaxCharsState, .textfieldMaxCharsState input {
         padding-bottom: 10px;
     }
 
-.Patient-Menu {
+.User-Menu {
     display: inline-block;
     width: 100%;
     background-color: #000;
@@ -2062,7 +2062,7 @@ input.textfieldMaxCharsState, .textfieldMaxCharsState input {
 
 @media only screen and (max-width : 383px) {
 
-    .Patient-Menu {
+    .User-Menu {
         height: 160px;
     }
 }
@@ -2096,8 +2096,14 @@ input.textfieldMaxCharsState, .textfieldMaxCharsState input {
 /* Start Document-Page _____________________________________________________________________________________*/
 
 .Doc-Info {
-    height: 300px;
-    background-color: #CCC;
+    height: 200px;
+    background-color: #555;
+    text-align: center;
+    padding-top: 75px;
+}
+
+.Doc-Info-text {
+    color: #fff;
 }
 
 .Doc-Op {
@@ -2139,169 +2145,223 @@ input.textfieldMaxCharsState, .textfieldMaxCharsState input {
         padding-top: 10px;
     }
 
-.Show-Doc-Item{
-    height:300px;
-    background-color:#a4a4a4;
+.Show-Doc-Item {
+    height: auto;
+    background-color: #a4a4a4;
 }
-.List-Of-Result{
+
+.List-Of-Result {
     padding-bottom: 20px;
 }
+
+.Empty-Doc {
+    height: 200px;
+    background-color: #a4a4a4;
+    text-align: center;
+    padding-top: 75px;
+}
+
+.Doc-Item {
+    padding: 20px;
+}
+
+
 
 /* End Document-Page _____________________________________________________________________________________*/
 
 
 /* Start About-Page _____________________________________________________________________________________*/
 
- 
-#object2 {
-	background-color: #000000;
 
-	visibility: hidden;
+#object2 {
+    background-color: #000000;
+    visibility: hidden;
 }
 
 #object4 {
-    background-color : #fbfbfb;
-	visibility: hidden;
+    background-color: #fbfbfb;
+    visibility: hidden;
 }
 
-.fadeIn{
-	animation-name: fadeIn;
-	-webkit-animation-name: fadeIn;	
-
-	animation-duration: 1.5s;	
-	-webkit-animation-duration: 1.5s;
-
-	animation-timing-function: ease-in-out;	
-	-webkit-animation-timing-function: ease-in-out;		
-
-	visibility: visible !important;	
+.fadeIn {
+    animation-name: fadeIn;
+    -webkit-animation-name: fadeIn;
+    animation-duration: 1.5s;
+    -webkit-animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+    visibility: visible !important;
 }
 
 @keyframes fadeIn {
-	0% {
-		transform: scale(0);
-		opacity: 0.0;		
-	}
-	60% {
-		transform: scale(1.1);	
-	}
-	80% {
-		transform: scale(0.9);
-		opacity: 1;	
-	}	
-	100% {
-		transform: scale(1);
-		opacity: 1;	
-	}		
+    0% {
+        transform: scale(0);
+        opacity: 0.0;
+    }
+
+    60% {
+        transform: scale(1.1);
+    }
+
+    80% {
+        transform: scale(0.9);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 @-webkit-keyframes fadeIn {
-	0% {
-		-webkit-transform: scale(0);
-		opacity: 0.0;		
-	}
-	60% {
-		-webkit-transform: scale(1.1);
-	}
-	80% {
-		-webkit-transform: scale(0.9);
-		opacity: 1;	
-	}	
-	100% {
-		-webkit-transform: scale(1);
-		opacity: 1;	
-	}		
+    0% {
+        -webkit-transform: scale(0);
+        opacity: 0.0;
+    }
+
+    60% {
+        -webkit-transform: scale(1.1);
+    }
+
+    80% {
+        -webkit-transform: scale(0.9);
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+        opacity: 1;
+    }
 }
 
 
-.slideExpandUp{
-	animation-name: slideExpandUp;
-	-webkit-animation-name: slideExpandUp;	
-
-	animation-duration: 1.6s;	
-	-webkit-animation-duration: 1.6s;
-
-	animation-timing-function: ease-out;	
-	-webkit-animation-timing-function: ease -out;
-
-	visibility: visible !important;	
+.slideExpandUp {
+    animation-name: slideExpandUp;
+    -webkit-animation-name: slideExpandUp;
+    animation-duration: 1.6s;
+    -webkit-animation-duration: 1.6s;
+    animation-timing-function: ease-out;
+    -webkit-animation-timing-function: ease -out;
+    visibility: visible !important;
 }
 
 @keyframes slideExpandUp {
-	0% {
-		transform: translateY(100%) scaleX(0.5);
-	}
-	30%{
-		transform: translateY(-8%) scaleX(0.5);
-	}	
-	40%{
-		transform: translateY(2%) scaleX(0.5);
-	}
-	50%{
-		transform: translateY(0%) scaleX(1.1);
-	}
-	60%{
-		transform: translateY(0%) scaleX(0.9);		
-	}
-	70% {
-		transform: translateY(0%) scaleX(1.05);
-	}			
-	80%{
-		transform: translateY(0%) scaleX(0.95);		
-	}
-	90% {
-		transform: translateY(0%) scaleX(1.02);
-	}	
-	100%{
-		transform: translateY(0%) scaleX(1);		
-	}
+    0% {
+        transform: translateY(100%) scaleX(0.5);
+    }
+
+    30% {
+        transform: translateY(-8%) scaleX(0.5);
+    }
+
+    40% {
+        transform: translateY(2%) scaleX(0.5);
+    }
+
+    50% {
+        transform: translateY(0%) scaleX(1.1);
+    }
+
+    60% {
+        transform: translateY(0%) scaleX(0.9);
+    }
+
+    70% {
+        transform: translateY(0%) scaleX(1.05);
+    }
+
+    80% {
+        transform: translateY(0%) scaleX(0.95);
+    }
+
+    90% {
+        transform: translateY(0%) scaleX(1.02);
+    }
+
+    100% {
+        transform: translateY(0%) scaleX(1);
+    }
 }
 
 @-webkit-keyframes slideExpandUp {
-	0% {
-		-webkit-transform: translateY(100%) scaleX(0.5);
-	}
-	30%{
-		-webkit-transform: translateY(-8%) scaleX(0.5);
-	}	
-	40%{
-		-webkit-transform: translateY(2%) scaleX(0.5);
-	}
-	50%{
-		-webkit-transform: translateY(0%) scaleX(1.1);
-	}
-	60%{
-		-webkit-transform: translateY(0%) scaleX(0.9);		
-	}
-	70% {
-		-webkit-transform: translateY(0%) scaleX(1.05);
-	}			
-	80%{
-		-webkit-transform: translateY(0%) scaleX(0.95);		
-	}
-	90% {
-		-webkit-transform: translateY(0%) scaleX(1.02);
-	}	
-	100%{
-		-webkit-transform: translateY(0%) scaleX(1);		
-	}
+    0% {
+        -webkit-transform: translateY(100%) scaleX(0.5);
+    }
+
+    30% {
+        -webkit-transform: translateY(-8%) scaleX(0.5);
+    }
+
+    40% {
+        -webkit-transform: translateY(2%) scaleX(0.5);
+    }
+
+    50% {
+        -webkit-transform: translateY(0%) scaleX(1.1);
+    }
+
+    60% {
+        -webkit-transform: translateY(0%) scaleX(0.9);
+    }
+
+    70% {
+        -webkit-transform: translateY(0%) scaleX(1.05);
+    }
+
+    80% {
+        -webkit-transform: translateY(0%) scaleX(0.95);
+    }
+
+    90% {
+        -webkit-transform: translateY(0%) scaleX(1.02);
+    }
+
+    100% {
+        -webkit-transform: translateY(0%) scaleX(1);
+    }
 }
 
 
 
 
-.erb-image-wrapper{
-    max-width:90%;
-    height:auto;
+.erb-image-wrapper {
+    max-width: 90%;
+    height: auto;
     position: relative;
-    display:block;
-    margin:0 auto;
+    display: block;
+    margin: 0 auto;
 }
-.erb-image-wrapper img{
-    width:100% !important;
-    height:100% !important;
-    display:block;
-}
+
+    .erb-image-wrapper img {
+        width: 100% !important;
+        height: 100% !important;
+        display: block;
+    }
 
 
 /* End About-Page _____________________________________________________________________________________*/
+
+
+/* Star Doctor-Page _____________________________________________________________________________________*/
+
+.Doctor-Panel {
+    height: 200px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    width: 100%;
+    background-color: #555;
+    color: #fff;
+}
+
+
+.Doctor-Panel-Content {
+    
+    padding-bottom: 20px;
+    padding-top: 20px;
+    width: 100%;
+    background-color: #555;
+    color: #fff;
+}
+
+/* End Doctor-Page _____________________________________________________________________________________*/

@@ -26,7 +26,7 @@ namespace DentAppSys.Controllers
         [HttpPost]
         public ActionResult Index(Models.GetDoc doc)
         {
-            return RedirectToAction("Resultlist", doc);  
+            return RedirectToAction("Resultlist", doc);
         }
         public ActionResult Resultlist(Models.GetDoc doc)
         {
@@ -47,6 +47,8 @@ namespace DentAppSys.Controllers
                         Tempdoc.AppID = item.AppNo;
                         Tempdoc.PatientID = item.PatientNo;
                         Tempdoc.Status = item.Status;
+                        Tempdoc.Prescription = item.Prescription;
+                        Tempdoc.TreatmentDis = item.TreatmentDetails;
                         //var base64 = Convert.ToBase64String(item.Image.ToArray());
                         Tempdoc.Image = item.Image.ToArray();
                         TempDoCs.Add(Tempdoc);
@@ -77,6 +79,9 @@ namespace DentAppSys.Controllers
                         Tempdoc.AppID = listresult.AppNo;
                         Tempdoc.PatientID = listresult.PatientNo;
                         Tempdoc.Status = listresult.Status;
+                        Tempdoc.Prescription = listresult.Prescription;
+                        Tempdoc.TreatmentDis = listresult.TreatmentDetails;
+                        Tempdoc.Image = listresult.Image.ToArray();
                         TempDoCs.Add(Tempdoc);
                         //foreach (var item in listresult)
                         //{
@@ -92,9 +97,33 @@ namespace DentAppSys.Controllers
                 }
                 else
                 {
-                    //var Docs = new Models.Resultdoc();
-                    //return RedirectToAction("Resultlist", Docs);
-                    return View();
+                    using (MaindbModelDataContext db = new MaindbModelDataContext())
+                    {
+                        var patient = db.Patients.FirstOrDefault(u => u.Email == (string)Session["UserEmail"]);
+                        var listresult = from App in db.Appointments
+                                         where App.Date >= doc.StartDate && App.Date <= doc.EndDate && App.PatientNo == patient.PatientNo
+                                         join Doc in db.PatientFiles on App.AppNo equals Doc.AppNo into ResGroup
+                                         from res in ResGroup
+                                         select new { AppNo = res.AppNo, PatientNo = res.PatientNo, Status = res.Status, Prescription = res.Prescription , TreatmentDetails = res.TreatmentDetails , Image = res.Image};
+                                         
+                        var TempDoCs = new List<Models.Resultdoc>();
+                        foreach (var item in listresult)
+                        {
+                            var Tempdoc = new Models.Resultdoc();
+                            Tempdoc.AppID = item.AppNo;
+                            Tempdoc.PatientID = item.PatientNo;
+                            Tempdoc.Status = item.Status;
+                            Tempdoc.Prescription = item.Prescription;
+                            Tempdoc.TreatmentDis = item.TreatmentDetails;
+                            //var base64 = Convert.ToBase64String(item.Image.ToArray());
+                            Tempdoc.Image = item.Image.ToArray();
+                            TempDoCs.Add(Tempdoc);
+
+                        }
+
+                        
+                        return View(TempDoCs);
+                    }
                 }
             }
         }

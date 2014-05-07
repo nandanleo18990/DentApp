@@ -3,8 +3,15 @@
     ViewBag.Title = "Index";
 }
 
-<section class="Doc-Info"></section>
-<section class="Patient-Menu">
+<link type="text/css" rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+<section class="Doc-Info">
+    <article class="Doc-Info-text"><strong>Here you can show some information about this page !!!</strong></article>
+
+</section>
+<section class="User-Menu">
 
     <nav class="p-menu">
         <ul id="Menu" class="clearfix">
@@ -45,13 +52,13 @@
                 <div>
                     @{ Html.EnableClientValidation(false); }
                     @Html.LabelFor(u => u.StartDate)
-                    @Html.PasswordFor(u => u.StartDate)
+                    @Html.TextBoxFor(u => u.StartDate, htmlAttributes: new { id = "from" })
                     @Html.ValidationMessageFor(u => u.StartDate)
                 </div>
                 <div>
                     @{ Html.EnableClientValidation(false); }
                     @Html.LabelFor(u => u.EndDate)
-                    @Html.PasswordFor(u => u.EndDate)
+                    @Html.TextBoxFor(u => u.EndDate, htmlAttributes: new { id = "to" })
                     @Html.ValidationMessageFor(u => u.EndDate)
                 </div>
                 <input type="submit" value="Search" class="footer_btn" />
@@ -61,3 +68,23 @@
     }
 </section>
 
+<script type="text/javascript">
+    $(function () {
+        $("#from").datepicker({
+            defaultDate: "-1w",
+            changeMonth: true,
+            numberOfMonths: 2,
+            onClose: function (selectedDate) {
+                $("#to").datepicker("option", "minDate", selectedDate);
+            }
+        });
+        $("#to").datepicker({
+            defaultDate: "+1w",
+            changeMonth: true,
+            numberOfMonths: 2,
+            onClose: function (selectedDate) {
+                $("#from").datepicker("option", "maxDate", selectedDate);
+            }
+        });
+    });
+</script>

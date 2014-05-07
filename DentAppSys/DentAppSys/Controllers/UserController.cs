@@ -11,14 +11,6 @@ namespace DentAppSys.Controllers
 {
     public class UserController : Controller
     {
-        //
-        // GET: /User/
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-
         public ActionResult RegAndLogin()
         {
             return View();
@@ -80,8 +72,16 @@ namespace DentAppSys.Controllers
 
 
                     }
-                    return RedirectToAction("Index", "Patient", TempUser);
-                 }
+                    if (TempUser.Email != "admin@dentappsys.com")
+                    {
+                        return RedirectToAction("Index", "Patient", TempUser);
+
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Doctor", TempUser);
+                    }
+                }
                 else
                 {
                     ModelState.AddModelError("", "Check your E-mail or Password then try again !!!");
@@ -113,7 +113,7 @@ namespace DentAppSys.Controllers
             Session.Abandon();
             Response.Cache.SetExpires(DateTime.UtcNow.AddMinutes(-1));
             Response.Cache.SetCacheability(HttpCacheability.NoCache);
-            Response.Cache.SetNoStore();  
+            Response.Cache.SetNoStore();
             return RedirectToAction("Index", "Home");
         }
 

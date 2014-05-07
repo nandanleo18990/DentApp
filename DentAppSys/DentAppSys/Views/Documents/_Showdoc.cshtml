@@ -1,0 +1,26 @@
+﻿@model DentAppSys.Models.Resultdoc
+
+<section class="Doc-Item">
+    @Html.LabelFor(u => u.AppID)
+    @Model.AppID
+    <br />
+    @Html.LabelFor(u => u.PatientID)
+    @Model.PatientID
+    <br />
+    @Html.LabelFor(u => u.Status)
+    @Model.Status
+    <br />
+    @Html.LabelFor(u => u.Prescription)
+    @Model.Prescription
+    <br />
+    @Html.LabelFor(u => u.TreatmentDis)
+    @Model.TreatmentDis
+    <br />
+    @{
+        var base64 = Convert.ToBase64String(Model.Image);
+        var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+    }
+
+    <img src="@imgSrc" />
+
+</section>

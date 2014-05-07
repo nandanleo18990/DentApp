@@ -134,6 +134,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\DocumentsController.cs" />
     <Compile Include="Controllers\AppointmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -296,7 +297,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\RegAndLogin.cshtml" />
     <Content Include="Views\Patient\Index.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
@@ -304,6 +304,8 @@
     <Content Include="Views\Documents\Index.cshtml" />
     <Content Include="Views\Documents\Resultlist.cshtml" />
     <Content Include="Views\Documents\_Docitem.cshtml" />
+    <Content Include="Views\Documents\_Showdoc.cshtml" />
+    <Content Include="Views\Doctor\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
