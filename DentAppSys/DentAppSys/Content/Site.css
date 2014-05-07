@@ -2014,7 +2014,9 @@ input.textfieldMaxCharsState, .textfieldMaxCharsState input {
     text-align: center;
     margin: 0 20% 0 20%;
 }
-
+.Validation{
+    text-align:center
+}
 .User-Menu {
     display: inline-block;
     width: 100%;
