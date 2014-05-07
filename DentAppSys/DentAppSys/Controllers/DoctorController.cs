@@ -13,8 +13,33 @@ namespace DentAppSys.Controllers
 
         public ActionResult Index()
         {
-            return View();
-        }
+            if (Session["UserEmail"] != null)
+            {
+                string Email = (string)Session["UserEmail"];
 
+                using (var db = new MaindbModelDataContext())
+                {
+                    var Doctor = db.Doctors.FirstOrDefault(u => u.Email == (String)Session["UserEmail"]);
+                    if (Doctor != null)
+                    {
+                        ViewBag.FirstName = Doctor.Name;
+                        ViewBag.LastName = Doctor.Surname;
+                        ViewBag.BirthDate = Doctor.BirthDate;
+                        ViewBag.Email = Doctor.Email;
+
+                        return View();
+                    }
+                    else
+                    {
+                        return RedirectToAction("RegAndLogin", "User");
+                    }
+                }
+            }
+            else
+            {
+                return RedirectToAction("RegAndLogin", "User");
+            }
+
+        }
     }
 }

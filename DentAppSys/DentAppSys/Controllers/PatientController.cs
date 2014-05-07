@@ -19,16 +19,22 @@ namespace DentAppSys.Controllers
                 using (var db = new MaindbModelDataContext())
                 {
                     var patient = db.Patients.FirstOrDefault(u => u.Email == (String)Session["UserEmail"]);
-                    ViewBag.FirstName = patient.Name;
-                    ViewBag.LastName = patient.Surname;
-                    ViewBag.BirthDate = patient.Birthday;
-                    ViewBag.Email = patient.Email;
-
+                    if (patient != null)
+                    {
+                        ViewBag.FirstName = patient.Name;
+                        ViewBag.LastName = patient.Surname;
+                        ViewBag.BirthDate = patient.Birthday;
+                        ViewBag.Email = patient.Email;
+                    }
+                    else
+                    {
+                        return RedirectToAction("RegAndLogin", "User");
+                    }
 
                 }
 
 
-            
+
                 using (var db = new MaindbModelDataContext())
                 {
                     var patient = db.Patients.FirstOrDefault(u => u.Email == (String)Session["UserEmail"]);
@@ -74,7 +80,7 @@ namespace DentAppSys.Controllers
                     return View(new DentAppSys.Models.RecentIncoming() { RecentAppts = TempRecent, IncomingAppts = TempIncoming });
                 }
             }
-                else
+            else
             {
                 return RedirectToAction("RegAndLogin", "User");
             }

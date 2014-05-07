@@ -2010,6 +2010,11 @@ input.textfieldMaxCharsState, .textfieldMaxCharsState input {
         padding-bottom: 10px;
     }
 
+.Form-Area {
+    text-align: center;
+    margin: 0 20% 0 20%;
+}
+
 .User-Menu {
     display: inline-block;
     width: 100%;
@@ -2356,7 +2361,6 @@ input.textfieldMaxCharsState, .textfieldMaxCharsState input {
 
 
 .Doctor-Panel-Content {
-    
     padding-bottom: 20px;
     padding-top: 20px;
     width: 100%;
