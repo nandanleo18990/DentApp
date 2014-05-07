@@ -48,6 +48,7 @@ Mygrid.Column("Select", header: null, format: @<text>@item.GetSelectLink("Select
 
     <nav class="p-menu">
         <ul id="Menu" class="clearfix">
+            <li>@Html.ActionLink("Dashboard", "Index", "Patient")</li>
             <li>@Html.ActionLink("Appointment", "Make", "Appointment")</li>
             <li>@Html.ActionLink("History", "", "")</li>
             <li>@Html.ActionLink("Documents", "Index", "Documents")</li>

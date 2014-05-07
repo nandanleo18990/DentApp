@@ -304,6 +304,7 @@
     <Content Include="Views\Documents\Index.cshtml" />
     <Content Include="Views\Documents\Resultlist.cshtml" />
     <Content Include="Views\Documents\_Docitem.cshtml" />
+    <Content Include="Views\Doctor\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
