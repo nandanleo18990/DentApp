@@ -95,7 +95,7 @@ namespace DentAppSys.Controllers
             bool isvalid = false;
             using (var db = new MaindbModelDataContext())
             {
-                var Person = db.Patients.First(u => u.Email == email);
+                var Person = db.Patients.FirstOrDefault(u => u.Email == email);
                 if (Person != null)
                 {
                     if (BCrypt.Net.BCrypt.Verify(password, Person.Password))
