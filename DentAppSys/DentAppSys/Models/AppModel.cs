@@ -32,7 +32,5 @@ namespace DentAppSys.Models
         public string Description { get; set; }
     }
 
-   
-
   
 }

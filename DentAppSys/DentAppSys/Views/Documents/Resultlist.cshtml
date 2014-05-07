@@ -16,7 +16,13 @@
     var Mygrid = new WebGrid(Model, selectionFieldName: "SelectedRow");
 }
 
-<div>
+@* Testing Images !!*@
+@*@foreach (var u in Model)
+{
+    <img src="@u.Image" width="100" height="100" />
+}*@
+
+<div class="List-Of-Result">
 
     @Mygrid.GetHtml(
     displayHeader: true,
@@ -27,13 +33,27 @@
 
     columns: Mygrid.Columns
     (
-    Mygrid.Column("Select", format: @<text>@Html.RadioButton("rbFile", "", false) </text>),
+    @*Mygrid.Column("Select", format: @<text>@Html.RadioButton("rbFile", "", false) </text>),*@
+    Mygrid.Column("Select", header: null, format: @<text>@item.GetSelectLink("Select")</text>),           
     Mygrid.Column("Appointment ID", "Appointment ID",format: @<text>@item.AppID</text>),
-    Mygrid.Column("Status", "Status", format: @<text>@item.Status</text>)
-        )
+    Mygrid.Column("Status", "Status", format: @<text>@item.Status</text>),
+    Mygrid.Column("Image", "Image", format: @<text><img src="@item.Image" /></text>)  @* :D !!!!!!!! *@
 
-        )
+            )
+
+            )
+    @*<input type="submit" value="Show" class="footer_btn" />*@
 </div>
+
+<section class="Show-Doc-Item">
+
+@if (Mygrid.HasSelection)
+{
+    @Html.Partial("_Docitem", new{ Doc =  Mygrid.SelectedRow})
+}
+    
+   
+</section>
 
 
 

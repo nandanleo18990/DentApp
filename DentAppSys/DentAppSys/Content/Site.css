@@ -2138,7 +2138,16 @@ input.textfieldMaxCharsState, .textfieldMaxCharsState input {
     .Doc-Op form fieldset {
         padding-top: 10px;
     }
-/* Start Document-Page _____________________________________________________________________________________*/
+
+.Show-Doc-Item{
+    height:300px;
+    background-color:#a4a4a4;
+}
+.List-Of-Result{
+    padding-bottom: 20px;
+}
+
+/* End Document-Page _____________________________________________________________________________________*/
 
 
 /* Start About-Page _____________________________________________________________________________________*/
