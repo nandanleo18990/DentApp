@@ -63,10 +63,10 @@ namespace DentAppSys.Controllers
 
                     if (User.LoginModel.Email.Contains("@dentappsys.com"))
                     {
-                        var TempUser = new Models.RegisterModel();
-                        Session["UserEmail"] = User.LoginModel.Email;
-                        using (var db = new MaindbModelDataContext())
-                        {
+                    var TempUser = new Models.RegisterModel();
+                    Session["UserEmail"] = User.LoginModel.Email;
+                    using (var db = new MaindbModelDataContext())
+                    {
                             var person = db.Doctors.FirstOrDefault(u => u.Email == User.LoginModel.Email);
                             TempUser.Firstname = person.Name;
                             TempUser.Lastname = person.Surname;
@@ -84,16 +84,16 @@ namespace DentAppSys.Controllers
                         Session["UserEmail"] = User.LoginModel.Email;
                         using (var db = new MaindbModelDataContext())
                         {
-                            var person = db.Patients.FirstOrDefault(u => u.Email == User.LoginModel.Email);
-                            TempUser.Firstname = person.Name;
-                            TempUser.Lastname = person.Surname;
-                            //TempUser.RegisterModel.Birthday = (DateTime)person.BirthDate;
-                            TempUser.Email = person.Email;
+                        var person = db.Patients.FirstOrDefault(u => u.Email == User.LoginModel.Email);
+                        TempUser.Firstname = person.Name;
+                        TempUser.Lastname = person.Surname;
+                        //TempUser.RegisterModel.Birthday = (DateTime)person.BirthDate;
+                        TempUser.Email = person.Email;
 
 
-                        }
-                        return RedirectToAction("Index", "Patient", TempUser);
                     }
+                    return RedirectToAction("Index", "Patient", TempUser);
+                 }
                 }
                 else
                 {
@@ -142,7 +142,7 @@ namespace DentAppSys.Controllers
             Session.Abandon();
             Response.Cache.SetExpires(DateTime.UtcNow.AddMinutes(-1));
             Response.Cache.SetCacheability(HttpCacheability.NoCache);
-            Response.Cache.SetNoStore();
+            Response.Cache.SetNoStore();  
             return RedirectToAction("Index", "Home");
         }
 

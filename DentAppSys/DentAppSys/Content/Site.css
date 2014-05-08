@@ -20,7 +20,7 @@ fieldset {
 }
 
 legend {
-    font-size: 1.2em;
+    font-size: 1.4em;
     font-weight: bold;
 }
 
@@ -1989,11 +1989,19 @@ input.textfieldMaxCharsState, .textfieldMaxCharsState input {
 /* Start Patient-Page _____________________________________________________________________________________*/
 
 .Patient-Info {
-    padding-bottom: 20px;
-    padding-top: 20px;
-    width: 100%;
-    background-color: #555;
-    color: #fff;
+   
+    height: 300px;
+    background-color: #CCC;
+
+}
+
+#incomingrecent {
+    
+    width: 50%;
+    color: #ffffff;
+    padding-right: 5%;
+    padding-left: 5%;
+    height: auto;
 }
 
 .Info-title {
@@ -2096,7 +2104,17 @@ input.textfieldMaxCharsState, .textfieldMaxCharsState input {
     color: #ffffff;
     padding-left: 5%;
 }
+#app_form {
+    background-image: url('images/appback2.jpg');
+    
+}
+.apptitle {
+    padding-bottom: 20px;
+    padding-top: 20px;
+    width: 100%;
 
+    color: #fff;
+}
 
 /* End Patient-Page _____________________________________________________________________________________*/
 
@@ -2179,154 +2197,154 @@ input.textfieldMaxCharsState, .textfieldMaxCharsState input {
 
 /* Start About-Page _____________________________________________________________________________________*/
 
-
+ 
 #object2 {
-    background-color: #000000;
-    visibility: hidden;
+	background-color: #000000;
+	visibility: hidden;
 }
 
 #object4 {
     background-color: #fbfbfb;
-    visibility: hidden;
+	visibility: hidden;
 }
 
 .fadeIn {
-    animation-name: fadeIn;
-    -webkit-animation-name: fadeIn;
-    animation-duration: 1.5s;
-    -webkit-animation-duration: 1.5s;
-    animation-timing-function: ease-in-out;
-    -webkit-animation-timing-function: ease-in-out;
-    visibility: visible !important;
+	animation-name: fadeIn;
+	-webkit-animation-name: fadeIn;	
+	animation-duration: 1.5s;	
+	-webkit-animation-duration: 1.5s;
+	animation-timing-function: ease-in-out;	
+	-webkit-animation-timing-function: ease-in-out;		
+	visibility: visible !important;	
 }
 
 @keyframes fadeIn {
-    0% {
-        transform: scale(0);
-        opacity: 0.0;
-    }
+	0% {
+		transform: scale(0);
+		opacity: 0.0;		
+	}
 
-    60% {
-        transform: scale(1.1);
-    }
+	60% {
+		transform: scale(1.1);	
+	}
 
-    80% {
-        transform: scale(0.9);
-        opacity: 1;
-    }
+	80% {
+		transform: scale(0.9);
+		opacity: 1;	
+	}	
 
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
+	100% {
+		transform: scale(1);
+		opacity: 1;	
+	}		
 }
 
 @-webkit-keyframes fadeIn {
-    0% {
-        -webkit-transform: scale(0);
-        opacity: 0.0;
-    }
+	0% {
+		-webkit-transform: scale(0);
+		opacity: 0.0;		
+	}
 
-    60% {
-        -webkit-transform: scale(1.1);
-    }
+	60% {
+		-webkit-transform: scale(1.1);
+	}
 
-    80% {
-        -webkit-transform: scale(0.9);
-        opacity: 1;
-    }
+	80% {
+		-webkit-transform: scale(0.9);
+		opacity: 1;	
+	}	
 
-    100% {
-        -webkit-transform: scale(1);
-        opacity: 1;
-    }
+	100% {
+		-webkit-transform: scale(1);
+		opacity: 1;	
+	}		
 }
 
 
 .slideExpandUp {
-    animation-name: slideExpandUp;
-    -webkit-animation-name: slideExpandUp;
-    animation-duration: 1.6s;
-    -webkit-animation-duration: 1.6s;
-    animation-timing-function: ease-out;
-    -webkit-animation-timing-function: ease -out;
-    visibility: visible !important;
+	animation-name: slideExpandUp;
+	-webkit-animation-name: slideExpandUp;	
+	animation-duration: 1.6s;	
+	-webkit-animation-duration: 1.6s;
+	animation-timing-function: ease-out;	
+	-webkit-animation-timing-function: ease -out;
+	visibility: visible !important;	
 }
 
 @keyframes slideExpandUp {
-    0% {
-        transform: translateY(100%) scaleX(0.5);
-    }
+	0% {
+		transform: translateY(100%) scaleX(0.5);
+	}
 
     30% {
-        transform: translateY(-8%) scaleX(0.5);
-    }
+		transform: translateY(-8%) scaleX(0.5);
+	}	
 
     40% {
-        transform: translateY(2%) scaleX(0.5);
-    }
+		transform: translateY(2%) scaleX(0.5);
+	}
 
     50% {
-        transform: translateY(0%) scaleX(1.1);
-    }
+		transform: translateY(0%) scaleX(1.1);
+	}
 
     60% {
-        transform: translateY(0%) scaleX(0.9);
-    }
+		transform: translateY(0%) scaleX(0.9);		
+	}
 
-    70% {
-        transform: translateY(0%) scaleX(1.05);
-    }
+	70% {
+		transform: translateY(0%) scaleX(1.05);
+	}			
 
     80% {
-        transform: translateY(0%) scaleX(0.95);
-    }
+		transform: translateY(0%) scaleX(0.95);		
+	}
 
-    90% {
-        transform: translateY(0%) scaleX(1.02);
-    }
+	90% {
+		transform: translateY(0%) scaleX(1.02);
+	}	
 
     100% {
-        transform: translateY(0%) scaleX(1);
-    }
+		transform: translateY(0%) scaleX(1);		
+	}
 }
 
 @-webkit-keyframes slideExpandUp {
-    0% {
-        -webkit-transform: translateY(100%) scaleX(0.5);
-    }
+	0% {
+		-webkit-transform: translateY(100%) scaleX(0.5);
+	}
 
     30% {
-        -webkit-transform: translateY(-8%) scaleX(0.5);
-    }
+		-webkit-transform: translateY(-8%) scaleX(0.5);
+	}	
 
     40% {
-        -webkit-transform: translateY(2%) scaleX(0.5);
-    }
+		-webkit-transform: translateY(2%) scaleX(0.5);
+	}
 
     50% {
-        -webkit-transform: translateY(0%) scaleX(1.1);
-    }
+		-webkit-transform: translateY(0%) scaleX(1.1);
+	}
 
     60% {
-        -webkit-transform: translateY(0%) scaleX(0.9);
-    }
+		-webkit-transform: translateY(0%) scaleX(0.9);		
+	}
 
-    70% {
-        -webkit-transform: translateY(0%) scaleX(1.05);
-    }
+	70% {
+		-webkit-transform: translateY(0%) scaleX(1.05);
+	}			
 
     80% {
-        -webkit-transform: translateY(0%) scaleX(0.95);
-    }
+		-webkit-transform: translateY(0%) scaleX(0.95);		
+	}
 
-    90% {
-        -webkit-transform: translateY(0%) scaleX(1.02);
-    }
+	90% {
+		-webkit-transform: translateY(0%) scaleX(1.02);
+	}	
 
     100% {
-        -webkit-transform: translateY(0%) scaleX(1);
-    }
+		-webkit-transform: translateY(0%) scaleX(1);		
+	}
 }
 
 
@@ -2344,7 +2362,7 @@ input.textfieldMaxCharsState, .textfieldMaxCharsState input {
         width: 100% !important;
         height: 100% !important;
         display: block;
-    }
+}
 
 
 /* End About-Page _____________________________________________________________________________________*/
