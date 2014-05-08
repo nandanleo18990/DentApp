@@ -22,7 +22,7 @@ namespace DentAppSys.Controllers
         {
             if (User.RegisterModel != null)
             {
-                if (ModelState.IsValid)
+                if (ModelState.IsValid && !User.RegisterModel.Email.Contains("@dentappsys.com"))
                 {
                     using (var db = new MaindbModelDataContext())
                     {
