@@ -151,7 +151,6 @@
     <Compile Include="Models\AccountModel.cs" />
     <Compile Include="Models\AppModel.cs" />
     <Compile Include="Models\DocModel.cs" />
-    <Compile Include="Models\RecentIncoming.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -31,6 +31,15 @@ namespace DentAppSys.Models
         [Display(Name = "Description: ")]
         public string Description { get; set; }
     }
+    public class RecentIncoming
+    {
 
+
+        public IEnumerable<DentAppSys.Models.AppModel> RecentAppts { get; set; }
+        public IEnumerable<DentAppSys.Models.AppModel> IncomingAppts { get; set; }
+
+       
+
+    }
   
 }

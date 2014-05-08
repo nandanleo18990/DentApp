@@ -1988,21 +1988,18 @@ input.textfieldMaxCharsState, .textfieldMaxCharsState input {
 
 /* Start Patient-Page _____________________________________________________________________________________*/
 
-.Patient-Info {
-   
-    height: 300px;
-    background-color: #CCC;
 
+.Pat-Info {
+    height: 200px;
+    background-color: #555;
+    text-align: center;
+    padding-top: 75px;
 }
 
-#incomingrecent {
-    
-    width: 50%;
-    color: #ffffff;
-    padding-right: 5%;
-    padding-left: 5%;
-    height: auto;
+.Pat-Info-text {
+    color: #fff;
 }
+
 
 .Info-title {
     text-align: center;
@@ -2106,6 +2103,11 @@ input.textfieldMaxCharsState, .textfieldMaxCharsState input {
 }
 #app_form {
     background-image: url('images/appback2.jpg');
+    color: #ffffff;
+    padding-right: 5%;
+    padding-left: 5%;
+    height: auto;
+}
     
 }
 .apptitle {

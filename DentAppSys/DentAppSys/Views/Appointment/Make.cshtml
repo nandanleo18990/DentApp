@@ -5,14 +5,11 @@
 <link type="text/css" rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<section class="Patient-Info">
-
-
-    <div class="Patient-Info">
-    </div>
+<section class="Pat-Info">
+    <article class="Pat-Info-text"><strong>Here you can show some information about this page !!!</strong></article>
 
 </section>
-<section class="Patient-Menu">
+<section class="User-Menu">
 
     <nav class="p-menu">
         <ul id="Menu" class="clearfix">
@@ -25,41 +22,36 @@
     </nav>
 
 </section>
-
-<div id="app_form">
-    <section>
+<section>
+    <div id="app_form">
 
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken();
             @Html.ValidationSummary(true, "")    ;
-
-
-
-    <div id="incomingrecent">
         
-
-            <h1> Get an Appointment</h1>
-
+              <div><strong> Get an Appointment</strong></div>
 
 
-            <div>@Html.LabelFor(u => u.Date)</div>
-            <div>
-                @Html.TextBoxFor(u => u.Date, htmlAttributes: new { id = "DatePicker", @readonly = "true" })
 
-            </div>
-
-            <div>@Html.LabelFor(u => u.Description)</div>
-            <div>@Html.TextAreaFor(u => u.Description)</div>
-
-            <input type="submit" value="Submit" class="footer_btn" />
-
-      
+    <div>@Html.LabelFor(u => u.Date)</div>
+    <div>
+        @Html.TextBoxFor(u => u.Date, htmlAttributes: new { id = "DatePicker", @readonly = "true" })
 
     </div>
-        }
-    </section>
+
+    <div>@Html.LabelFor(u => u.Description)</div>
+    <div>@Html.TextAreaFor(u => u.Description)</div>
+
+    <input type="submit" value="Submit" class="footer_btn" />
+
+
+
+
+    }
+
 </div>
+</section>
 <script type="text/javascript">
     
     $(function () {
