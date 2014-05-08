@@ -68,6 +68,7 @@ namespace DentAppSys.Controllers
             {
                 if (ModelState.IsValid && IsValid(User.LoginModel.Email, User.LoginModel.Password))
                 {
+                    
                     var TempUser = new Models.RegisterModel();
                     Session["UserEmail"] = User.LoginModel.Email;
                     using (var db = new MaindbModelDataContext())

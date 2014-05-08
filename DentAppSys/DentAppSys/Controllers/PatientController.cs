@@ -23,18 +23,15 @@ namespace DentAppSys.Controllers
                     ViewBag.LastName = patient.Surname;
                     ViewBag.BirthDate = patient.Birthday;
                     ViewBag.Email = patient.Email;
-
-
                 }
-
-
-            
+                            
                 using (var db = new MaindbModelDataContext())
                 {
                     var patient = db.Patients.FirstOrDefault(u => u.Email == (String)Session["UserEmail"]);
                     var listincoming = (from y in db.Appointments
                                         where y.PatientNo == patient.PatientNo
                                         where y.Date > DateTime.Today
+                                        where y.Status == "isConfirmed"
                                         orderby y.Date descending
                                         select y).Take(5);
 
@@ -55,8 +52,8 @@ namespace DentAppSys.Controllers
                     var p = db.Patients.FirstOrDefault(u => u.Email == (String)Session["UserEmail"]);
                     var listrecent = (from y in db.Appointments
                                       where y.PatientNo == p.PatientNo
-                                      where y.Status == "isConfirmed"
-                                      orderby y.Date descending
+                                      where y.Date < DateTime.Today
+                                      orderby y.Date ascending
                                       select y).Take(5);
 
                     var TempRecent = new List<Models.AppModel>();

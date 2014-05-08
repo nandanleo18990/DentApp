@@ -20,7 +20,7 @@ fieldset {
 }
 
 legend {
-    font-size: 1.2em;
+    font-size: 1.4em;
     font-weight: bold;
 }
 
@@ -1989,11 +1989,19 @@ input.textfieldMaxCharsState, .textfieldMaxCharsState input {
 /* Start Patient-Page _____________________________________________________________________________________*/
 
 .Patient-Info {
-    padding-bottom: 20px;
-    padding-top: 20px;
-    width: 100%;
-    background-color: gray;
-    color: #fff;
+   
+    height: 300px;
+    background-color: #CCC;
+
+}
+
+#incomingrecent {
+    
+    width: 50%;
+    color: #ffffff;
+    padding-right: 5%;
+    padding-left: 5%;
+    height: auto;
 }
 
 .Info-title {
@@ -2089,7 +2097,17 @@ input.textfieldMaxCharsState, .textfieldMaxCharsState input {
     color: #ffffff;
     padding-left: 5%;
 }
-
+#app_form {
+    background-image: url('images/appback2.jpg');
+    
+}
+.apptitle {
+    padding-bottom: 20px;
+    padding-top: 20px;
+    width: 100%;
+   
+    color: #fff;
+}
 
 /* End Patient-Page _____________________________________________________________________________________*/
 
