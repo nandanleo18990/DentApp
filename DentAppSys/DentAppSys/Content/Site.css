@@ -1989,18 +1989,22 @@ input.textfieldMaxCharsState, .textfieldMaxCharsState input {
 /* Start Patient-Page _____________________________________________________________________________________*/
 
 
-.Pat-Info {
+
+.Patient-Info{
+    height: 300px;
+    background-color: #CCC;
+}
+
+.Make-Info {
     height: 200px;
     background-color: #555;
     text-align: center;
     padding-top: 75px;
 }
 
-.Pat-Info-text {
+.Make-Info-text {
     color: #fff;
 }
-
-
 .Info-title {
     text-align: center;
     font-weight: bold;
