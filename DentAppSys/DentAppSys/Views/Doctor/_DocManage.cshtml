@@ -1,1 +1,57 @@
-﻿<h1>DocManagement</h1>
+﻿@model DentAppSys.Models.Drmanagments
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken();
+    @Html.ValidationSummary(true, "");
+    <div class="Validation">
+        <div>
+            @Html.ValidationMessageFor(u => u.resultdoc.AppID)
+            @Html.ValidationMessageFor(u => u.resultdoc.PatientID)
+            @Html.ValidationMessageFor(u => u.resultdoc.Prescription)
+            @Html.ValidationMessageFor(u => u.resultdoc.TreatmentDis)
+            @*@Html.ValidationMessageFor(u => u.Image)*@
+
+
+            <strong>@ViewBag.ChangeResultDoc</strong>
+        </div>
+    </div>
+    <div class="Form-Area">
+
+        <fieldset>
+            <legend>Managing Patient Files</legend>
+            <div>
+                @Html.LabelFor(u => u.resultdoc.AppID)
+            </div>
+            <div>
+                @Html.TextBoxFor(u => u.resultdoc.AppID)
+            </div>
+            <div>
+                @Html.LabelFor(u => u.resultdoc.PatientID)
+            </div>
+            <div>
+                @Html.TextBoxFor(u => u.resultdoc.PatientID)
+            </div>
+            <div>
+                @Html.LabelFor(u => u.resultdoc.Prescription)
+            </div>
+            <div>
+                @Html.TextAreaFor(u => u.resultdoc.Prescription)
+            </div>
+            <div>
+                @Html.LabelFor(u => u.resultdoc.TreatmentDis)
+            </div>
+            <div>
+                @Html.TextAreaFor(u => u.resultdoc.TreatmentDis)
+            </div>
+            <div>@Html.Label("Select the status for appointment :")</div>
+            <div>
+                @Html.DropDownListFor(u => u.resultdoc.Status, new List<SelectListItem>() { new SelectListItem { Text = "Completed", Value = "Completed" }, new SelectListItem { Text = "NotCompleted", Value = "NotCompleted" }, new SelectListItem { Text = "isInvalid", Value = "isInvalid" } })
+                @*@Html.DropDownList("Status", new List<SelectListItem>() { new SelectListItem { Text = "Completed", Value = "Completed" }, new SelectListItem { Text = "NotCompleted", Value = "NotCompleted" }, new SelectListItem { Text = "isInvalid", Value = "isInvalid" } })*@
+            </div>
+            <input type="submit" value="Submit" class="footer_btn" />
+
+        </fieldset>
+
+    </div>
+}

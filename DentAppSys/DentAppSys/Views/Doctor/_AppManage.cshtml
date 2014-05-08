@@ -1,3 +1,37 @@
-﻿@model DentAppSys.Models.AppModel
+﻿@model DentAppSys.Models.Drmanagments
 
-<h1>AppManagement</h1>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken();
+    @Html.ValidationSummary(true, "");
+    <div class="Validation">
+        <div>
+            @Html.ValidationMessageFor(u => u.appmodel.AppNo)
+            <strong>@ViewBag.ChangeResultApp</strong>
+        </div>
+    </div>
+    <div class="Form-Area">
+
+        <fieldset>
+            <legend>Managing Appointments</legend>
+            <div>@Html.LabelFor(u => u.appmodel.AppNo)</div>
+            <div>
+                @Html.TextBoxFor(u => u.appmodel.AppNo)
+            </div>
+            <div>
+                @Html.LabelFor(u => u.appmodel.DrDescription)
+        </div>
+        <div>
+            @Html.TextAreaFor(u => u.appmodel.DrDescription)
+        </div>
+        <div>@Html.Label("Select the status for appointment :")</div>
+        <div>
+            @Html.DropDownListFor(u => u.appmodel.Status, new List<SelectListItem>() { new SelectListItem { Text = "isCancelled", Value = "isCancelled" }, new SelectListItem { Text = "isConfirmed", Value = "isConfirmed" }, new SelectListItem { Text = "isDone", Value = "isDone" } })
+        </div>
+        <input type="submit" value="Submit" class="footer_btn" />
+
+    </fieldset>
+
+</div>
+}

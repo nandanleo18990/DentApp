@@ -21,20 +21,20 @@ namespace DentAppSys.Models
 
     public class Resultdoc
     {
-        [Display(Name = "Appointment ID = ")]
+        [Display(Name = "Appointment ID : ")]
         public int AppID { get; set; }
-        [Display(Name = " Patient ID = ")]
+        [Display(Name = " Patient ID : ")]
         public int PatientID { get; set; }
         //[Display(Name = "Date = ")]
         //[DataType(DataType.Date)]
         //public DateTime StartDate { get; set; }
-        [Display(Name = "Prescription = ")]
+        [Display(Name = "Prescription : ")]
         public string Prescription { get; set; }
-        [Display(Name = "Treatments Details = ")]
+        [Display(Name = "Treatments Details : ")]
         public string TreatmentDis { get; set; }
-        [Display(Name = "Status = ")]
+        [Display(Name = "Status : ")]
         public string Status { get; set; }
-        [Display(Name = "Related Image = ")]
+        [Display(Name = "Related Image : ")]
         public byte[] Image { get; set; }
     }
 
