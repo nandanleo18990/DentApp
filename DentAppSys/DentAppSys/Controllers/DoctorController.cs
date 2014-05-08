@@ -13,7 +13,7 @@ namespace DentAppSys.Controllers
 
         public ActionResult Index()
         {
-            if (Session["UserEmail"] != null)
+            if (Session["UserEmail"].ToString().Contains("@dentappsys.com"))
             {
                 string Email = (string)Session["UserEmail"];
 
@@ -41,5 +41,20 @@ namespace DentAppSys.Controllers
             }
 
         }
+
+        public ActionResult Management()
+        {
+            if (Session["UserEmail"].ToString().Contains("@dentappsys.com"))
+            {
+                        return View();
+                    }
+                    else
+                    {
+                        return RedirectToAction("RegAndLogin", "User");
+                    }
+                
+            
+        }
+
     }
 }

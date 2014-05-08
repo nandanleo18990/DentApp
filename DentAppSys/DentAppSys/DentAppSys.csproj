@@ -307,6 +307,9 @@
     <Content Include="Views\Documents\_Docitem.cshtml" />
     <Content Include="Views\Doctor\Index.cshtml" />
     <Content Include="Views\Patient\Index.cshtml" />
+    <Content Include="Views\Doctor\Management.cshtml" />
+    <Content Include="Views\Doctor\_AppManage.cshtml" />
+    <Content Include="Views\Doctor\_DocManage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -28,7 +28,7 @@ namespace DentAppSys.Models
         //[Display(Name = "Date = ")]
         //[DataType(DataType.Date)]
         //public DateTime StartDate { get; set; }
-        //[Display(Name = "Prescription = ")]
+        [Display(Name = "Prescription = ")]
         public string Prescription { get; set; }
         [Display(Name = "Treatments Details = ")]
         public string TreatmentDis { get; set; }
