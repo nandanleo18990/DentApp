@@ -19,64 +19,64 @@ else
 <section class="Patient-Info">
 
 
-    <div class="Info-title">
-        Personal Informations
-    </div>
+     <div class="Info-title">
+         Personal Informations
+     </div>
     <div class="Info-Content">
-        <div>
-            <span>
-                Firstname :
-            </span>
-            @ViewBag.FirstName
-        </div>
-        <div>
-            <span>
-                Lastname :
-            </span>
-            @ViewBag.LastName
-        </div>
-        <div>
-            <span>
-                Birthday :
-            </span>
-            @ViewBag.BirthDate.ToString("MMMM dd,yyyy")
-        </div>
-        <div>
-            <span>
-                Email :
-            </span>
-            @ViewBag.Email
-        </div>
-        <input type="submit" value="Edit Your Profile" class="" />
-    </div>
+         <div>
+             <span>
+                 Firstname :
+             </span>
+             @ViewBag.FirstName
+         </div>
+         <div>
+             <span>
+                 Lastname :
+             </span>
+             @ViewBag.LastName
+         </div>
+         <div>
+             <span>
+                 Birthday :
+             </span>
+             @ViewBag.BirthDate.ToString("MMMM dd,yyyy")
+         </div>
+         <div>
+             <span>
+                 Email :
+             </span>
+             @ViewBag.Email
+         </div>
+        <input type="submit" value="Edit Profile" class="footer_btn" />
+     </div>
 
-</section>
+    </section>
 
-<section class="Patient-Menu">
+    <section class="User-Menu">
 
-    <nav class="p-menu">
-        <ul id="Menu" class="clearfix">
+        <nav class="p-menu">
+            <ul id="Menu" class="clearfix">
             <li>@Html.ActionLink("Dashboard", "Index", "Patient")</li>
-            <li>@Html.ActionLink("Appointment", "Make", "Appointment")</li>
-            <li>@Html.ActionLink("History", "", "")</li>
-            <li>@Html.ActionLink("Documents", "Index", "Documents")</li>
-        </ul>
+                <li>@Html.ActionLink("Appointment", "Make", "Appointment")</li>
+                <li>@Html.ActionLink("History", "", "")</li>
+                <li>@Html.ActionLink("Documents", "Index", "Documents")</li>
+            </ul>
 
-    </nav>
+        </nav>
 
-</section>
+    </section>
 
-<section class="Patient-Dashboard">
+    <section class="Patient-Dashboard">
 
-    <div id="dashboard_left">
-        <h1> Recent Appointments</h1>
-        @{
+        <div id="dashboard_left">
+            <h1> Recent Appointments</h1>
+   @{
             var MyRecentGrid = new WebGrid(Model.RecentAppts, selectionFieldName: "SelectedRow");
-        }
+}
 
         @MyRecentGrid.GetHtml(
     displayHeader: true,
-
+    
     mode: WebGridPagerModes.FirstLast,
 
 columns: MyRecentGrid.Columns
@@ -87,13 +87,13 @@ columns: MyRecentGrid.Columns
     MyRecentGrid.Column("Description", "Description", format: @<text>@item.Description</text>),
     MyRecentGrid.Column("Date", "Date", format: @<text>@item.Date.ToString("yyyy/MM/dd")</text>),
     MyRecentGrid.Column("Status", "Status", format: @<text>@item.Status</text>)
+     
+))
+</div>
 
-             ))
-    </div>
-
-    <div id="dashboard_right">
+<div id="dashboard_right">
         <br />
-        <h1>Incoming Appointments</h1>
+<h1>Incoming Appointments</h1>
         @{
             var MyIncomingGrid = new WebGrid(Model.IncomingAppts, selectionFieldName: "SelectedRow");
         }
@@ -114,6 +114,6 @@ columns: MyIncomingGrid.Columns
 
                                                     ))
 
-
-    </div>
+   
+</div>
 </section>

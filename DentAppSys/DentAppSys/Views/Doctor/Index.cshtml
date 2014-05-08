@@ -1,0 +1,60 @@
+﻿@model DentAppSys.Models.AppModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Welcome Doctor !</h2>
+
+<section class="Doctor-Panel">
+    <div class="Info-Content">
+        <div>
+            <span>
+                Firstname :
+            </span>
+            @ViewBag.FirstName
+        </div>
+        <div>
+            <span>
+                Lastname :
+            </span>
+            @ViewBag.LastName
+        </div>
+        <div>
+            <span>
+                Birthday :
+            </span>
+            @ViewBag.BirthDate.ToString("MMMM dd,yyyy")
+        </div>
+        <div>
+            <span>
+                Email :
+            </span>
+            @ViewBag.Email
+        </div>
+        <input type="submit" value="Edit Profile" class="footer_btn" />
+    </div>
+    </div>
+
+</section>
+
+<section class="User-Menu">
+
+    <nav class="p-menu">
+        <ul id="Menu" class="clearfix">
+            @*name/view/controller*@
+            <li>@Html.ActionLink("DashBoard", "", "")</li>
+            <li>@Html.ActionLink("Management", "", "")</li>
+            <li>@Html.ActionLink("Reports", "", "")</li>
+        </ul>
+
+    </nav>
+
+</section>
+
+<section class="Doctor-Panel">
+    <div class="Info-title">
+        Some Info Here !!!
+    </div>
+
+</section>

@@ -18,9 +18,9 @@
 
 @* Testing Images !!*@
 @*@foreach (var u in Model)
-{
-    <img src="@u.Image" width="100" height="100" />
-}*@
+    {
+        <img src="@u.Image" width="100" height="100" />
+    }*@
 
 <div class="List-Of-Result">
 
@@ -34,26 +34,62 @@
     columns: Mygrid.Columns
     (
     @*Mygrid.Column("Select", format: @<text>@Html.RadioButton("rbFile", "", false) </text>),*@
-    Mygrid.Column("Select", header: null, format: @<text>@item.GetSelectLink("Select")</text>),           
-    Mygrid.Column("Appointment ID", "Appointment ID",format: @<text>@item.AppID</text>),
+Mygrid.Column("Select", header: null, format: @<text>@item.GetSelectLink("Select")</text>),
+    Mygrid.Column("AppID", "Appointment ID",format: @<text>@item.AppID</text>),
     Mygrid.Column("Status", "Status", format: @<text>@item.Status</text>),
     Mygrid.Column("Image", "Image", format: @<text><img src="@item.Image" /></text>)  @* :D !!!!!!!! *@
 
-            )
+)
 
-            )
+                                    )
     @*<input type="submit" value="Show" class="footer_btn" />*@
 </div>
+<section class="User-Menu">
 
+    <nav class="p-menu">
+        <ul id="Menu" class="clearfix">
+            <li>@Html.ActionLink("Dashboard", "Index", "Patient")</li>
+            <li>@Html.ActionLink("Appointment", "Make", "Appointment")</li>
+            <li>@Html.ActionLink("History", "", "")</li>
+            <li>@Html.ActionLink("Documents", "Index", "Documents")</li>
+        </ul>
+
+    </nav>
+
+</section>
 <section class="Show-Doc-Item">
 
-@if (Mygrid.HasSelection)
-{
-    @Html.Partial("_Docitem", new{ Doc =  Mygrid.SelectedRow})
-}
-    
-   
+
+    @{
+
+        if (Mygrid.HasSelection)
+        {
+
+            var doc = Mygrid.SelectedRow["AppID"];
+            var TempResult = new DentAppSys.Models.Resultdoc();
+            foreach (var item in Model)
+            {
+                if (item.AppID == (int)doc)
+                {
+                    TempResult.AppID = (int)doc;
+                    TempResult.PatientID = item.PatientID;
+                    TempResult.Prescription = item.Prescription;
+                    TempResult.Status = item.Status;
+                    TempResult.TreatmentDis = item.TreatmentDis;
+                    TempResult.Image = item.Image;
+                }
+            }
+            @Html.Partial("_Showdoc", TempResult);
+        }
+        else
+        {
+            <section class="Empty-Doc">
+
+                <article class="Empty-Doc-text"><strong>select of the result to show the dacuments details !</strong></article> 
+
+            </section>
+        }
+
+    }
+
 </section>
-
-
-

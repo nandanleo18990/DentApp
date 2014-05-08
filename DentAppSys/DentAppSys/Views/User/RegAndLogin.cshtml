@@ -13,19 +13,25 @@
 {
     @Html.AntiForgeryToken();
     @Html.ValidationSummary(true, "");
-    <div>
+    <div class="Validation">
+        <div>
+            @Html.ValidationMessageFor(u => u.LoginModel.Email)
+        </div>
+        <div>
+            @Html.ValidationMessageFor(u => u.LoginModel.Password)
+        </div>
+    </div>
+    <div class="Form-Area">
 
         <fieldset>
             <legend>Login Form</legend>
             <div>@Html.LabelFor(u => u.LoginModel.Email)</div>
             <div>
                 @Html.TextBoxFor(u => u.LoginModel.Email)
-                @Html.ValidationMessageFor(u => u.LoginModel.Email)
             </div>
             <div>@Html.LabelFor(u => u.LoginModel.Password)</div>
             <div>
                 @Html.PasswordFor(u => u.LoginModel.Password)
-                @Html.ValidationMessageFor(u => u.LoginModel.Password)
             </div>
             <input type="submit" value="Log In" class="footer_btn" />
 
@@ -37,35 +43,46 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken();
-    @Html.ValidationSummary(true, "");
-    <div>
+    <div class="Validation">
+        <div>
+            @Html.ValidationMessageFor(u => u.RegisterModel.Firstname)
+        </div>
+        <div>
+            @Html.ValidationMessageFor(u => u.RegisterModel.Lastname)
+        </div>
+        <div>
+            @Html.ValidationMessageFor(u => u.RegisterModel.Birthday)
+        </div>
+        <div>
+            @Html.ValidationMessageFor(u => u.RegisterModel.Email)
+        </div>
+        <div>
+            @Html.ValidationMessageFor(u => u.RegisterModel.Password)
+        </div>
+    </div>
+    <div class="Form-Area">
 
         <fieldset>
             <legend>Registration Form</legend>
             <div>@Html.LabelFor(u => u.RegisterModel.Firstname)</div>
             <div>
                 @Html.TextBoxFor(u => u.RegisterModel.Firstname)
-                @Html.ValidationMessageFor(u => u.RegisterModel.Firstname)
             </div>
             <div>@Html.LabelFor(u => u.RegisterModel.Lastname)</div>
             <div>
                 @Html.TextBoxFor(u => u.RegisterModel.Lastname)
-                @Html.ValidationMessageFor(u => u.RegisterModel.Lastname)
             </div>
             <div>@Html.LabelFor(u => u.RegisterModel.Birthday)</div>
             <div>
                 @Html.TextBoxFor(u => u.RegisterModel.Birthday, htmlAttributes: new { id = "DatePicker" })
-                @Html.ValidationMessageFor(u => u.RegisterModel.Birthday)
             </div>
             <div>@Html.LabelFor(u => u.RegisterModel.Email)</div>
             <div>
                 @Html.TextBoxFor(u => u.RegisterModel.Email)
-                @Html.ValidationMessageFor(u => u.RegisterModel.Email)
             </div>
             <div>@Html.LabelFor(u => u.RegisterModel.Password)</div>
             <div>
                 @Html.PasswordFor(u => u.RegisterModel.Password)
-                @Html.ValidationMessageFor(u => u.RegisterModel.Password)
             </div>
             <input type="submit" value="Register" class="footer_btn" />
 

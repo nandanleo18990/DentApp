@@ -39,6 +39,9 @@ namespace DentAppSys
     partial void InsertPatientFile(PatientFile instance);
     partial void UpdatePatientFile(PatientFile instance);
     partial void DeletePatientFile(PatientFile instance);
+    partial void InsertDoctor(Doctor instance);
+    partial void UpdateDoctor(Doctor instance);
+    partial void DeleteDoctor(Doctor instance);
     #endregion
 		
 		public MaindbModelDataContext() : 
@@ -69,14 +72,6 @@ namespace DentAppSys
 				base(connection, mappingSource)
 		{
 			OnCreated();
-		}
-		
-		public System.Data.Linq.Table<Doctor> Doctors
-		{
-			get
-			{
-				return this.GetTable<Doctor>();
-			}
 		}
 		
 		public System.Data.Linq.Table<Office> Offices
@@ -110,175 +105,12 @@ namespace DentAppSys
 				return this.GetTable<PatientFile>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Doctor")]
-	public partial class Doctor
-	{
 		
-		private string _DrNo;
-		
-		private string _Name;
-		
-		private string _Surname;
-		
-		private System.Nullable<System.DateTime> _BirthDate;
-		
-		private string _PhoneNo;
-		
-		private string _Email;
-		
-		private string _Password;
-		
-		private string _IdNo;
-		
-		private string _Address;
-		
-		public Doctor()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DrNo", DbType="NVarChar(50)")]
-		public string DrNo
+		public System.Data.Linq.Table<Doctor> Doctors
 		{
 			get
 			{
-				return this._DrNo;
-			}
-			set
-			{
-				if ((this._DrNo != value))
-				{
-					this._DrNo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50)")]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this._Name = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Surname", DbType="NVarChar(50)")]
-		public string Surname
-		{
-			get
-			{
-				return this._Surname;
-			}
-			set
-			{
-				if ((this._Surname != value))
-				{
-					this._Surname = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BirthDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> BirthDate
-		{
-			get
-			{
-				return this._BirthDate;
-			}
-			set
-			{
-				if ((this._BirthDate != value))
-				{
-					this._BirthDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhoneNo", DbType="NVarChar(50)")]
-		public string PhoneNo
-		{
-			get
-			{
-				return this._PhoneNo;
-			}
-			set
-			{
-				if ((this._PhoneNo != value))
-				{
-					this._PhoneNo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(50)")]
-		public string Email
-		{
-			get
-			{
-				return this._Email;
-			}
-			set
-			{
-				if ((this._Email != value))
-				{
-					this._Email = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="NVarChar(50)")]
-		public string Password
-		{
-			get
-			{
-				return this._Password;
-			}
-			set
-			{
-				if ((this._Password != value))
-				{
-					this._Password = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdNo", DbType="NVarChar(50)")]
-		public string IdNo
-		{
-			get
-			{
-				return this._IdNo;
-			}
-			set
-			{
-				if ((this._IdNo != value))
-				{
-					this._IdNo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(50)")]
-		public string Address
-		{
-			get
-			{
-				return this._Address;
-			}
-			set
-			{
-				if ((this._Address != value))
-				{
-					this._Address = value;
-				}
+				return this.GetTable<Doctor>();
 			}
 		}
 	}
@@ -1338,6 +1170,260 @@ namespace DentAppSys
 						this._PatientNo = default(int);
 					}
 					this.SendPropertyChanged("Patient");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Doctor")]
+	public partial class Doctor : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _DrNo;
+		
+		private string _Name;
+		
+		private string _Surname;
+		
+		private System.Nullable<System.DateTime> _BirthDate;
+		
+		private string _PhoneNo;
+		
+		private string _Email;
+		
+		private string _Password;
+		
+		private string _IdNo;
+		
+		private string _Address;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnDrNoChanging(string value);
+    partial void OnDrNoChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnSurnameChanging(string value);
+    partial void OnSurnameChanged();
+    partial void OnBirthDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnBirthDateChanged();
+    partial void OnPhoneNoChanging(string value);
+    partial void OnPhoneNoChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
+    partial void OnPasswordChanging(string value);
+    partial void OnPasswordChanged();
+    partial void OnIdNoChanging(string value);
+    partial void OnIdNoChanged();
+    partial void OnAddressChanging(string value);
+    partial void OnAddressChanged();
+    #endregion
+		
+		public Doctor()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DrNo", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string DrNo
+		{
+			get
+			{
+				return this._DrNo;
+			}
+			set
+			{
+				if ((this._DrNo != value))
+				{
+					this.OnDrNoChanging(value);
+					this.SendPropertyChanging();
+					this._DrNo = value;
+					this.SendPropertyChanged("DrNo");
+					this.OnDrNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Surname", DbType="NVarChar(50)")]
+		public string Surname
+		{
+			get
+			{
+				return this._Surname;
+			}
+			set
+			{
+				if ((this._Surname != value))
+				{
+					this.OnSurnameChanging(value);
+					this.SendPropertyChanging();
+					this._Surname = value;
+					this.SendPropertyChanged("Surname");
+					this.OnSurnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BirthDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> BirthDate
+		{
+			get
+			{
+				return this._BirthDate;
+			}
+			set
+			{
+				if ((this._BirthDate != value))
+				{
+					this.OnBirthDateChanging(value);
+					this.SendPropertyChanging();
+					this._BirthDate = value;
+					this.SendPropertyChanged("BirthDate");
+					this.OnBirthDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhoneNo", DbType="NVarChar(50)")]
+		public string PhoneNo
+		{
+			get
+			{
+				return this._PhoneNo;
+			}
+			set
+			{
+				if ((this._PhoneNo != value))
+				{
+					this.OnPhoneNoChanging(value);
+					this.SendPropertyChanging();
+					this._PhoneNo = value;
+					this.SendPropertyChanged("PhoneNo");
+					this.OnPhoneNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(50)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="NVarChar(50)")]
+		public string Password
+		{
+			get
+			{
+				return this._Password;
+			}
+			set
+			{
+				if ((this._Password != value))
+				{
+					this.OnPasswordChanging(value);
+					this.SendPropertyChanging();
+					this._Password = value;
+					this.SendPropertyChanged("Password");
+					this.OnPasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdNo", DbType="NVarChar(50)")]
+		public string IdNo
+		{
+			get
+			{
+				return this._IdNo;
+			}
+			set
+			{
+				if ((this._IdNo != value))
+				{
+					this.OnIdNoChanging(value);
+					this.SendPropertyChanging();
+					this._IdNo = value;
+					this.SendPropertyChanged("IdNo");
+					this.OnIdNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(50)")]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this.OnAddressChanging(value);
+					this.SendPropertyChanging();
+					this._Address = value;
+					this.SendPropertyChanged("Address");
+					this.OnAddressChanged();
 				}
 			}
 		}

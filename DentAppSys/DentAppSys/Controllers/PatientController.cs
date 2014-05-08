@@ -19,12 +19,20 @@ namespace DentAppSys.Controllers
                 using (var db = new MaindbModelDataContext())
                 {
                     var patient = db.Patients.FirstOrDefault(u => u.Email == (String)Session["UserEmail"]);
+                    if (patient != null)
+                    {
                     ViewBag.FirstName = patient.Name;
                     ViewBag.LastName = patient.Surname;
                     ViewBag.BirthDate = patient.Birthday;
                     ViewBag.Email = patient.Email;
+                    }
+                    else
+                    {
+                        return RedirectToAction("RegAndLogin", "User");
+                    }
+
                 }
-                            
+
                 using (var db = new MaindbModelDataContext())
                 {
                     var patient = db.Patients.FirstOrDefault(u => u.Email == (String)Session["UserEmail"]);

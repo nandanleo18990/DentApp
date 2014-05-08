@@ -11,14 +11,6 @@ namespace DentAppSys.Controllers
 {
     public class UserController : Controller
     {
-        //
-        // GET: /User/
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-
         public ActionResult RegAndLogin()
         {
             return View();
@@ -68,11 +60,30 @@ namespace DentAppSys.Controllers
             {
                 if (ModelState.IsValid && IsValid(User.LoginModel.Email, User.LoginModel.Password))
                 {
-                    
+
+                    if (User.LoginModel.Email.Contains("@dentappsys.com"))
+                    {
                     var TempUser = new Models.RegisterModel();
                     Session["UserEmail"] = User.LoginModel.Email;
                     using (var db = new MaindbModelDataContext())
                     {
+                            var person = db.Doctors.FirstOrDefault(u => u.Email == User.LoginModel.Email);
+                            TempUser.Firstname = person.Name;
+                            TempUser.Lastname = person.Surname;
+                            //TempUser.RegisterModel.Birthday = (DateTime)person.BirthDate;
+                            TempUser.Email = person.Email;
+
+
+                        }
+                        return RedirectToAction("Index", "Doctor", TempUser);
+
+                    }
+                    else
+                    {
+                        var TempUser = new Models.RegisterModel();
+                        Session["UserEmail"] = User.LoginModel.Email;
+                        using (var db = new MaindbModelDataContext())
+                        {
                         var person = db.Patients.FirstOrDefault(u => u.Email == User.LoginModel.Email);
                         TempUser.Firstname = person.Name;
                         TempUser.Lastname = person.Surname;
@@ -83,6 +94,7 @@ namespace DentAppSys.Controllers
                     }
                     return RedirectToAction("Index", "Patient", TempUser);
                  }
+                }
                 else
                 {
                     ModelState.AddModelError("", "Check your E-mail or Password then try again !!!");
@@ -96,7 +108,23 @@ namespace DentAppSys.Controllers
             bool isvalid = false;
             using (var db = new MaindbModelDataContext())
             {
-                var Person = db.Patients.First(u => u.Email == email);
+                if (email.Contains("@dentappsys.com"))
+                {
+                    var Doctor = db.Doctors.FirstOrDefault(u => u.Email == email);
+                    if (Doctor != null)
+                    {
+                        if (BCrypt.Net.BCrypt.Verify(password, Doctor.Password))
+                        {
+                            isvalid = true;
+                            return isvalid;
+                        }
+                    }
+                    else
+                    {
+                        return isvalid;
+                    }
+                }
+                var Person = db.Patients.FirstOrDefault(u => u.Email == email);
                 if (Person != null)
                 {
                     if (BCrypt.Net.BCrypt.Verify(password, Person.Password))
