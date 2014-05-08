@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Managment";
+}
+
+
+<section class="AppManagement">
+
+    @Html.Partial("_AppManage")
+
+</section>
+
+<section class="User-Menu">
+
+    <nav class="p-menu">
+        <ul id="Menu" class="clearfix">
+            @*name/view/controller*@
+            <li>@Html.ActionLink("DashBoard", "Index", "Doctor")</li>
+            <li>@Html.ActionLink("Management", "Management", "Doctor")</li>
+            <li>@Html.ActionLink("Reports", "", "")</li>
+        </ul>
+
+    </nav>
+
+</section>
+
+<section class="DocManagement">
+
+    @Html.Partial("_DocManage")
+
+</section>
